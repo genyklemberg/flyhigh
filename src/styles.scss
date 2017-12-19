@@ -117,7 +117,7 @@ body {
 
 			/*Carousel start*/
 
-.nk-carousel {
+.nk-carousel, #blog {
 	.flickity-page-dots {
 		display: flex;
 		align-items: center;
@@ -142,7 +142,6 @@ body {
 		}
 	}
 }
-
 			/*Carousel finish*/
 
 
@@ -154,12 +153,32 @@ body {
   justify-content: space-between;
   height: 120px;
   padding: 0 25px;
+  cursor: pointer;
+  transition: color .3s;
+	&:hover {
+		background: #fff;
+		border: 2px solid #fff;
+		transition: color .3s;
+		.nk-ibox-icon {
+			color: #000;
+			transition: color .3s;
+		}
+		.nk-ibox-cont {
+			color: #000;
+			transition: color .3s;
+			.nk-ibox-text {
+				font-weight: 600;
+			}
+		}
+	}
   .nk-ibox-icon {
   	position: relative;
     margin-right: 30px;
+    transition: color .3s;
   }
   .nk-ibox-cont {
   	margin: 0;
+  	transition: color .3s;
   }
 }
 
@@ -184,6 +203,7 @@ body {
 
 
 			/*Blog start*/
+		
 
 .nk-pagination.nk-pagination-center {
 	margin-top: 50px;
