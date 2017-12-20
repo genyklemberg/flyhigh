@@ -2,6 +2,7 @@ body {
 	a {
 		&:hover {
 			cursor: pointer;
+			text-decoration: none;
 		}
 	}
 	ul {
@@ -297,6 +298,114 @@ body {
 
 .main-product {
 	margin-bottom: 50px;
+	.main-product-img {
+		img {
+			width: 100%;
+		}
+	}
+	.more {
+    background: transparent;
+    border: 2px solid #000;
+    border-radius: 90px;
+    padding: 10px 30px;
+    transition: .3s;
+    &:hover {
+    	transition: .3s;
+			background: #000;
+			color: #fff;
+    }
+		&:focus {
+			outline: none;
+		}
+	}
+}
+.work {
+	.work-box {
+		&:hover {
+			.overlay {
+				background: rgba(0,0,0, .5);
+			}
+		}
+		.overlay {
+			background: none;
+		}
+		.overlay-caption {
+			display: flex;
+	    height: 100%;
+	    justify-content: center;
+	    align-items: center;
+	    flex-direction: column;
+	    .view-btn {
+	    	padding: 5px 20px;
+		    margin-top: 10px;
+		    border: 1px solid #fff;
+		    background: transparent;
+		    transition: .3s;
+		    a {
+		    	color: #fff;
+		    }
+		    &:hover {
+		    	transition: .3s;
+		    	background: rgba(255,255,255, .8);
+		    	a {
+		    		color: #000;
+		    	}
+		    }
+	    }
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.works {
+		.main-product-img {
+	    display: flex;
+	    justify-content: center;
+	    margin-bottom: 30px;
+	    img {
+	    	width: 100%;
+	    	max-height: 350px;
+	    }
+		}
+		.main-product {
+			.more {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.works {
+		.main-product-img {
+	   	img {
+	   		width: 100%;
+		    max-height: 200px;
+	   	}
+		}
+	}
 }
 
 			/*Product page finish*/
+
+
+			/*Contacts start*/
+
+#contact {
+	.contact-map {
+		-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+		
+		img {
+			width: 100%;
+			max-height: 450px;
+			-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+		}
+	}
+	.contact-info {
+		margin-top: -250px;
+	}
+}
+
+
+			/*Contacts finish*/
