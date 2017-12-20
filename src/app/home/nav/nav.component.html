@@ -2,7 +2,9 @@
 <!--
 START: Navbar
 -->
-  <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-transparent nk-navbar-white-text-on-top">
+  <nav
+    class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-transparent nk-navbar-white-text-on-top"
+    [ngClass]="(router.url !== '/home') ? 'nk-navbar-solid' : '' ">
     <div class="container">
       <div class="nk-nav-table">
         <a href="index.html" class="nk-nav-logo">
