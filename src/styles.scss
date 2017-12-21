@@ -236,7 +236,7 @@ body {
 }
 .work img {
   width: 100%;
-  height: 100%;
+  height: 200px;
 }
 .work .overlay {
   background: rgba(232, 69, 69, 0.9);
@@ -416,5 +416,19 @@ body {
 	}
 }
 
+@media (max-width: 767px) {
+	#contact {
+		.contact-info {
+			margin-top: -100px;
+		}
+		.contact-info.form {
+			margin-top: 0;
+			.nk-btn {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
+	}
+}
 
 			/*Contacts finish*/
