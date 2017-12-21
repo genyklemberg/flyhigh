@@ -75,6 +75,13 @@ body {
 		}
 	}
 }
+.nk-nav li.active a {
+  color: darkslategrey !important;
+  text-shadow: 2px 2px 5px grey;
+}
+.nk-nav li a:hover {
+  color: grey !important;
+}
 			/*Nav menu finish*/
 
 
@@ -208,14 +215,12 @@ body {
 
 
 			/*Blog start*/
-		
+
 
 .nk-pagination.nk-pagination-center {
 	margin-top: 50px;
 }
 			/*Blog finish*/
-
-
 
 			/*Product page start*/
 #works {
