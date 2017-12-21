@@ -16,6 +16,7 @@ import { ItemComponent } from './products/item/item.component';
 import {PageNotFoundComponent} from './home/page-not-found.component';
 import { ServicesComponent } from './services/services.component';
 import { PageComponent } from './services/page/page.component';
+import {ScrollService} from './scroll.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { PageComponent } from './services/page/page.component';
     AngularFireModule.initializeApp(environment.firebase),
     ScrollToModule.forRoot()
   ],
-  providers: [],
+  providers: [ScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

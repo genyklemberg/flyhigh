@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'fh';
+
+  onDeactivate() {
+    document.body.scrollTop = 0;
+  }
 }

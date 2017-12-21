@@ -2,29 +2,53 @@
 <!--
 START: Navbar
 -->
-  <nav
-    class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-transparent nk-navbar-white-text-on-top"
-    [ngClass]="(router.url !== '/home') ? 'nk-navbar-solid' : '' ">
+  <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-transparent nk-navbar-white-text-on-top">
+    <!--[ngClass]="(router.url !== '/home') ? 'nk-navbar-solid' : '' ">-->
     <div class="container">
       <div class="nk-nav-table">
-        <a href="index.html" class="nk-nav-logo">
-          <!--<img src="assets/images/logo-light.svg" alt="" width="85" class="nk-nav-logo-onscroll">-->
-          <!--<img src="assets/images/logo.svg" alt="" width="85">-->
-          <h3>FlyHighAvia</h3>
-        </a>
+        <li *ngIf="router.url === '/home'; else home_link">
+          <a [ngx-scroll-to]="'home'">
+            <h3>FlyHighAvia</h3>
+          </a>
+        </li>
+        <ng-template #home_link>
+          <a [routerLink]='["home"]' class="nk-nav-logo">
+            <!--<img src="assets/images/logo-light.svg" alt="" width="85" class="nk-nav-logo-onscroll">-->
+            <!--<img src="assets/images/logo.svg" alt="" width="85">-->
+            <h3>FlyHighAvia</h3>
+          </a>
+        </ng-template>
 
         <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
-          <li>
-            <a [ngx-scroll-to]="'about'">About</a>
+          <li *ngIf="router.url === '/home'; else about_link">
+            <a [ngx-scroll-to]="'about'">Про нас</a>
           </li>
-          <li>
-            <a [ngx-scroll-to]="'contact'">Contact</a>
+          <ng-template #about_link>
+            <li [routerLink]='["home"]' (click)='scrollTo("about")'>
+              <a>Про нас</a>
+            </li>
+          </ng-template>
+          <li *ngIf="router.url === '/home'; else products_link">
+            <a [ngx-scroll-to]="'projects'">Каталог</a>
           </li>
-          <li  [routerLink]='["products"]' routerLinkActive='active'>
-            <a>Portfolio</a>
+          <ng-template #products_link>
+            <li [routerLink]='["home"]' (click)='scrollTo("projects")'>
+              <a>Каталог</a>
+            </li>
+          </ng-template>
+          <li *ngIf="router.url === '/home'; else contact_link">
+            <a [ngx-scroll-to]="'contact'">Контакты</a>
           </li>
+          <ng-template #contact_link>
+            <li [routerLink]='["home"]' (click)='scrollTo("contact")'>
+              <a>Контакты</a>
+            </li>
+          </ng-template>
+          <!--<li  [routerLink]='["products"]' routerLinkActive='active'>-->
+            <!--<a>Каталог</a>-->
+          <!--</li>-->
           <li [routerLink]='["blog"]' routerLinkActive='active'>
-            <a>Blog</a>
+            <a>Наш блог</a>
           </li>
         </ul>
 
