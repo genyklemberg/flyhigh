@@ -1,5 +1,5 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
-declare const $: any;
+declare const jscript: any;
 
 @Component({
   selector: 'fh-main',
@@ -12,7 +12,12 @@ export class MainComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit() {
-    $.getScript('assets/js/combined.js', function(){});
+    // if (js) {
+    //   setTimeout(function() {
+    //     js.getScript('assets/js/combined.js', function(){});
+    //   }, 10);
+    // }
+    jscript.getScript('assets/js/combined.js', function(){});
   }
 
 }
