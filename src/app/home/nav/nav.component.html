@@ -8,14 +8,14 @@ START: Navbar
       <div class="nk-nav-table">
         <li *ngIf="router.url === '/home'; else home_link">
           <a [ngx-scroll-to]="'home'">
-            <h3>FlyHighAvia</h3>
+            <h3><span class="first-letter">F</span>ly<span class="first-letter">H</span>igh</h3>
           </a>
         </li>
         <ng-template #home_link>
           <a [routerLink]='["home"]' class="nk-nav-logo">
             <!--<img src="assets/images/logo-light.svg" alt="" width="85" class="nk-nav-logo-onscroll">-->
             <!--<img src="assets/images/logo.svg" alt="" width="85">-->
-            <h3>FlyHighAvia</h3>
+            <h3><span class="first-letter">F</span>ly<span class="first-letter">H</span>igh</h3>
           </a>
         </ng-template>
 
@@ -55,7 +55,7 @@ START: Navbar
         <ul class="nk-nav nk-nav-right nk-nav-icons">
           <li class="single-icon hidden-lg-up">
             <a class="nk-navbar-full-toggle">
-              <span class="nk-icon-burger">
+              <span id='menu-btn' class="nk-icon-burger">
                 <span class="nk-t-1"></span>
                 <span class="nk-t-2"></span>
                 <span class="nk-t-3"></span>
