@@ -40,7 +40,7 @@ import { HttpModule } from "@angular/http";
     DialogDataExampleDialog,
     CarouselComponent,
     CarouselItemElement,
-    CarouselItemDirective
+    CarouselItemDirective,
     ServicesComponent,
     PageComponent
   ],
