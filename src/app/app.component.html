@@ -1,6 +1,6 @@
 <fh-nav></fh-nav>
 <div class="nk-main">
-  <router-outlet></router-outlet>
+  <router-outlet (deactivate)="onDeactivate()"></router-outlet>
 </div>
 <!--
 START: Footer
@@ -20,7 +20,7 @@ START: Footer
       </div>
 
       <div class="nk-footer-text">
-        <p>2018 Angular projects made by ngMates.com</p>
+        <p>Angular projects made by ngMates.com</p>
       </div>
     </div>
   </div>

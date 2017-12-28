@@ -6,6 +6,7 @@ import {ProductsComponent} from './products/products.component';
 import {BlogComponent} from './blog/blog.component';
 import {ArticleComponent} from './blog/article/article.component';
 import {ItemComponent} from './products/item/item.component';
+import {PageComponent} from './services/page/page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'item', component: ItemComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'article', component: ArticleComponent},
+  {path: 'service', component: PageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

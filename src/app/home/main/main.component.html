@@ -1,5 +1,5 @@
 <!-- START: Header Title -->
-<div class="nk-header-title nk-header-title-full" >
+<div class="nk-header-title nk-header-title-full" id='home'>
   <div class="bg-image">
     <!--<div style="background-image: url('assets/images/home-7.jpg');"></div>-->
     <div style="background-image: url('assets/images/old/plane_7.jpg');"></div>
@@ -9,12 +9,11 @@
     <div class="nk-header-table-cell">
       <div class="container">
 
-        <h2 class="nk-subtitle text-white">Fly High Avia</h2>
+        <h2 class="nk-subtitle text-white">FlyHigh Avia</h2>
 
-
-        <h1 class="nk-title display-3 text-white">Наша задача
-          <br>
-          <em class="fw-400">сделать ваши услуги  уникальными</em>
+        <h1 class="nk-title display-3 text-white">Все для сервиса на высоте
+          <!--<br>-->
+          <!--<em class="fw-400">сделать ваши услуги  уникальными</em>-->
         </h1>
 
 
@@ -53,10 +52,11 @@
         <div class="nk-gap mnt-5"></div>
 
         <p>
-          Компания "Fly High" предлагает вам оригинальную персональную разработку дизайна и комплектации качественных дорожных наборов, которые выгодно дополнят образ ваших клиентов в соответствии с любыми пожеланиями. Так как мы предлагаем вам особенные решения, поэтому и расчет цены и времени тоже индивидуальный.
+          Компания «ФХ» независимая Украинская компания, специализирующаяся на комплексных решениях по поставкам бортовых товаров и услуг.
+          Как компания полного цикла мы предоставляем полный комплекс услуг по разработке концепций, проектирования,  дизайна, изготовления и доставки необходимых товаров или услуг для наших клиентов.
         </p>
 
-        <img src="assets/images/about-me-signature.png" alt="" class="nk-img-fit">
+        <img src="assets/images/signature.png" alt="" class="nk-img-fit">
 
         <div class="nk-gap-4 mt-25"></div>
       </div>
@@ -71,50 +71,55 @@
   <div class="nk-gap-5 mnt-6"></div>
   <div class="container">
     <div class="row vertical-gap">
+
       <div class="col-md-6 col-lg-3">
-        <div class="nk-ibox-1 service-item">
-          <div class="nk-ibox-icon">
-            <span class="pe-7s-portfolio"></span>
-          </div>
-          <div class="nk-ibox-cont">
-            <!--<div class="nk-ibox-title">548</div>-->
-            <div class="nk-ibox-text">Какие отрасли мы охватываем</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="nk-ibox-1 service-item">
+        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
           <div class="nk-ibox-icon">
             <span class="pe-7s-like"></span>
           </div>
           <div class="nk-ibox-cont">
             <!--<div class="nk-ibox-title">1465</div>-->
-            <div class="nk-ibox-text">С чего начинается работа</div>
+            <div class="nk-ibox-text">За что нас любят клиенты</div>
           </div>
         </div>
       </div>
+
       <div class="col-md-6 col-lg-3">
-        <div class="nk-ibox-1 service-item">
-          <div class="nk-ibox-icon">
-            <span class="pe-7s-clock"></span>
-          </div>
-          <div class="nk-ibox-cont">
-            <!--<div class="nk-ibox-title">612</div>-->
-            <div class="nk-ibox-text">Сроки изготовления заказа</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="nk-ibox-1 service-item">
+        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
           <div class="nk-ibox-icon">
             <span class="pe-7s-star"></span>
           </div>
           <div class="nk-ibox-cont">
             <!--<div class="nk-ibox-title">735</div>-->
-            <div class="nk-ibox-text">Гарантии, которые мы даем клиентам </div>
+            <div class="nk-ibox-text">Мы гарантируем</div>
           </div>
         </div>
       </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
+          <div class="nk-ibox-icon">
+            <span class="pe-7s-clock"></span>
+          </div>
+          <div class="nk-ibox-cont">
+            <!--<div class="nk-ibox-title">612</div>-->
+            <div class="nk-ibox-text">Этапы выполнения проекта</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
+          <div class="nk-ibox-icon">
+            <span class="pe-7s-portfolio"></span>
+          </div>
+          <div class="nk-ibox-cont">
+            <!--<div class="nk-ibox-title">548</div>-->
+            <div class="nk-ibox-text" style='text-align: center'>Сроки и цены</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="nk-gap-5 mnt-6"></div>
@@ -151,8 +156,8 @@
           </div>
           <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
             <div>
-              <h2 class="portfolio-item-title h3">Дорожные косметички, дорожные наборы</h2>
-              <!--<div class="portfolio-item-category">Mockup</div>-->
+              <h2 class="portfolio-item-title h3">Дорожные наборы</h2>
+              <div class="portfolio-item-category">комфорт ваших клиентов при любых условиях</div>
             </div>
           </div>
         </div>
@@ -160,54 +165,6 @@
 
 
       <div class="nk-isotope-item" data-filter="Print">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_2.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Маски на глаза, носки, тапочки, беруши</h2>
-              <!--<div class="portfolio-item-category">Print</div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="nk-isotope-item" data-filter="Branding">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_3.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Одеяла, пледы, текстильные изделия</h2>
-              <!--<div class="portfolio-item-category">Branding</div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="nk-isotope-item" data-filter="Design">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_4.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Горячие полотенца, подносы, щипцы</h2>
-              <!--<div class="portfolio-item-category">Design</div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="nk-isotope-item" data-filter="Design">
         <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
           <a routerLink='/products' class="nk-portfolio-item-link"></a>
           <div class="nk-portfolio-item-image">
@@ -215,24 +172,8 @@
           </div>
           <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
             <div>
-              <h2 class="portfolio-item-title h3">Наушники для авиа</h2>
-              <!--<div class="portfolio-item-category">Design</div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="nk-isotope-item" data-filter="Print">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_6.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Бумажные скатерти на подносы и столы</h2>
-              <!--<div class="portfolio-item-category">Print</div>-->
+              <h2 class="portfolio-item-title h3">Наушники</h2>
+              <div class="portfolio-item-category">аудио под любые технические характеристики</div>
             </div>
           </div>
         </div>
@@ -243,19 +184,51 @@
         <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
           <a routerLink='/products' class="nk-portfolio-item-link"></a>
           <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_7.jpg');"></div>
+            <div style="background-image: url('assets/images/old/product_4.jpg');"></div>
           </div>
           <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
             <div>
-              <h2 class="portfolio-item-title h3">Одноразовая посуда, бумажные стаканчики</h2>
-              <!--<div class="portfolio-item-category">Branding</div>-->
+              <h2 class="portfolio-item-title h3">Дорожные мелочи </h2>
+              <div class="portfolio-item-category">дополнительные штрихи к хорошему сервису</div>
             </div>
           </div>
         </div>
       </div>
 
 
-      <div class="nk-isotope-item" data-filter="Photography">
+      <div class="nk-isotope-item" data-filter="Design">
+        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
+          <a routerLink='/products' class="nk-portfolio-item-link"></a>
+          <div class="nk-portfolio-item-image">
+            <div style="background-image: url('assets/images/old/product_7.jpg');"></div>
+          </div>
+          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
+            <div>
+              <h2 class="portfolio-item-title h3">Посуда и обслуживание на борту</h2>
+              <div class="portfolio-item-category">все для отличного обеда на высоте</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="nk-isotope-item" data-filter="Design">
+        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
+          <a routerLink='/products' class="nk-portfolio-item-link"></a>
+          <div class="nk-portfolio-item-image">
+            <div style="background-image: url('assets/images/old/product_3.jpg');"></div>
+          </div>
+          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
+            <div>
+              <h2 class="portfolio-item-title h3">Текстиль и нетканые издания</h2>
+              <div class="portfolio-item-category">отдых как дома</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="nk-isotope-item" data-filter="Print">
         <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
           <a routerLink='/products' class="nk-portfolio-item-link"></a>
           <div class="nk-portfolio-item-image">
@@ -263,24 +236,8 @@
           </div>
           <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
             <div>
-              <h2 class="portfolio-item-title h3">Сувенирная продукция в вашем корпоративном стиле</h2>
-              <!--<div class="portfolio-item-category">Photography</div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="nk-isotope-item" data-filter="Photography">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_1.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <!--<h2 class="portfolio-item-title h3">Paper Bag</h2>-->
-              <div class="portfolio-item-category">Дорожные косметички, дорожные наборы</div>
+              <h2 class="portfolio-item-title h3">Сувенирная и другая продукция</h2>
+              <div class="portfolio-item-category">в вашем корпоративном стиле</div>
             </div>
           </div>
         </div>
@@ -296,7 +253,7 @@
 <div class="nk-box bg-dark-1">
   <div class="bg-image bg-image-parallax" style="background-image: url('assets/images/bg-pattern.jpg');"></div>
   <div class="nk-gap-5 mnt-6"></div>
-  <div class="nk-gap-3"></div>
+  <div class="nk-gap-3 hidden-sm-down"></div>
   <div class="container-fluid">
     <!-- START: Carousel -->
     <div class="nk-carousel nk-carousel-all-visible text-white" data-autoplay="18000" data-dots="true">
@@ -511,56 +468,60 @@
         </div>
 
 
-        <!--<div>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post">-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a routerLink='/article'>-->
-                    <!--<img src="assets/images/post-5-mid.jpg" alt="" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a href="#">Design</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a routerLink='/article'>Ten things about Photography</a></h2>-->
+        <div>
+          <div>
+            <div class="pl-15 pr-15">
+              <div class="nk-blog-post">
+                <div class="nk-post-thumb">
+                  <a routerLink='/article'>
+                    <img src="assets/images/old/plane_2.jpg" alt="" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a href="#">Комфорт</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a routerLink='/article'>Атрибуты комфорта в полете</a></h2>
 
-                <!--<div class="nk-post-date">-->
-                  <!--August 14, 2016-->
-                <!--</div>-->
+                <div class="nk-post-date">
+                  Август 27, 2017
+                </div>
 
-                <!--<div class="nk-post-text">-->
-                  <!--<p>Be forth, god for rule face abundantly all our two winged made. Is whose morning female.</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
+                <div class="nk-post-text">
+                  <p>
+                    Уровень сервиса и комфорта зависит от класса авиакомпании, направления, традиций перевозчика, тарифов, продолжительности полета и др. Одним из составляющих комфорта являются тип пассажирского кресла и расстояние между креслами, наличие встроенного столика, пепельницы ...
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+        </div>
 
 
-        <!--<div>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post">-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a routerLink='/article'>-->
-                    <!--<img src="assets/images/post-6-mid.jpg" alt="" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a href="#">Design</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a routerLink='/article'>Why you should Always First</a></h2>-->
+        <div>
+          <div>
+            <div class="pl-15 pr-15">
+              <div class="nk-blog-post">
+                <div class="nk-post-thumb">
+                  <a routerLink='/article'>
+                    <img src="assets/images/old/plane_4.jpg" alt="" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a href="#">Услуги</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a routerLink='/article'>Что влияет на качество услуг?</a></h2>
 
-                <!--<div class="nk-post-date">-->
-                  <!--August 14, 2016-->
-                <!--</div>-->
+                <div class="nk-post-date">
+                  Август 14, 2017
+                </div>
 
-                <!--<div class="nk-post-text">-->
-                  <!--<p>Lights give have herb. First. Seed lesser his a fruit. Stars good divide fish appear don't, third deep.</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
+                <div class="nk-post-text">
+                  <p>
+                    Данный фактор существенным образом влияет на качество и быстроту предоставление услуг. Использование современного оборудования сотрудниками помогает выполнять работу без задержек и ожидания гостей, что повышает уровень гостиницы на локальном рынке.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -572,56 +533,75 @@
 
 <!-- START: Contact Info -->
 <div class="container" id="contact">
-  <div class="nk-gap-5"></div>
+  <!--<div class="nk-gap-4 mt-5"></div>-->
+
+  <!--<h2 class="text-xs-center display-4">Наши контакты:</h2>-->
+
+  <!--<div class="nk-gap mnt-6"></div>-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-9 offset-lg-2">-->
+        <!--<div class="text-xs-center">-->
+          <!--Мы стараемся всегжа быть на связи с нашими клиентами, если по каким-то причинам вам не удалось с нами связаться, вы можете отправить нам запрос и мы перезвоним вам в ближайшее время-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="nk-gap-2 mt-12"></div>-->
+  <!--<div class="nk-gap-5"></div>-->
   <div class="row vertical-gap">
     <div class="col-md-12">
       <div class="contact-map">
-        <img src="../assets/images/world_4.png">
+        <img src="../assets/images/world_4_1.png">
       </div>
     </div>
-    <div class="col-lg-5 contact-info">
+
+    <div class='col-lg-1 hidden-lg-down'></div>
+    <div class="col-lg-4 col-sm-12 contact-info adress">
       <!-- START: Info -->
-      <h2 class="display-4">Contact Info:</h2>
+      <h2 class="display-4">Наши контакты:</h2>
       <div class="nk-gap mnt-3"></div>
 
-      <p>Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, conse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.</p>
+      <!--<p>Мы стараемся всегжа быть на связи с нашими клиентами, если по каким-то причинам вам не удалось с нами связаться, вы можете отправить нам запрос и мы перезвоним вам в ближайшее время</p>-->
 
-      <ul class="nk-contact-info">
+      <ul class="nk-contact-info" style='text-align: right'>
         <li>
-          <strong>Address:</strong> 10111 Santa Monica Boulevard, LA</li>
+          <strong>Адрес:</strong><br>ул.Эжена Потье, д.12, корп.2,<br> г.Киев, Украина, 03680</li>
         <li>
-          <strong>Phone:</strong> +44 987 065 908</li>
+          <strong>Телефон:</strong><br>+38 (067) 509-57-60</li>
         <li>
-          <strong>Email:</strong> info@Example.com</li>
+          <strong>Электронная почта:</strong><br>ak@flyhigh.com.ua, gk@flyhigh.com.ua </li>
         <li>
-          <strong>Fax:</strong> +44 987 065 909</li>
+          <strong>Контактное лицо:</strong><br>Александр</li>
       </ul>
       <!-- END: Info -->
     </div>
-    <div class="col-lg-7 contact-info">
+    <div class="col-lg-7 col-sm-12 contact-info form">
       <!-- START: Form -->
       <form action="#" class="nk-form nk-form-ajax">
         <div class="row vertical-gap">
           <div class="col-md-6">
-            <input type="text" class="form-control required" name="name" placeholder="Your Name">
+            <input type="text" class="form-control required" name="name" placeholder="Как к вам обращаться?">
           </div>
           <div class="col-md-6">
-            <input type="email" class="form-control required" name="email" placeholder="Your Email">
+            <input type="email" class="form-control required" name="email" placeholder="Ваш емейл">
           </div>
         </div>
 
         <div class="nk-gap-1"></div>
-        <input type="text" class="form-control required" name="title" placeholder="Your Title">
+        <input type="text" class="form-control required" name="title" placeholder="Тема">
 
         <div class="nk-gap-1"></div>
-        <textarea class="form-control required" name="message" rows="8" placeholder="Your Comment" aria-required="true"></textarea>
+        <textarea class="form-control required" name="message" rows="8" placeholder="В чем ваша потребность?" aria-required="true"></textarea>
         <div class="nk-gap-1"></div>
         <div class="nk-form-response-success"></div>
         <div class="nk-form-response-error"></div>
-        <button class="nk-btn">Send Message</button>
+        <button class="nk-btn">Отправить запрос</button>
       </form>
       <!-- END: Form -->
     </div>
+
   </div>
   <div class="nk-gap-5"></div>
 </div>

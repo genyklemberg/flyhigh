@@ -1,8 +1,16 @@
+@font-face {
+	font-family: Agency-FB;
+	src: url(./assets/fonts/Agency_FB.ttf);
+}
 body {
 	a {
 		&:hover {
 			cursor: pointer;
 			text-decoration: none;
+		}
+		&:focus {
+			text-decoration: none;
+			outline: none;
 		}
 	}
 	ul {
@@ -23,6 +31,14 @@ body {
   border: 1px solid white;
 }
 
+@media (max-width: 767px) {
+	.display-4 {
+		font-size: 24px;
+	}
+	p, li {
+		font-size: 15px;
+	}
+}
 
 		/*Nav menu start*/
 
@@ -35,8 +51,31 @@ body {
 		    color: #bfbfbf;
 		    transition: color .3s;
 		    margin: 0;
+		    font-family: Agency-FB, sans-serif;
+		    text-transform: uppercase;
+        letter-spacing: 5px;
 			}
 			&:hover {
+				text-decoration: none;
+				h3 {
+					color: #fff;
+					transition: color .3s;
+				}
+			}
+		}
+		.first-letter {
+    	font-size: 45px;
+    	line-height: 20px;
+    }
+		/*Ask why change DOM*/
+		h3 {
+	    color: #bfbfbf;
+	    transition: color .3s;
+	    margin: 0;
+	    font-family: Agency-FB, sans-serif;
+	    text-transform: uppercase;
+      letter-spacing: 5px;
+	    &:hover {
 				text-decoration: none;
 				h3 {
 					color: #fff;
@@ -69,7 +108,22 @@ body {
 			color: inherit;
 			transition: color .3s;
 		}
+		h3 {
+			color: inherit;
+			transition: color .3s;
+			margin: 0;
+			&:hover {
+				color: #0e0e0e;
+			}
+		}
 	}
+}
+.nk-nav li.active a {
+  color: darkslategrey !important;
+  text-shadow: 2px 2px 5px grey;
+}
+.nk-nav li a:hover {
+  color: grey !important;
 }
 			/*Nav menu finish*/
 
@@ -151,7 +205,6 @@ body {
 .service-item {
 	display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 120px;
   padding: 0 25px;
   cursor: pointer;
@@ -204,14 +257,12 @@ body {
 
 
 			/*Blog start*/
-		
+
 
 .nk-pagination.nk-pagination-center {
 	margin-top: 50px;
 }
 			/*Blog finish*/
-
-
 
 			/*Product page start*/
 #works {
@@ -227,7 +278,7 @@ body {
 }
 .work img {
   width: 100%;
-  height: 100%;
+  height: 200px;
 }
 .work .overlay {
   background: rgba(232, 69, 69, 0.9);
@@ -395,7 +446,7 @@ body {
 #contact {
 	.contact-map {
 		-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-		
+
 		img {
 			width: 100%;
 			max-height: 450px;
@@ -404,8 +455,55 @@ body {
 	}
 	.contact-info {
 		margin-top: -250px;
+		.display-4 {
+			text-align: right;
+		}
 	}
 }
 
+@media (max-width: 1024px) {
+	#contact {
+		.contact-info {
+			margin-top: -250px;
+		}
+		.contact-info.form {
+			margin-top: -250px;
+			.nk-btn {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	#contact {
+		.contact-info.adress {
+			margin-top: -230px;
+		}
+		.contact-info.form {
+			margin-top: 0px;
+			.nk-btn {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	#contact {
+		.contact-info.adress {
+			margin-top: -120px;
+		}
+		.contact-info.form {
+			margin-top: 0;
+			.nk-btn {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
+	}
+}
 
 			/*Contacts finish*/

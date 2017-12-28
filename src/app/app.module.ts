@@ -14,6 +14,9 @@ import { ArticleComponent } from './blog/article/article.component';
 import { ProductsComponent } from './products/products.component';
 import { ItemComponent, DialogDataExampleDialog } from './products/item/item.component';
 import {PageNotFoundComponent} from './home/page-not-found.component';
+import { ServicesComponent } from './services/services.component';
+import { PageComponent } from './services/page/page.component';
+import {ScrollService} from './scroll.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -38,6 +41,8 @@ import { HttpModule } from "@angular/http";
     CarouselComponent,
     CarouselItemElement,
     CarouselItemDirective
+    ServicesComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { HttpModule } from "@angular/http";
     MatButtonModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
+  providers: [ScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
