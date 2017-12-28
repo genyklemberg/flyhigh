@@ -7,12 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   encapsulation: ViewEncapsulation.None,
   // providers: [MatDialogRef],
   styles: [`
-.cdk-overlay-pane { width: 90%; margin: 0 auto; }
-.cont-img { width: 90%; }
-.next, .prev { width: 50px; }
-.prev {  }
-.next {  }
-.img-center { width: 90%; border: 1px solid black; }
+
 `]
 })
 export class ItemComponent implements OnInit {
@@ -78,6 +73,17 @@ export class DialogDataExampleDialog {
     {path: '../../../../assets/images/old/product_7.jpg', name: 'product 7'},
     {path: '../../../../assets/images/old/product_8.jpg', name: 'product 8'}
   ];
+  // imagesList = [
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
+  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'}
+  // ];
 
   /* carousel component */
   items = [

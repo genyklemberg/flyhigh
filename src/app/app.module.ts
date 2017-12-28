@@ -21,11 +21,10 @@ import {ScrollService} from './scroll.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogRef } from "@angular/material";
-import { CarouselComponent, CarouselItemElement } from "./products/item/carousel.component";
-import { CarouselItemDirective } from "./products/item/carousel-item.directive";
-import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
+import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
+import {CarouselItemDirective} from './products/item/carousel-item.directive';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
