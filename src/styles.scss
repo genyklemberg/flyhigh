@@ -3,7 +3,7 @@
 	src: url(./assets/fonts/Agency_FB.ttf);
 }
 body {
-	a {
+	a, button, span {
 		&:hover {
 			cursor: pointer;
 			text-decoration: none;
@@ -43,6 +43,7 @@ body {
 		/*Nav menu start*/
 
 .nk-header {
+	position: fixed;
 	.nk-navbar {
 		transition: color .3s;
 		padding: 20px 0;
@@ -252,7 +253,6 @@ body {
 .service-item {
 	display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 120px;
   padding: 0 25px;
   cursor: pointer;
@@ -558,4 +558,25 @@ body {
 
 
 
+			/*Product description*/
 
+.product-wrap {
+	display: flex;
+	align-items: center;
+}
+
+@media (max-width: 767px) {
+	.product-wrap {
+		flex-direction: column;
+		padding: 15px 0;
+		.nk-img-fit {
+			margin-bottom: 30px;
+		}
+		.mat-raised-button  {
+			margin-left: 50%;
+	    transform: translateX(-50%);
+		}
+	}
+}
+
+    

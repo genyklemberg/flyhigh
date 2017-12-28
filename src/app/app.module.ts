@@ -12,11 +12,20 @@ import { NavComponent } from './home/nav/nav.component';
 import { BlogComponent } from './blog/blog.component';
 import { ArticleComponent } from './blog/article/article.component';
 import { ProductsComponent } from './products/products.component';
-import { ItemComponent } from './products/item/item.component';
+import { ItemComponent, DialogDataExampleDialog } from './products/item/item.component';
 import {PageNotFoundComponent} from './home/page-not-found.component';
 import { ServicesComponent } from './services/services.component';
 import { PageComponent } from './services/page/page.component';
 import {ScrollService} from './scroll.service';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogRef } from "@angular/material";
+import { CarouselComponent, CarouselItemElement } from "./products/item/carousel.component";
+import { CarouselItemDirective } from "./products/item/carousel-item.directive";
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -28,15 +37,25 @@ import {ScrollService} from './scroll.service';
     ProductsComponent,
     ItemComponent,
     PageNotFoundComponent,
+    DialogDataExampleDialog,
+    CarouselComponent,
+    CarouselItemElement,
+    CarouselItemDirective,
     ServicesComponent,
     PageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
+  entryComponents: [ DialogDataExampleDialog ],
   providers: [ScrollService],
   bootstrap: [AppComponent]
 })

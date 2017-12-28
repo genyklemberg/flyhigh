@@ -12,6 +12,11 @@ export class MainComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit() {
+    // if (js) {
+    //   setTimeout(function() {
+    //     js.getScript('assets/js/combined.js', function(){});
+    //   }, 10);
+    // }
     $.getScript('assets/js/combined.js', function(){});
   }
 

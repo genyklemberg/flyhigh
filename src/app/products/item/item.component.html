@@ -44,17 +44,19 @@
   </div>
 </div>
 
-<img class="nk-img-fit" src="assets/images/old/item_1.jpg">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="product-wrap">
+        <div class="col-md-10 col-sm-12">
+          <img class="nk-img-fit" src="assets/images/old/item_1.jpg">
+        </div>
+        <div class="col-md-2 col-sm-12">
+          <button class="mat-raised-button mat-primary" mat-button (click)="openDialog()" >Open Image</button>
+        </div>
+      </div>
 
-<!-- START: Pagination -->
-<div class="nk-pagination nk-pagination-center">
-  <div class="container">
-    <a class="nk-pagination-prev" href="#">
-      <span class="pe-7s-angle-left"></span> Previous Work</a>
-    <a class="nk-pagination-center" href="#">
-      <span class="nk-icon-squares"></span>
-    </a>
-    <a class="nk-pagination-next" href="#">Next Work <span class="pe-7s-angle-right"></span> </a>
+    </div>
   </div>
 </div>
-<!-- END: Pagination -->
+
