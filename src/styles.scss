@@ -1,3 +1,7 @@
+@import '~@angular/material/theming';
+
+@include mat-core(); // Be sure that you only ever include this mixin once!
+
 @font-face {
 	font-family: Agency-FB;
 	src: url(./assets/fonts/Agency_FB.ttf);
