@@ -68,6 +68,11 @@ START: Navbar
   </nav>
   <!-- END: Navbar -->
 
+
+
+      
+      <!--Test end-->
+
 </header>
 
 <!--
@@ -83,9 +88,11 @@ START: Navbar
       <div class="nk-nav-header">
 
         <div class="nk-nav-logo">
-          <a href="index.html" class="nk-nav-logo">
-            <img src="assets/images/logo-light.svg" alt="" width="85">
-          </a>
+          <li *ngIf="router.url === '/home'; else home_link">
+            <a [ngx-scroll-to]="'home'">
+              <h3><span class="first-letter">F</span>ly<span class="first-letter">H</span>igh</h3>
+            </a>
+          </li>
         </div>
 
         <div class="nk-nav-close nk-navbar-full-toggle">
@@ -98,9 +105,36 @@ START: Navbar
     <div class="nano">
       <div class="nano-content">
         <div class="nk-nav-table">
-          <div class="nk-nav-row nk-nav-row-full nk-nav-row-center nk-navbar-mobile-content">
+          <div class="nk-nav-row nk-nav-row-full nk-nav-row-center">
             <ul class="nk-nav">
-              <!-- Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] -->
+               <li *ngIf="router.url === '/home'; else about_link">
+                <a [ngx-scroll-to]="'about'">Про нас</a>
+              </li>
+              <ng-template #about_link>
+                <li [routerLink]='["home"]' (click)='scrollTo("about")'>
+                  <a>Про нас</a>
+                </li>
+              </ng-template>
+              <li *ngIf="router.url === '/home'; else products_link">
+                <a [ngx-scroll-to]="'projects'">Каталог</a>
+              </li>
+              <ng-template #products_link>
+                <li [routerLink]='["home"]' (click)='scrollTo("projects")'>
+                  <a>Каталог</a>
+                </li>
+              </ng-template>
+              <li *ngIf="router.url === '/home'; else contact_link">
+                <a [ngx-scroll-to]="'contact'">Контакты</a>
+              </li>
+              <ng-template #contact_link>
+                <li [routerLink]='["home"]' (click)='scrollTo("contact")'>
+                  <a>Контакты</a>
+                </li>
+              </ng-template>
+             
+              <li [routerLink]='["blog"]' routerLinkActive='active'>
+                <a>Наш блог</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -122,3 +156,6 @@ START: Navbar
 </div>
 </nav>
 <!-- END: Navbar Mobile -->
+
+
+
