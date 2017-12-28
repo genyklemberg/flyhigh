@@ -1,3 +1,7 @@
+@font-face {
+	font-family: Agency-FB;
+	src: url(./assets/fonts/Agency_FB.ttf);
+}
 body {
 	a {
 		&:hover {
@@ -27,6 +31,14 @@ body {
   border: 1px solid white;
 }
 
+@media (max-width: 767px) {
+	.display-4 {
+		font-size: 24px;
+	}
+	p, li {
+		font-size: 15px;
+	}
+}
 
 		/*Nav menu start*/
 
@@ -39,8 +51,31 @@ body {
 		    color: #bfbfbf;
 		    transition: color .3s;
 		    margin: 0;
+		    font-family: Agency-FB, sans-serif;
+		    text-transform: uppercase;
+        letter-spacing: 5px;
 			}
 			&:hover {
+				text-decoration: none;
+				h3 {
+					color: #fff;
+					transition: color .3s;
+				}
+			}
+		}
+		.first-letter {
+    	font-size: 45px;
+    	line-height: 20px;
+    }
+		/*Ask why change DOM*/
+		h3 {
+	    color: #bfbfbf;
+	    transition: color .3s;
+	    margin: 0;
+	    font-family: Agency-FB, sans-serif;
+	    text-transform: uppercase;
+      letter-spacing: 5px;
+	    &:hover {
 				text-decoration: none;
 				h3 {
 					color: #fff;
@@ -72,6 +107,14 @@ body {
 		.nk-icon-burger {
 			color: inherit;
 			transition: color .3s;
+		}
+		h3 {
+			color: inherit;
+			transition: color .3s;
+			margin: 0;
+			&:hover {
+				color: #0e0e0e;
+			}
 		}
 	}
 }
@@ -162,7 +205,6 @@ body {
 .service-item {
 	display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 120px;
   padding: 0 25px;
   cursor: pointer;
@@ -413,13 +455,46 @@ body {
 	}
 	.contact-info {
 		margin-top: -250px;
+		.display-4 {
+			text-align: right;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	#contact {
+		.contact-info {
+			margin-top: -250px;
+		}
+		.contact-info.form {
+			margin-top: -250px;
+			.nk-btn {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	#contact {
+		.contact-info.adress {
+			margin-top: -230px;
+		}
+		.contact-info.form {
+			margin-top: 0px;
+			.nk-btn {
+		    margin-left: 50%;
+		    transform: translateX(-50%);
+			}
+		}
 	}
 }
 
 @media (max-width: 767px) {
 	#contact {
-		.contact-info {
-			margin-top: -100px;
+		.contact-info.adress {
+			margin-top: -120px;
 		}
 		.contact-info.form {
 			margin-top: 0;
