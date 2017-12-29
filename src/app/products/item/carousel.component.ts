@@ -31,35 +31,13 @@ export class CarouselItemElement {
         </li>
       </ul>
     </section>
-    <div *ngIf="showControls" style="margin-top: 1em">
-      <button (click)="prev()" class="btn btn-default">Prev</button>
-      <button (click)="next()" class="btn btn-default">Next</button>
+    <div *ngIf="showControls" style="margin-top: 1em" class="slider-btn">
+      <button (click)="prev()" class="btn btn-default btn-prev"><span class="pe-7s-angle-left"></span>Prev</button>
+      <button (click)="next()" class="btn btn-default btn-next">Next<span class="pe-7s-angle-right"></span></button>
     </div>
   `,
-    styles: [`
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      /*width: 6000px;*/
-    }
-
-    .carousel-wrapper {
-      overflow: hidden;
-      margin: 0 auto;
-      width: 100% !important;
-    }
-
-    .carousel-inner {
-      display: flex;
-    }
+    styles: ['../style.scss'],
     
-    .carousel-item {
-        width: 100%;
-        /*height: auto;*/
-    }
-
-  `]
 })
 export class CarouselComponent implements AfterViewInit {
     @ContentChildren(CarouselItemDirective) items : QueryList<CarouselItemDirective>;
@@ -76,7 +54,9 @@ export class CarouselComponent implements AfterViewInit {
     next() {
         if( this.currentSlide + 1 === this.items.length ) return;
         this.currentSlide = (this.currentSlide + 1) % this.items.length;
+        console.log(this.itemWidth);
         const offset = this.currentSlide * this.itemWidth;
+        console.log(offset);
         const myAnimation : AnimationFactory = this.buildAnimation(offset);
         this.player = myAnimation.create(this.carousel.nativeElement);
         this.player.play();
@@ -106,7 +86,9 @@ export class CarouselComponent implements AfterViewInit {
         // For some reason only here I need to add setTimeout,
         // in my local env it's working without this.
         setTimeout(() => {
-            this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
+            this.itemWidth = this.itemsElements.first.nativeElement.offsetWidth;
+          console.log(this.itemsElements);
+            console.log(this.itemWidth);
             this.carouselWrapperStyle = {
                 width: `${this.itemWidth}px`
             }
