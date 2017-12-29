@@ -3,18 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'fh-item',
-  templateUrl: './item.component.html',
-  encapsulation: ViewEncapsulation.None,
+  templateUrl: './item.component.html'
   // providers: [MatDialogRef],
-  styles: [`
-.cdk-overlay-pane { width: 90%; margin: 0 auto; }
-.cont-img { width: 90%; }
-.next, .prev { width: 50px; }
-.img-center { width: 100%; }
-.carousel-wrapper { width: 100% !important }
-.prev {  }
-.next {  }
-`]
 })
 export class ItemComponent implements OnInit {
 
@@ -73,6 +63,10 @@ export class ItemComponent implements OnInit {
               <!--</div>-->
             <!--</div>-->
             <!-- END: Pagination -->`,
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+      .mat-dialog-container { background: #fff }
+   `]
 })
 export class DialogDataExampleDialog {
   imagesList = [

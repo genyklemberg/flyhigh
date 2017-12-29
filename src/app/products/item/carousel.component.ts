@@ -41,12 +41,13 @@ export class CarouselItemElement {
       list-style: none;
       margin: 0;
       padding: 0;
-      width: 6000px;
+      /*width: 6000px;*/
     }
 
     .carousel-wrapper {
       overflow: hidden;
       margin: 0 auto;
+      width: 100% !important;
     }
 
     .carousel-inner {
