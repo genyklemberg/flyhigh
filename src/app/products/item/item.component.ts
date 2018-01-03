@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'fh-item',
   templateUrl: './item.component.html',
-  encapsulation: ViewEncapsulation.None,
   // providers: [MatDialogRef],
   styles: [`
 
@@ -45,14 +44,21 @@ export class ItemComponent implements OnInit {
                 <!--</div>-->
                 
                 <!-- todo based on https://netbasal.com/building-a-simple-carousel-component-with-angular-3a94092b7080-->
-                <carousel>
-                  <ng-container *ngFor="let image of imagesList;">
-                    <ng-container *carouselItem>
-                        <img class="img-center" [src]="image.path">
-                      <!--<div class="item">{{image.path}}</div>-->
-                    </ng-container>
-                  </ng-container>
-                </carousel>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <carousel>
+                        <ng-container *ngFor="let image of imagesList;">
+                          <ng-container *carouselItem>
+                              <img class="img-center img img-responsive" [src]="image.path">
+                            <!--<div class="item">{{image.path}}</div>-->
+                          </ng-container>
+                        </ng-container>
+                      </carousel>
+                    </div>
+                  </div>
+                </div>
+                
                 
                 <!--<a class="nk-pagination-next next" href="#">Next Image -->
                     <!--<span class="pe-7s-angle-right"></span> -->
@@ -60,6 +66,10 @@ export class ItemComponent implements OnInit {
               <!--</div>-->
             <!--</div>-->
             <!-- END: Pagination -->`,
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+      .mat-dialog-container { background: #fff }
+   `]
 })
 export class DialogDataExampleDialog {
   imagesList = [

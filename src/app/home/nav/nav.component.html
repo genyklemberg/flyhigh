@@ -68,6 +68,11 @@ START: Navbar
   </nav>
   <!-- END: Navbar -->
 
+
+
+      
+      <!--Test end-->
+
 </header>
 
 <!--
@@ -83,9 +88,11 @@ START: Navbar
       <div class="nk-nav-header">
 
         <div class="nk-nav-logo">
-          <a href="index.html" class="nk-nav-logo">
-            <img src="assets/images/logo-light.svg" alt="" width="85">
-          </a>
+          <li *ngIf="router.url === '/home'; else home_link">
+            <a [ngx-scroll-to]="'home'">
+              <h3><span class="first-letter">F</span>ly<span class="first-letter">H</span>igh</h3>
+            </a>
+          </li>
         </div>
 
         <div class="nk-nav-close nk-navbar-full-toggle">
@@ -99,9 +106,11 @@ START: Navbar
       <div class="nano-content">
         <div class="nk-nav-table">
           <div class="nk-nav-row nk-nav-row-full nk-nav-row-center">
+
             <ul class="nk-nav nk-nav-close nk-navbar-full-toggle">
               <!-- Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] -->
               <li *ngIf="router.url === '/home'; else about_link">
+
                 <a [ngx-scroll-to]="'about'">Про нас</a>
               </li>
               <ng-template #about_link>
@@ -149,3 +158,6 @@ START: Navbar
 </div>
 </nav>
 <!-- END: Navbar Mobile -->
+
+
+

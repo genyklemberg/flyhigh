@@ -31,36 +31,13 @@ export class CarouselItemElement {
         </li>
       </ul>
     </section>
-    <div *ngIf="showControls" style="margin-top: 1em">
-      <button (click)="next()" class="btn btn-default">Next</button>
-      <button (click)="prev()" class="btn btn-default">Prev</button>
+    <div *ngIf="showControls" style="margin-top: 1em" class="slider-btn">
+      <button (click)="prev()" class="btn btn-default btn-prev"><span class="pe-7s-angle-left"></span>Prev</button>
+      <button (click)="next()" class="btn btn-default btn-next">Next<span class="pe-7s-angle-right"></span></button>
     </div>
   `,
-    styles: [`
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 3000px;
-    }
-
-    .carousel-wrapper {
-      overflow: hidden;
-      
-    }
-
-    .carousel-inner {
-      display: flex;
-      
-    }
+    styles: ['../style.scss'],
     
-    .carousel-item {
-        width: 100%;
-        height: auto;
-        
-    }
-
-  `]
 })
 export class CarouselComponent implements AfterViewInit {
     @ContentChildren(CarouselItemDirective) items : QueryList<CarouselItemDirective>;
