@@ -24,7 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
 import {CarouselItemDirective} from './products/item/carousel-item.directive';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {ProductService} from './products/product.service';
 
 @NgModule({
   declarations: [
@@ -46,16 +47,16 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     ScrollToModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
-  providers: [ScrollService],
+  providers: [ScrollService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
