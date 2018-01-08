@@ -189,150 +189,177 @@
           </div>
         </div>
 
-
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
+        <div class='row' *ngFor='let sub of subcategories | async'>
+          <h3>{{ sub.title }}</h3>
+            <!--<div *ngFor='let item of sub.items'>-->
+              <!--<p>{{ item.title }}</p>-->
+              <!--<img [src]='item.img' alt=''>-->
+            <!--</div>-->
+          <div class="col-lg-3 col-md-4 col-sm-6 work" *ngFor='let item of sub.items'>
+            <a [routerLink]='["/item"]' class="work-box"> <img [src]="item.img" alt="">
+              <div class="overlay">
+                <div class="overlay-caption">
+                  <p>
+                    {{ item.title }}
+                  </p>
+                  <button class="btn view-btn">
+                    <a [routerLink]='["/item"]'>View</a>
+                  </button>
+                </div>
+              </div>
+              <!-- overlay -->
+            </a>
           </div>
-          <!-- overlay -->
-        </a> </div>
+        </div>
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work" *ngFor='let product of products | async'>-->
+          <!--<a [routerLink]='["/item"]' class="work-box"> <img [src]="product.images[0]" alt="">-->
+            <!--<div class="overlay">-->
+              <!--<div class="overlay-caption">-->
+                <!--<p>-->
+                  <!--{{ product.title }}-->
+                <!--</p>-->
+                <!--<button class="btn view-btn">-->
+                  <!--<a [routerLink]='["/item"]'>View</a>-->
+                <!--</button>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; overlay &ndash;&gt;-->
+          <!--</a>-->
+        <!--</div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- overlay -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-         <!--  &lt;!&ndash; overlay &ndash;&gt; -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- &lt;!&ndash; overlay &ndash;&gt; -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; overlay &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-         <!--  &lt;!&ndash; overlay &ndash;&gt; -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+         <!--&lt;!&ndash;  &lt;!&ndash; overlay &ndash;&gt; &ndash;&gt;-->
+        <!--</a> </div>-->
 
-        <div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">
-          <div class="overlay">
-            <div class="overlay-caption">
-              <p>
-                Product name
-              </p>
-              <button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>
-            </div>
-          </div>
-          <!-- &lt;!&ndash; overlay &ndash;&gt; -->
-        </a> </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_1.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; &lt;!&ndash; overlay &ndash;&gt; &ndash;&gt;-->
+        <!--</a> </div>-->
+
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_2.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+         <!--&lt;!&ndash;  &lt;!&ndash; overlay &ndash;&gt; &ndash;&gt;-->
+        <!--</a> </div>-->
+
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 work"> <a [routerLink]='["/item"]' class="work-box"> <img src="assets/images/old/item_3.jpg" alt="">-->
+          <!--<div class="overlay">-->
+            <!--<div class="overlay-caption">-->
+              <!--<p>-->
+                <!--Product name-->
+              <!--</p>-->
+              <!--<button class="btn view-btn"><a [routerLink]='["/item"]'>View</a></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; &lt;!&ndash; overlay &ndash;&gt; &ndash;&gt;-->
+        <!--</a> </div>-->
 
       </div>
     </div>

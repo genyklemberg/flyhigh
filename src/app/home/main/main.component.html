@@ -52,7 +52,7 @@
         <div class="nk-gap mnt-5"></div>
 
         <p>
-          Компания «ФХ» независимая Украинская компания, специализирующаяся на комплексных решениях по поставкам бортовых товаров и услуг.
+          Компания ФХ независимая Украинская компания, специализирующаяся на комплексных решениях по поставкам бортовых товаров и услуг.
           Как компания полного цикла мы предоставляем полный комплекс услуг по разработке концепций, проектирования,  дизайна, изготовления и доставки необходимых товаров или услуг для наших клиентов.
         </p>
 
@@ -73,7 +73,7 @@
     <div class="row vertical-gap">
 
       <div class="col-md-6 col-lg-3">
-        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
+        <div [routerLink]='["/service/client_love"]' class="nk-ibox-1 service-item">
           <div class="nk-ibox-icon">
             <span class="pe-7s-like"></span>
           </div>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="col-md-6 col-lg-3">
-        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
+        <div [routerLink]='["/service/garantii"]' class="nk-ibox-1 service-item">
           <div class="nk-ibox-icon">
             <span class="pe-7s-star"></span>
           </div>
@@ -97,7 +97,7 @@
       </div>
 
       <div class="col-md-6 col-lg-3">
-        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
+        <div [routerLink]='["/service/etapy"]' class="nk-ibox-1 service-item">
           <div class="nk-ibox-icon">
             <span class="pe-7s-clock"></span>
           </div>
@@ -109,7 +109,7 @@
       </div>
 
       <div class="col-md-6 col-lg-3">
-        <div [routerLink]='["/service"]' class="nk-ibox-1 service-item">
+        <div [routerLink]='["/service/sroky_ceny"]' class="nk-ibox-1 service-item">
           <div class="nk-ibox-icon">
             <span class="pe-7s-portfolio"></span>
           </div>
@@ -148,100 +148,100 @@
     <div class="nk-portfolio-list nk-isotope nk-isotope-3-cols">
 
 
-      <div class="nk-isotope-item" data-filter="Mockup">
+      <div class="nk-isotope-item" *ngFor='let category of categories | async'>
         <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
+          <a [routerLink]="['/products', category.$key]" class="nk-portfolio-item-link"></a>
           <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_1.jpg');"></div>
+            <div [style.background-image]="getBackground(category.img)"></div>
           </div>
           <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
             <div>
-              <h2 class="portfolio-item-title h3">Дорожные наборы</h2>
-              <div class="portfolio-item-category">комфорт ваших клиентов при любых условиях</div>
+              <h2 class="portfolio-item-title h3">{{ category.title }}</h2>
+              <div class="portfolio-item-category">{{ category.subtitle }}</div>
             </div>
           </div>
         </div>
       </div>
 
 
-      <div class="nk-isotope-item" data-filter="Print">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_5.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Наушники</h2>
-              <div class="portfolio-item-category">аудио под любые технические характеристики</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="nk-isotope-item" data-filter="Print">-->
+        <!--<div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">-->
+          <!--<a routerLink='/products' class="nk-portfolio-item-link"></a>-->
+          <!--<div class="nk-portfolio-item-image">-->
+            <!--<div style="background-image: url('assets/images/old/product_5.jpg');"></div>-->
+          <!--</div>-->
+          <!--<div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">-->
+            <!--<div>-->
+              <!--<h2 class="portfolio-item-title h3">Наушники</h2>-->
+              <!--<div class="portfolio-item-category">аудио под любые технические характеристики</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
-      <div class="nk-isotope-item" data-filter="Branding">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_4.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Дорожные мелочи </h2>
-              <div class="portfolio-item-category">дополнительные штрихи к хорошему сервису</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="nk-isotope-item" data-filter="Branding">-->
+        <!--<div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">-->
+          <!--<a routerLink='/products' class="nk-portfolio-item-link"></a>-->
+          <!--<div class="nk-portfolio-item-image">-->
+            <!--<div style="background-image: url('assets/images/old/product_4.jpg');"></div>-->
+          <!--</div>-->
+          <!--<div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">-->
+            <!--<div>-->
+              <!--<h2 class="portfolio-item-title h3">Дорожные мелочи </h2>-->
+              <!--<div class="portfolio-item-category">дополнительные штрихи к хорошему сервису</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
-      <div class="nk-isotope-item" data-filter="Design">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_7.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Посуда и обслуживание на борту</h2>
-              <div class="portfolio-item-category">все для отличного обеда на высоте</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="nk-isotope-item" data-filter="Design">-->
+        <!--<div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">-->
+          <!--<a routerLink='/products' class="nk-portfolio-item-link"></a>-->
+          <!--<div class="nk-portfolio-item-image">-->
+            <!--<div style="background-image: url('assets/images/old/product_7.jpg');"></div>-->
+          <!--</div>-->
+          <!--<div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">-->
+            <!--<div>-->
+              <!--<h2 class="portfolio-item-title h3">Посуда и обслуживание на борту</h2>-->
+              <!--<div class="portfolio-item-category">все для отличного обеда на высоте</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
-      <div class="nk-isotope-item" data-filter="Design">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_3.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Текстиль и нетканые издания</h2>
-              <div class="portfolio-item-category">отдых как дома</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="nk-isotope-item" data-filter="Design">-->
+        <!--<div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">-->
+          <!--<a routerLink='/products' class="nk-portfolio-item-link"></a>-->
+          <!--<div class="nk-portfolio-item-image">-->
+            <!--<div style="background-image: url('assets/images/old/product_3.jpg');"></div>-->
+          <!--</div>-->
+          <!--<div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">-->
+            <!--<div>-->
+              <!--<h2 class="portfolio-item-title h3">Текстиль и нетканые издания</h2>-->
+              <!--<div class="portfolio-item-category">отдых как дома</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
-      <div class="nk-isotope-item" data-filter="Print">
-        <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-          <a routerLink='/products' class="nk-portfolio-item-link"></a>
-          <div class="nk-portfolio-item-image">
-            <div style="background-image: url('assets/images/old/product_8.jpg');"></div>
-          </div>
-          <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-            <div>
-              <h2 class="portfolio-item-title h3">Сувенирная и другая продукция</h2>
-              <div class="portfolio-item-category">в вашем корпоративном стиле</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="nk-isotope-item" data-filter="Print">-->
+        <!--<div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">-->
+          <!--<a routerLink='/products' class="nk-portfolio-item-link"></a>-->
+          <!--<div class="nk-portfolio-item-image">-->
+            <!--<div style="background-image: url('assets/images/old/product_8.jpg');"></div>-->
+          <!--</div>-->
+          <!--<div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">-->
+            <!--<div>-->
+              <!--<h2 class="portfolio-item-title h3">Сувенирная и другая продукция</h2>-->
+              <!--<div class="portfolio-item-category">в вашем корпоративном стиле</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
     </div>
   </div>
@@ -261,8 +261,8 @@
         <div>
           <div>
             <blockquote class="nk-blockquote-style-1 text-white">
-              <p>Outstanding job and exceeded all expectations. It was a pleasure to work with them on a sizable first project and am looking forward to start the next one asap.</p>
-              <cite>Michael Hopkins</cite>
+              <p>Гостеприимство обречено на провал до тех пор, пока ваши гости не почувствуют всем нутром, что вы на их стороне</p>
+              <cite>Дэнни Мейер</cite>
             </blockquote>
             <div class="nk-gap-3 mt-10"></div>
           </div>
@@ -270,8 +270,8 @@
         <div>
           <div>
             <blockquote class="nk-blockquote-style-1 text-white">
-              <p>Outstanding job and exceeded all expectations. It was a pleasure to work with them on a sizable first project and am looking forward to start the next one asap.</p>
-              <cite>Michael Hopkins</cite>
+              <p>Суть не в том, как больше зарабатывать, а в том, как больше делать для других</p>
+              <cite>Нил Блюменталь</cite>
             </blockquote>
             <div class="nk-gap-3 mt-10"></div>
           </div>
@@ -279,8 +279,8 @@
         <div>
           <div>
             <blockquote class="nk-blockquote-style-1 text-white">
-              <p>Outstanding job and exceeded all expectations. It was a pleasure to work with them on a sizable first project and am looking forward to start the next one asap.</p>
-              <cite>Michael Hopkins</cite>
+              <p>Если ты начинаешь считать себя совершенством, развитие на этом останавливается</p>
+              <cite>Джессика Альба</cite>
             </blockquote>
             <div class="nk-gap-3 mt-10"></div>
           </div>

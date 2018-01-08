@@ -1,6 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {IProduct} from './product';
 import {ProductService} from './product.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'fh-products',
@@ -9,17 +10,14 @@ import {ProductService} from './product.service';
   providers: [ProductService]
 })
 export class ProductsComponent implements OnInit {
-  products;
-  product = {
-    title: 'дорожная',
-    img: 'assets/somepic.png'
-  };
-  constructor(public db: ProductService) {
-    this.products = db.getProductsList();
+  category;
+  subcategories;
+  constructor(private prDB: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    // this.db.createProduct(this.product);
+    this.category = this.route.snapshot.params.id;
+    this.subcategories = this.prDB.getSubCategoryList(this.category);
   }
 
 }

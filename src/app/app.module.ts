@@ -15,7 +15,6 @@ import { ProductsComponent } from './products/products.component';
 import { ItemComponent, DialogDataExampleDialog } from './products/item/item.component';
 import {PageNotFoundComponent} from './home/page-not-found.component';
 import { ServicesComponent } from './services/services.component';
-import { PageComponent } from './services/page/page.component';
 import {ScrollService} from './scroll.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,8 +40,7 @@ import {ProductService} from './products/product.service';
     CarouselComponent,
     CarouselItemElement,
     CarouselItemDirective,
-    ServicesComponent,
-    PageComponent
+    ServicesComponent
   ],
   imports: [
     BrowserModule,

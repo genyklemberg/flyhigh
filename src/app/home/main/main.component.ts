@@ -1,4 +1,6 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {ProductService} from '../../products/product.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 declare const $: any;
 
 @Component({
@@ -7,17 +9,19 @@ declare const $: any;
   styles: []
 })
 export class MainComponent implements OnInit, AfterViewInit {
-  constructor() { }
+  categories;
+  constructor(private prDB: ProductService, private _sanitizer: DomSanitizer) {
+    this.categories = prDB.getCategoryList();
+  }
 
   ngOnInit() {
   }
   ngAfterViewInit() {
-    // if (js) {
-    //   setTimeout(function() {
-    //     js.getScript('assets/js/combined.js', function(){});
-    //   }, 10);
-    // }
     $.getScript('assets/js/combined.js', function(){});
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
   }
 
 }

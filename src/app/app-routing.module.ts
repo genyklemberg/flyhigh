@@ -6,16 +6,16 @@ import {ProductsComponent} from './products/products.component';
 import {BlogComponent} from './blog/blog.component';
 import {ArticleComponent} from './blog/article/article.component';
 import {ItemComponent} from './products/item/item.component';
-import {PageComponent} from './services/page/page.component';
+import {ServicesComponent} from './services/services.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: MainComponent},
-  {path: 'products', component: ProductsComponent},
+  {path: 'products/:id', component: ProductsComponent},
   {path: 'item', component: ItemComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'article', component: ArticleComponent},
-  {path: 'service', component: PageComponent},
+  {path: 'service/:type', component: ServicesComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
