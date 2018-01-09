@@ -7,6 +7,7 @@ import {BlogComponent} from './blog/blog.component';
 import {ArticleComponent} from './blog/article/article.component';
 import {ItemComponent} from './products/item/item.component';
 import {ServicesComponent} from './services/services.component';
+import { SuccesComponent } from './home/succes/succes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'blog', component: BlogComponent},
   {path: 'article', component: ArticleComponent},
   {path: 'service/:type', component: ServicesComponent},
-  {path: '**', component: PageNotFoundComponent}
+  {path: 'succes', component: SuccesComponent},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({

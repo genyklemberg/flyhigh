@@ -25,6 +25,8 @@ import {CarouselItemDirective} from './products/item/carousel-item.directive';
 import {FormsModule} from '@angular/forms';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ProductService} from './products/product.service';
+import { SuccesComponent } from './home/succes/succes.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import {ProductService} from './products/product.service';
     CarouselComponent,
     CarouselItemElement,
     CarouselItemDirective,
-    ServicesComponent
+    ServicesComponent,
+    SuccesComponent
   ],
   imports: [
     BrowserModule,

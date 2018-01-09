@@ -33,7 +33,7 @@ export class CarouselItemElement {
     </section>
     <div *ngIf="showControls" style="margin-top: 1em" class="slider-btn">
       <button (click)="prev()" class="btn btn-default btn-prev"><span class="pe-7s-angle-left"></span>Prev</button>
-      <div class="close-icon"></div>
+      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
       <button (click)="next()" class="btn btn-default btn-next">Next<span class="pe-7s-angle-right"></span></button>
     </div>
   `,

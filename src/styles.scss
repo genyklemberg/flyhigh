@@ -424,6 +424,7 @@ body {
 	}
 }
 .work {
+	margin-bottom: 50px;
 	.work-box {
 		&:hover {
 			.overlay {
@@ -458,6 +459,11 @@ body {
 	    }
 		}
 	}
+}
+h3 {
+  text-align: center;
+  font-family: Work Sans,sans-serif;
+  color: #5f5f5f;
 }
 
 @media (max-width: 991px) {
@@ -646,13 +652,12 @@ body {
     width: max-content;
     display: flex;
     .carousel-item {
-    	// display: inline-block;
-    	// width: 90%;
-    	// height: 80vh;
-	    // width: 100vw;
-	    // height: auto;
+    	width: 76vw;
+	    margin: 0 auto;
+	    display: flex;
+      justify-content: center;
 	    img {
-	    	width: 74vw;
+	    	width: 55vw;
 	    	height: 30vw;
 	    }
 	  }
@@ -662,8 +667,9 @@ body {
 	.carousel-wrapper {
 		.carousel-inner {
 	    .carousel-item {
+	    	width: 73vw;
 		    img {
-		    	width: 73vw;
+		    	width: 55vw;
 		    	// height: 30vw;
 		    }
 		  }
@@ -674,8 +680,9 @@ body {
 	.carousel-wrapper {
 		.carousel-inner {
 	    .carousel-item {
+	    	width: 73vw;
 		    img {
-		    	width: 70vw;
+		    	width: 50vw;
 		    	// height: 30vw;
 		    }
 		  }
@@ -686,8 +693,9 @@ body {
 	.carousel-wrapper {
 		.carousel-inner {
 	    .carousel-item {
+	    	width: 73vw;
 		    img {
-		    	width: 60vw;
+		    	width: 50vw;
 		    	// height: 30vw;
 		    }
 		  }
@@ -699,6 +707,7 @@ body {
 .slider-btn {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   .btn-prev, .btn-next {
 		background: transparent;
 		display: flex;
@@ -725,36 +734,156 @@ body {
   		font-size: 20px;
   	}
   }
-  .close-icon {
-  	width: 25px;
-  	height: 25px;
-  	position: relative;
-  	bottom: -10px;
-  	cursor: pointer;
-  	&:after {
-  		position: absolute;
-  		content: '';
-  		border-right: 2px solid #000;
-  		width: 100%;
-	    height: 100%;
-	    transform: rotate(-45deg);
-	    bottom: -6px;
+  .fa {
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s;
+  	&:before {
+	    content: "\f05c";
+	    transition: .3s;
+  	}
+  	&:hover {
+    	transition: .3s;
+			opacity: .6;
+    }
+  }
+}
 
-  	}
-  		&:before {
-  		position: absolute;
-  		content: '';
-  		border-right: 2px solid #000;
-  		width: 100%;
-	    height: 100%;
-	    transform: rotate(45deg);
-	    bottom: 10px;
-  	}
+				/*Carouserl end*/
+
+
+				/*Succes page start*/
+.succsec {
+	margin-top: 75px;
+	padding: 50px 0;
+	.succses-photo {
+		img {
+			width: 100%;
+		}
+	}
+	.succsec-text {
+		button {
+	    width: 100%;
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-around;
+	    border: 0;
+	    padding: 18px;
+	    color: #fff;
+	    font-size: .96rem;
+	    font-weight: 500;
+	    line-height: 1.2;
+	    text-align: center;
+	    white-space: nowrap;
+	    vertical-align: middle;
+	    cursor: pointer;
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	    text-transform: uppercase;
+	    transition: all .5s;
+	    background-color: #252525;
+      margin-bottom: 25px;
+	    &:hover {
+	    	background-color: #444;
+	    	transition: all .5s;
+	    }
+		}
+		.nk-contact-info {
+			text-align: left !important;
+		}
+		h2 {
+			font-size: 24px;
+		}
+		h4 {
+			font-size: 18px;
+		}
+		.contact-info {
+			li {
+				&+li {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	.succsec {
+		.succsec-text {
+			button {
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+				/*Succes page end*/
+
+
+
+				/*page-not-found*/
+
+.page-not-found {
+	position: relative;
+	background: url('assets/images/old/plane_2.jpg');
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .page-not-found-wrap {
+  	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0, .8);
+    padding: 75px;
+  }
+  h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  button {
+  	display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 0;
+    padding: 18px;
+    color: #fff;
+    font-size: .96rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+    transition: all .5s;
+    background-color: #252525;
+    margin-bottom: 25px;
+    border: 1px solid;
+    border-radius: 5px;
+    &:hover {
+    	background-color: #444;
+    	transition: all .5s;
+    }
+    &:focus {
+    	outline: none;
+    }
   }
 }
 
 
-
+				/*page-not-found end*/
 
 
 
