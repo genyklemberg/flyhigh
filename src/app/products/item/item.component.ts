@@ -15,8 +15,8 @@ export class ItemComponent implements OnInit {
 
   openDialog() {
     let dialogRef = this.dialog.open(DialogDataExampleDialog, {
-      height: 'auto',
-      width: '90%',
+      // height: 'auto',
+      // width: '90%',
       data: {
         animal: 'panda'
       }
