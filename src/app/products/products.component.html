@@ -370,14 +370,26 @@
 </div>
 
 <!-- START: Pagination -->
-<div class="nk-pagination nk-pagination-center">
-  <div class="container">
-    <a class="nk-pagination-prev" href="#">
-      <span class="pe-7s-angle-left"></span> Previous Post</a>
-    <a class="nk-pagination-center" href="#">
-      <span class="nk-icon-squares"></span>
-    </a>
-    <a class="nk-pagination-next" href="#">Next Post <span class="pe-7s-angle-right"></span> </a>
+<div class="container">
+  <div class="row">
+    <div class="nk-pagination nk-pagination-nobg nk-pagination-center">
+        <a class="nk-pagination-prev" href="#">
+          <span class="pe-7s-angle-left"></span> Previous Post</a>
+        <a href="#nk-toggle-filter">
+          <span class="nk-icon-squares"></span>
+        </a>
+        <a class="nk-pagination-next" href="#">Next Post <span class="pe-7s-angle-right"></span> </a>
+      </div>
+      <ul class="nk-isotope-filter">
+        <li class="active" data-filter="*">All</li>
+        <li data-filter="Nature">Nature</li>
+        <li data-filter="Cities">Cities</li>
+        <li data-filter="Branding">Branding</li>
+        <li data-filter="Design">Design</li>
+      </ul>
   </div>
 </div>
+
+
+
 <!-- END: Pagination -->
