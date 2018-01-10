@@ -954,15 +954,18 @@ body {
 
 				/*Services page start*/
 
-.nk-blog-post {
+.nk-service-post {
   margin-top: -30%;
   background: #fff;
   z-index: 9999999;
   position: relative;
-  padding: 15px 25px;
-  -webkit-box-shadow: -8px 8px 10px 0px rgba(95,95,95,1);
-	-moz-box-shadow: -8px 8px 10px 0px rgba(95,95,95,1);
-	box-shadow: -8px 8px 10px 0px rgba(95,95,95,1);
+  padding: 50px 50px 70px;
+  -webkit-box-shadow: -4px 4px 33px 5px rgba(95,95,95,1);
+	-moz-box-shadow: -4px 4px 33px 5px rgba(95,95,95,1);
+	box-shadow: -4px 4px 33px 5px rgba(95,95,95,1);
+  -webkit-border-radius: 1%;
+  -moz-border-radius: 1%;
+  border-radius: 1%;
 }
 				/*Services page end*/
 
@@ -998,7 +1001,7 @@ body {
 	.mat-form-field {
 		margin-bottom: 50px;
 	}
-	
+
 	/*Input start*/
 	.input-form {
     width: 75%;
@@ -1024,7 +1027,7 @@ body {
 	}
 
 	/*Load img btn*/
-	
+
 	.load-img-wrap, .creat-new-wrap {
 		display: flex;
 		justify-content: center;

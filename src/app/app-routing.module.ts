@@ -7,7 +7,7 @@ import {BlogComponent} from './blog/blog.component';
 import {ArticleComponent} from './blog/article/article.component';
 import {ItemComponent} from './products/item/item.component';
 import {ServicesComponent} from './services/services.component';
-import { SuccesComponent } from './home/succes/succes.component';
+import { SuccesComponent } from './home/succes.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 

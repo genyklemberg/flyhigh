@@ -393,25 +393,53 @@
         <!--</mat-tab-group>-->
 
         <!-- ToDO: Tabs (comment result below) -->
-        <div *ngFor='let article of blogList | async | slice:0:5'>
+        <!--<div *ngFor='let article of blogList | async | slice:0:5'>-->
+          <!--<div>-->
+            <!--<div class="pl-15 pr-15">-->
+              <!--<div class="nk-blog-post" [routerLink]='["/article", article.$key]'>-->
+                <!--<div class="nk-post-thumb">-->
+                  <!--<a>-->
+                    <!--<img [src]="article.img" [alt]="article.title" class="nk-img-stretch">-->
+                  <!--</a>-->
+                  <!--<div class="nk-post-category"><a>{{ article.type }}</a></div>-->
+                <!--</div>-->
+                <!--<h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>-->
+
+                <!--<div class="nk-post-date">-->
+                  <!--{{ article.timeStamp | date: "fullDate" }}-->
+                <!--</div>-->
+
+                <!--<div class="nk-post-text">-->
+                  <!--<p>-->
+                    <!--{{ article.body }}-->
+                  <!--</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="nk-gap-1"></div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+        <div>
           <div>
             <div class="pl-15 pr-15">
-              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
+              <div class="nk-blog-post">
                 <div class="nk-post-thumb">
-                  <a>
-                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
+                  <a routerLink='/article'>
+                    <img src="assets/images/old/plane_2.jpg" alt="" class="nk-img-stretch">
                   </a>
-                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
+                  <div class="nk-post-category"><a href="#">Комфорт</a></div>
                 </div>
-                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
+                <h2 class="nk-post-title h4"><a routerLink='/article'>Атрибуты комфорта в полете</a></h2>
 
                 <div class="nk-post-date">
-                  {{ article.timeStamp | date: "fullDate" }}
+                  Август 27, 2017
                 </div>
 
                 <div class="nk-post-text">
                   <p>
-                    {{ article.body }}
+                    Уровень сервиса и комфорта зависит от класса авиакомпании, направления, традиций перевозчика, тарифов, продолжительности полета и др. Одним из составляющих комфорта являются тип пассажирского кресла и расстояние между креслами, наличие встроенного столика, пепельницы ...
                   </p>
                 </div>
               </div>
@@ -421,116 +449,88 @@
         </div>
 
 
-        <!--<div>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post">-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a routerLink='/article'>-->
-                    <!--<img src="assets/images/old/plane_2.jpg" alt="" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a href="#">Комфорт</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a routerLink='/article'>Атрибуты комфорта в полете</a></h2>-->
+        <div>
+          <div>
+            <div class="pl-15 pr-15">
+              <div class="nk-blog-post">
+                <div class="nk-post-thumb">
+                  <a routerLink='/article'>
+                    <img src="assets/images/old/plane_4.jpg" alt="" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a href="#">Услуги</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a routerLink='/article'>Что влияет на качество услуг?</a></h2>
 
-                <!--<div class="nk-post-date">-->
-                  <!--Август 27, 2017-->
-                <!--</div>-->
+                <div class="nk-post-date">
+                  Август 14, 2017
+                </div>
 
-                <!--<div class="nk-post-text">-->
-                  <!--<p>-->
-                    <!--Уровень сервиса и комфорта зависит от класса авиакомпании, направления, традиций перевозчика, тарифов, продолжительности полета и др. Одним из составляющих комфорта являются тип пассажирского кресла и расстояние между креслами, наличие встроенного столика, пепельницы ...-->
-                  <!--</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
-
-
-        <!--<div>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post">-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a routerLink='/article'>-->
-                    <!--<img src="assets/images/old/plane_4.jpg" alt="" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a href="#">Услуги</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a routerLink='/article'>Что влияет на качество услуг?</a></h2>-->
-
-                <!--<div class="nk-post-date">-->
-                  <!--Август 14, 2017-->
-                <!--</div>-->
-
-                <!--<div class="nk-post-text">-->
-                  <!--<p>-->
-                    <!--Данный фактор существенным образом влияет на качество и быстроту предоставление услуг. Использование современного оборудования сотрудниками помогает выполнять работу без задержек и ожидания гостей, что повышает уровень гостиницы на локальном рынке.-->
-                  <!--</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
+                <div class="nk-post-text">
+                  <p>
+                    Данный фактор существенным образом влияет на качество и быстроту предоставление услуг. Использование современного оборудования сотрудниками помогает выполнять работу без задержек и ожидания гостей, что повышает уровень гостиницы на локальном рынке.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+        </div>
 
 
-        <!--<div>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post">-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a routerLink='/article'>-->
-                    <!--<img src="assets/images/old/plane_2.jpg" alt="" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a href="#">Комфорт</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a routerLink='/article'>Атрибуты комфорта в полете</a></h2>-->
+        <div>
+          <div>
+            <div class="pl-15 pr-15">
+              <div class="nk-blog-post">
+                <div class="nk-post-thumb">
+                  <a routerLink='/article'>
+                    <img src="assets/images/old/plane_2.jpg" alt="" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a href="#">Комфорт</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a routerLink='/article'>Атрибуты комфорта в полете</a></h2>
 
-                <!--<div class="nk-post-date">-->
-                  <!--Август 27, 2017-->
-                <!--</div>-->
+                <div class="nk-post-date">
+                  Август 27, 2017
+                </div>
 
-                <!--<div class="nk-post-text">-->
-                  <!--<p>-->
-                    <!--Уровень сервиса и комфорта зависит от класса авиакомпании, направления, традиций перевозчика, тарифов, продолжительности полета и др. Одним из составляющих комфорта являются тип пассажирского кресла и расстояние между креслами, наличие встроенного столика, пепельницы ...-->
-                  <!--</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
+                <div class="nk-post-text">
+                  <p>
+                    Уровень сервиса и комфорта зависит от класса авиакомпании, направления, традиций перевозчика, тарифов, продолжительности полета и др. Одним из составляющих комфорта являются тип пассажирского кресла и расстояние между креслами, наличие встроенного столика, пепельницы ...
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+        </div>
 
 
-        <!--<div>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post">-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a routerLink='/article'>-->
-                    <!--<img src="assets/images/old/plane_4.jpg" alt="" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a href="#">Услуги</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a routerLink='/article'>Что влияет на качество услуг?</a></h2>-->
+        <div>
+          <div>
+            <div class="pl-15 pr-15">
+              <div class="nk-blog-post">
+                <div class="nk-post-thumb">
+                  <a routerLink='/article'>
+                    <img src="assets/images/old/plane_4.jpg" alt="" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a href="#">Услуги</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a routerLink='/article'>Что влияет на качество услуг?</a></h2>
 
-                <!--<div class="nk-post-date">-->
-                  <!--Август 14, 2017-->
-                <!--</div>-->
+                <div class="nk-post-date">
+                  Август 14, 2017
+                </div>
 
-                <!--<div class="nk-post-text">-->
-                  <!--<p>-->
-                    <!--Данный фактор существенным образом влияет на качество и быстроту предоставление услуг. Использование современного оборудования сотрудниками помогает выполнять работу без задержек и ожидания гостей, что повышает уровень гостиницы на локальном рынке.-->
-                  <!--</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
+                <div class="nk-post-text">
+                  <p>
+                    Данный фактор существенным образом влияет на качество и быстроту предоставление услуг. Использование современного оборудования сотрудниками помогает выполнять работу без задержек и ожидания гостей, что повышает уровень гостиницы на локальном рынке.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+        </div>
 
       </div>
     </div>

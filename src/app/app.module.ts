@@ -29,7 +29,7 @@ import {FormsModule} from '@angular/forms';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ProductService} from './products/product.service';
 import {BlogService} from './blog/blog.service';
-import { SuccesComponent } from './home/succes/succes.component';
+import { SuccesComponent } from './home/succes.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({

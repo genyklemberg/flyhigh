@@ -22,11 +22,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit() {
-    if (this.categories && this.blogList) {
-      setTimeout(function() {
-        $.getScript('assets/js/combined.js', function(){});
-      }, 100);
-    }
+    $.getScript('assets/js/combined.js', function(){});
   }
 
   getBackground(image) {
