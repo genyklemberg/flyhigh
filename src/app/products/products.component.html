@@ -174,15 +174,16 @@
         <div class="main-product col-md-12">
           <div class="col-lg-6 col-md-12">
             <div class="main-product-img">
-              <img src="assets/images/old/product_1.jpg">
+              <img [src]="category?.img">
             </div>
           </div>
 
           <div class="col-lg-6 col-md-12">
             <h2>
               <!--Дорожные косметички, дорожные наборы-->
+              {{ category?.title }}
             </h2>
-            <p>Компания "Fly High" предлагает вам оригинальную персональную разработку дизайна и комплектации качественных дорожных наборов, которые выгодно дополнят образ ваших клиентов в соответствии с любыми пожеланиями. Так как мы предлагаем вам особенные решения, поэтому и расчет цены и времени тоже индивидуальный.</p>
+            <p>{{ category?.body }}</p>
             <!--<button class="btn btn-default more">-->
               <!--See more-->
             <!--</button>-->

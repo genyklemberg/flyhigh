@@ -25,6 +25,7 @@ import {CarouselItemDirective} from './products/item/carousel-item.directive';
 import {FormsModule} from '@angular/forms';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ProductService} from './products/product.service';
+import {BlogService} from './blog/blog.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import {ProductService} from './products/product.service';
     MatButtonModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
-  providers: [ScrollService, ProductService],
+  providers: [ScrollService, ProductService, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,14 +10,18 @@ import {ActivatedRoute} from '@angular/router';
   providers: [ProductService]
 })
 export class ProductsComponent implements OnInit {
+  cat_id;
   category;
   subcategories;
   constructor(private prDB: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.category = this.route.snapshot.params.id;
-    this.subcategories = this.prDB.getSubCategoryList(this.category);
+    this.cat_id = this.route.snapshot.params.id;
+    this.subcategories = this.prDB.getSubCategoryList(this.cat_id);
+    this.prDB.getCategory(this.cat_id).subscribe(data => {
+      this.category = data;
+    });
   }
 
 }

@@ -42,8 +42,7 @@ export class ProductService {
 
   // Return an observable list of Products
   getSubCategoryList(category): Observable<ISubCategory[]> {
-    return this.subCategoryRef.snapshotChanges()
-      .map((arr) => {
+    return this.subCategoryRef.snapshotChanges().map((arr) => {
       return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }))
         .filter(val => val.category === category);
     });
@@ -52,7 +51,7 @@ export class ProductService {
   // Return an observable list of Products
   getCategoryList(): Observable<ICategory[]> {
     return this.categoryRef.snapshotChanges().map((arr) => {
-      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
+      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }));
     });
   }
 
@@ -61,6 +60,13 @@ export class ProductService {
     return this.productsRef.snapshotChanges().map((arr) => {
       return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
     });
+  }
+
+  // Return a single observable category
+  getCategory(key: string): Observable<ICategory | null> {
+    const categoryPath = `/products/category/${key}`;
+    const category = this.db.object(categoryPath).valueChanges() as Observable<ICategory | null>;
+    return category;
   }
 
   // Return a single observable product

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BlogService} from './blog.service';
 
 @Component({
   selector: 'fh-blog',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class BlogComponent implements OnInit {
-
-  constructor() { }
+  blogList;
+  constructor(private blogDB: BlogService) {
+    this.blogList = this.blogDB.getBlogList();
+  }
 
   ngOnInit() {
   }
+
+
 
 }

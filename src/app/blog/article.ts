@@ -1,7 +1,8 @@
 export class IArticle {
-  $key: string;
+  $key?: string;
   title: string;
   body: string;
+  type: string;
   img: string;
-  timeStamp: Date = new Date();
+  timeStamp: number;
 }

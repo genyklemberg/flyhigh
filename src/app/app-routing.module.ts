@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'products/:id', component: ProductsComponent},
   {path: 'item', component: ItemComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'article', component: ArticleComponent},
+  {path: 'article/:id', component: ArticleComponent},
   {path: 'service/:type', component: ServicesComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
