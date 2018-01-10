@@ -19,6 +19,9 @@ import {ScrollService} from './scroll.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
 import {CarouselItemDirective} from './products/item/carousel-item.directive';
@@ -26,6 +29,8 @@ import {FormsModule} from '@angular/forms';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ProductService} from './products/product.service';
 import {BlogService} from './blog/blog.service';
+import { SuccesComponent } from './home/succes/succes.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import {BlogService} from './blog/blog.service';
     CarouselComponent,
     CarouselItemElement,
     CarouselItemDirective,
-    ServicesComponent
+    ServicesComponent,
+    SuccesComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,10 @@ import {BlogService} from './blog/blog.service';
     ScrollToModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatInputModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
   providers: [ScrollService, ProductService, BlogService],

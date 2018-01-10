@@ -383,7 +383,7 @@
     <div class="nk-carousel-2 nk-carousel-x2 nk-carousel-no-margin nk-carousel-all-visible nk-blog-isotope" data-dots="true">
       <div class="nk-carousel-inner">
 
-        <!-- ToDO: Tabs -->
+        <!-- ToDO: Tabs (style like here https://flyhigh-f209c.firebaseapp.com/home ) -->
         <!--<mat-tab-group>-->
           <!--<mat-tab *ngFor='let article of blogList | async | slice:0:5' [label]="article.title">-->
             <!--<blog-container>-->
@@ -392,32 +392,33 @@
           <!--</mat-tab>-->
         <!--</mat-tab-group>-->
 
-        <!--<div *ngFor='let article of blogList | async | slice:0:5'>-->
-          <!--<div>-->
-            <!--<div class="pl-15 pr-15">-->
-              <!--<div class="nk-blog-post" [routerLink]='["/article", article.$key]'>-->
-                <!--<div class="nk-post-thumb">-->
-                  <!--<a>-->
-                    <!--<img [src]="article.img" [alt]="article.title" class="nk-img-stretch">-->
-                  <!--</a>-->
-                  <!--<div class="nk-post-category"><a>{{ article.type }}</a></div>-->
-                <!--</div>-->
-                <!--<h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>-->
+        <!-- ToDO: Tabs (comment result below) -->
+        <div *ngFor='let article of blogList | async | slice:0:5'>
+          <div>
+            <div class="pl-15 pr-15">
+              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
+                <div class="nk-post-thumb">
+                  <a>
+                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
 
-                <!--<div class="nk-post-date">-->
-                  <!--{{ article.timeStamp | date: "fullDate" }}-->
-                <!--</div>-->
+                <div class="nk-post-date">
+                  {{ article.timeStamp | date: "fullDate" }}
+                </div>
 
-                <!--<div class="nk-post-text">-->
-                  <!--<p>-->
-                    <!--{{ article.body }}-->
-                  <!--</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="nk-gap-1"></div>-->
-          <!--</div>-->
-        <!--</div>-->
+                <div class="nk-post-text">
+                  <p>
+                    {{ article.body }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+        </div>
 
 
         <!--<div>-->
