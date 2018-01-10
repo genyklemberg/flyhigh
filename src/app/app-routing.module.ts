@@ -8,6 +8,8 @@ import {ArticleComponent} from './blog/article/article.component';
 import {ItemComponent} from './products/item/item.component';
 import {ServicesComponent} from './services/services.component';
 import { SuccesComponent } from './home/succes/succes.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path: 'article', component: ArticleComponent},
   {path: 'service/:type', component: ServicesComponent},
   {path: 'succes', component: SuccesComponent},
-  {path: '**', component: PageNotFoundComponent},
+  {path: 'admin', component: AdminPageComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
