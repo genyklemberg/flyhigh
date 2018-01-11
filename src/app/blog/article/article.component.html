@@ -33,7 +33,7 @@
         <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
         <div class="nk-post-meta">
           <div class="nk-post-date">{{ article?.timeStamp | date:'fullDate'}}</div>
-          <div class="nk-post-category"><a href="#">{{ article?.type }}</a></div>
+          <div class="nk-post-category" style='background-color: grey; opacity: 0.5'><a style='color: white; padding: 0 5px'>{{ article?.type }}</a></div>
           <!--<div class="nk-post-comments-count">2 Comments</div>-->
         </div>
 
@@ -52,14 +52,15 @@
         </div>
         <!-- END: Post Text -->
 
-        <!-- START: Post Share -->
-        <div class="nk-post-share">
-          <strong>Share:</strong>
-          <a href="#" title="Share page on Facebook" data-share="facebook">Facebook</a>,
-          <a href="#" title="Share page on Twitter" data-share="twitter">Twitter</a>,
-          <a href="#" title="Share page on Pinterest" data-share="pinterest">Pinterest</a>
-        </div>
-        <!-- END: Post Share -->
+
+        <!--&lt;!&ndash; START: Post Share &ndash;&gt;-->
+        <!--<div class="nk-post-share">-->
+          <!--<strong>Share:</strong>-->
+          <!--<a href="#" title="Share page on Facebook" data-share="facebook">Facebook</a>,-->
+          <!--<a href="#" title="Share page on Twitter" data-share="twitter">Twitter</a>,-->
+          <!--<a href="#" title="Share page on Pinterest" data-share="pinterest">Pinterest</a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; END: Post Share &ndash;&gt;-->
       </div>
       <!-- END: Post -->
 
@@ -172,12 +173,12 @@
 <!-- START: Pagination -->
 <div class="nk-pagination nk-pagination-center">
   <div class="container">
-    <a class="nk-pagination-prev" href="#">
-      <span class="pe-7s-angle-left"></span> Previous Post</a>
-    <a class="nk-pagination-center" href="#">
-      <span class="nk-icon-squares"></span>
-    </a>
-    <a class="nk-pagination-next" href="#">Next Post <span class="pe-7s-angle-right"></span> </a>
+    <!--<a class="nk-pagination-prev" href="#">-->
+      <!--<span class="pe-7s-angle-left"></span> Previous Post</a>-->
+    <!--<a class="nk-pagination-center" href="#">-->
+      <!--<span class="nk-icon-squares"></span>-->
+    <!--</a>-->
+    <!--<a class="nk-pagination-next" href="#">Next Post <span class="pe-7s-angle-right"></span> </a>-->
   </div>
 </div>
 <!-- END: Pagination -->

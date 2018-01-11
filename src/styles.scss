@@ -791,16 +791,17 @@ body {
   	}
   }
   .fa {
-    font-size: 20px;
+    font-size: 29px;
     cursor: pointer;
     transition: .3s;
+    opacity: .6;
   	&:before {
 	    content: "\f05c";
 	    transition: .3s;
   	}
   	&:hover {
     	transition: .3s;
-			opacity: .6;
+			opacity: 1;
     }
   }
 }
