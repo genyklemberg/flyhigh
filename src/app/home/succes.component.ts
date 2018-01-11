@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'fh-succes',
+  selector: 'fh-success',
   template: `
-    <div class="succsec">
+    <div class="success">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-12">
             <div class="succses-photo">
-              <img src="assets/images/old/item_1.jpg">
+              <img
+                style='height: 80%; border-radius: 2%;'
+                src="assets/images/old/stw.jpeg">
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
-            <div class="succsec-text">
+            <div class="success-text">
               <h2>
                 Ваш запрос успешно отправлен
               </h2>
@@ -22,7 +24,7 @@ import { Component, OnInit } from '@angular/core';
               <p>
                 Мы ответим на Ваш запрос в течение 24 часов (в рабочие дни).
               </p>
-              <a href="http://localhost:4200/home">
+              <a routerLink='/'>
                 <button>
                   <div>вернуться на главную страницу сайта</div><i class="fa fa-angle-right" aria-hidden="true"></i>
                 </button>

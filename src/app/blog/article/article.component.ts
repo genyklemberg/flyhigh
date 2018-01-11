@@ -10,12 +10,14 @@ import {BlogService} from '../blog.service';
 export class ArticleComponent implements OnInit {
   article;
   art_id;
+  showSpinner = true;
   constructor(private blogDB: BlogService, private _sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.art_id = this.route.snapshot.params.id;
     this.blogDB.getArticle(this.art_id).subscribe(data => {
       this.article = data;
+      this.showSpinner = false;
     });
   }
 

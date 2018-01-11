@@ -30,7 +30,7 @@
       <!-- START: Post -->
       <div class="nk-blog-post nk-blog-post-single">
         <h1 class="display-4">{{ article?.title}}</h1>
-
+        <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
         <div class="nk-post-meta">
           <div class="nk-post-date">{{ article?.timeStamp | date:'fullDate'}}</div>
           <div class="nk-post-category"><a href="#">{{ article?.type }}</a></div>

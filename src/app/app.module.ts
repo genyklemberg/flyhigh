@@ -31,6 +31,7 @@ import {ProductService} from './products/product.service';
 import {BlogService} from './blog/blog.service';
 import { SuccesComponent } from './home/succes.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { LoadingSpinnerComponent } from './home/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     CarouselItemDirective,
     ServicesComponent,
     SuccesComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

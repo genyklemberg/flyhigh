@@ -47,6 +47,7 @@ export class ItemComponent implements OnInit {
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12">
+                      <fh-loading-spinner *ngIf='!imagesList'></fh-loading-spinner>
                       <carousel>
                         <ng-container *ngFor="let image of imagesList;">
                           <ng-container *carouselItem>

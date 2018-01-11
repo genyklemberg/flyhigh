@@ -26,10 +26,10 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <!-- <div class="nk-gap-4"></div> -->
-
       <!-- START: Post -->
       <div class="nk-blog-post nk-blog-post-single nk-service-post">
         <h1 class="display-4">{{ service?.title}}</h1>
+        <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
 
         <!--<div class="nk-post-meta">-->
           <!--<div class="nk-post-date">August 14, 2016</div>-->

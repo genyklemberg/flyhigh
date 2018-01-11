@@ -809,7 +809,7 @@ body {
 
 
 				/*Succes page start*/
-.succsec {
+.success {
 	margin-top: 75px;
 	padding: 50px 0;
 	.succses-photo {
@@ -817,7 +817,7 @@ body {
 			width: 100%;
 		}
 	}
-	.succsec-text {
+	.success-text {
 		button {
 	    width: 100%;
 	    display: flex;
@@ -866,8 +866,8 @@ body {
 }
 
 @media (max-width: 992px) {
-	.succsec {
-		.succsec-text {
+	.success {
+		.success-text {
 			button {
 				font-size: 12px;
 			}
@@ -957,7 +957,7 @@ body {
 .nk-service-post {
   margin-top: -30%;
   background: #fff;
-  z-index: 9999999;
+  z-index: 9999;
   position: relative;
   padding: 50px 50px 70px;
   -webkit-box-shadow: -4px 4px 33px 5px rgba(95,95,95,1);

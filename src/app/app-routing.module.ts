@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'blog', component: BlogComponent},
   {path: 'article/:id', component: ArticleComponent},
   {path: 'service/:type', component: ServicesComponent},
-  {path: 'succes', component: SuccesComponent},
+  {path: 'success', component: SuccesComponent},
   {path: 'admin', component: AdminPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

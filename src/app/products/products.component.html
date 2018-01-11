@@ -173,11 +173,12 @@
 
         <div class="main-product col-md-12">
           <div class="col-lg-6 col-md-12">
+            <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
+
             <div class="main-product-img">
-              <img [src]="category?.img">
+              <img *ngIf="category" [src]="category.img">
             </div>
           </div>
-
           <div class="col-lg-6 col-md-12">
             <h2>
               <!--Дорожные косметички, дорожные наборы-->

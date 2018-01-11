@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   cat_id;
   category;
   subcategories;
+  showSpinner = true;
   constructor(private prDB: ProductService, private route: ActivatedRoute) {
   }
 
@@ -21,6 +22,7 @@ export class ProductsComponent implements OnInit {
     this.subcategories = this.prDB.getSubCategoryList(this.cat_id);
     this.prDB.getCategory(this.cat_id).subscribe(data => {
       this.category = data;
+      this.showSpinner = false;
     });
   }
 
