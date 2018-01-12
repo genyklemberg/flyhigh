@@ -33,8 +33,6 @@ export class AppComponent implements AfterViewInit {
           this.lastPosition = window.pageYOffset;
           // Scroll to top because it's a new route.
           window.scrollTo(0, 0);
-
-          console.log('Navigating to ' + events.url + ', and are saving position : ', this.lastPosition);
         }
         if (events instanceof NavigationEnd && events.url === this.lastRoute) {
           // this.rootElement.firstChild.scrollTop = this.lastPosition;
@@ -44,12 +42,11 @@ export class AppComponent implements AfterViewInit {
           //   that.element.nativeElement.scrollTop = that.lastPosition;
           //   console.log(this.element.nativeElement);
           // }, 100);
-          console.log('Went back ' + events.url + ' and now are navigating to : ', this.lastPosition);
         }
       });
   }
 
-  onDeactivate() {
-    document.body.scrollTop = 0;
-  }
+  // onDeactivate() {
+  //   document.body.scrollTop = 0;
+  // }
 }
