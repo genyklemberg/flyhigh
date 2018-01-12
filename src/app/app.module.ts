@@ -25,7 +25,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
 import {CarouselItemDirective} from './products/item/carousel-item.directive';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ProductService} from './products/product.service';
 import {BlogService} from './blog/blog.service';
@@ -54,7 +54,7 @@ import { LoadingSpinnerComponent } from './home/loading-spinner.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    // ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
