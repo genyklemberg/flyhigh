@@ -32,6 +32,9 @@ import {BlogService} from './blog/blog.service';
 import { SuccesComponent } from './home/succes.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { LoadingSpinnerComponent } from './home/loading-spinner.component';
+import {HttpClientModule} from '@angular/common/http';
+import {MailService} from './mail.service';
+import {MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import { LoadingSpinnerComponent } from './home/loading-spinner.component';
   ],
   imports: [
     BrowserModule,
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -64,10 +68,11 @@ import { LoadingSpinnerComponent } from './home/loading-spinner.component';
     MatButtonModule,
     MatTabsModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
-  providers: [ScrollService, ProductService, BlogService],
+  providers: [ScrollService, ProductService, BlogService, MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
