@@ -22,9 +22,7 @@
         "assets/css/combined.css",
         "styles.scss"
       ],
-      "scripts": [
-        "assets/js/combined.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
