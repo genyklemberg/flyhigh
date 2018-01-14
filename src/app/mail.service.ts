@@ -12,8 +12,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class MailService {
 
-  // private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
-  private apiUrl = 'http://localhost:5000/flyhigh-5416b/us-central1/';
+  private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
+  // private apiUrl = 'http://localhost:5000/flyhigh-5416b/us-central1/';
 
 
   constructor(private _http: HttpClient,
