@@ -37,10 +37,10 @@ START: Navbar
             </li>
           </ng-template>
           <li *ngIf="router.url === '/home'; else contact_link">
-            <a [ngx-scroll-to]="'contact'">Контакты</a>
+            <a [ngx-scroll-to]="'contacts'">Контакты</a>
           </li>
           <ng-template #contact_link>
-            <li [routerLink]='["home"]' (click)='scrollTo("contact")'>
+            <li [routerLink]='["home"]' (click)='scrollTo("contacts")'>
               <a>Контакты</a>
             </li>
           </ng-template>
@@ -70,7 +70,7 @@ START: Navbar
 
 
 
-      
+
       <!--Test end-->
 
 </header>
@@ -130,7 +130,7 @@ START: Navbar
                 <a [ngx-scroll-to]="'contact'">Контакты</a>
               </li>
               <ng-template #contact_link>
-                <li [routerLink]='["home"]' (click)='scrollTo("contact")'>
+                <li [routerLink]='["home"]' (click)='scrollTo("contacts")'>
                   <a>Контакты</a>
                 </li>
               </ng-template>

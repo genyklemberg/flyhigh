@@ -16,7 +16,15 @@ export class ScrollService {
       duration: 1000,
       easing: 'easeInCubic',
     };
-
+    if (target === 'contacts') {
+      const that = this;
+      setTimeout(function () {
+        console.log('scroll delay' + config.target);
+        that._scrollToService.scrollTo(config);
+      }, 1000);
+    } else {
+    console.log('scroll works now');
     this._scrollToService.scrollTo(config);
+  }
   }
 }

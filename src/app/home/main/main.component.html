@@ -265,7 +265,7 @@
 <!-- END: Blog -->
 
 <!-- START: Contact Info -->
-<div class="container" id="contact">
+<div class="container" id="contacts">
   <!--<div class="nk-gap-4 mt-5"></div>-->
 
   <!--<h2 class="text-xs-center display-4">Наши контакты:</h2>-->
@@ -314,7 +314,8 @@
       <!-- START: Form -->
       <form class="nk-form nk-form-ajax"
             enctype="multipart/form-data"
-            [formGroup]='profileForm'>
+            [formGroup]='profileForm'
+            (ngSubmit)='onSubmit()'>
         <div class="row vertical-gap">
           <div class="col-md-6">
             <input type="text" class="form-control required"
@@ -331,7 +332,7 @@
                    name="email" placeholder="Ваш емейл"
                    formControlName='email'>
             <span class="validate"
-                  *ngIf="profileForm.hasError('email', 'email') && profileForm.get('email').touched">
+                  *ngIf="profileForm.get('email').invalid && profileForm.get('email').touched">
                 Пожалуйста, введите корректный емейл
             </span>
           </div>
@@ -359,7 +360,6 @@
         <div class="nk-form-response-success"></div>
         <div class="nk-form-response-error"></div>
         <button type="submit" class="nk-btn"
-                (click)='onSubmit()'
                 [disabled]="!profileForm.valid">Отправить запрос</button>
       </form>
       <!-- END: Form -->

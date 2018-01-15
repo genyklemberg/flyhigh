@@ -564,7 +564,7 @@ body {
 
 			/*Contacts start*/
 
-#contact {
+#contacts {
 	.contact-map {
 		-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 
@@ -583,7 +583,7 @@ body {
 }
 
 @media (max-width: 1024px) {
-	#contact {
+	#contacts {
 		.contact-info {
 			margin-top: -250px;
 		}
@@ -598,7 +598,7 @@ body {
 }
 
 @media (max-width: 991px) {
-	#contact {
+	#contacts {
 		.contact-info.adress {
 			margin-top: -230px;
 		}

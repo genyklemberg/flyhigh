@@ -39,8 +39,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.profileForm = new FormGroup({
       'name': new FormControl('', [Validators.required,  Validators.minLength(2)]),
-      'email': new FormControl('', [Validators.required,
-        Validators.email, Validators.pattern(this.emailPattern)]),
+      'email': new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
       'topic': new FormControl('', [Validators.required,  Validators.minLength(2)]),
       'textarea': new FormControl('', [Validators.required,  Validators.minLength(5)])
     });
@@ -48,7 +47,6 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     $.getScript('assets/js/combined.js', function(){});
-    // if (this.element.nativeElement.getElementsByClassName('.items_ready_1')) {}
   }
 
   getBackground(image) {
