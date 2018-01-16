@@ -4,8 +4,10 @@ const cors = require('cors');
 // const admin = require('firebase-admin');
 // admin.initializeApp(functions.config().firebase);
 // const cors = require('cors')({ origin: true });
-// //const SENDGRID_API_KEY = functions.config().sendgrid.key;
-const SENDGRID_API_KEY = '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';
+
+// firebase functions:config:set someservice.key="THE API KEY" someservice.id="THE CLIENT ID"
+// firebase functions:config:get
+const SENDGRID_API_KEY = functions.config().sendgrid.key;
 
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
