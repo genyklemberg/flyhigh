@@ -227,11 +227,76 @@
   <div class="nk-gap-2 mt-12"></div>
   <div class="container">
     <!-- START: Carousel -->
+    
+    <mat-tab-group>
+      <mat-tab label="">
+
+        <div *ngFor='let article of blogList | slice:0:3'>
+          <div>
+            <div class="col-md-4">
+              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
+                <div class="nk-post-thumb">
+                  <a>
+                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
+                <div class="nk-post-date">
+                  {{ article.timeStamp | date: "fullDate" }}
+                </div>
+                <div class="nk-post-text">
+                  <p>
+                    {{ article.body | slice:0:255 }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+
+        </div>
+      </mat-tab>
+
+
+      <mat-tab label="">
+
+        <div *ngFor='let article of blogList | slice:4:6'>
+          <div>
+            <div class="col-md-4">
+              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
+                <div class="nk-post-thumb">
+                  <a>
+                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
+                  </a>
+                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
+                </div>
+                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
+                <div class="nk-post-date">
+                  {{ article.timeStamp | date: "fullDate" }}
+                </div>
+                <div class="nk-post-text">
+                  <p>
+                    {{ article.body | slice:0:255 }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="nk-gap-1"></div>
+          </div>
+
+        </div>
+      </mat-tab>
+
+
+    </mat-tab-group>
+
+
     <div class="nk-carousel-2 nk-carousel-x2 nk-carousel-no-margin nk-carousel-all-visible nk-blog-isotope" data-dots="true">
       <div class="nk-carousel-inner">
 
         <!-- ToDO: without JQuery -->
-        <div *ngFor='let article of blogList | slice:0:5'>
+        <!-- <div *ngFor='let article of blogList | slice:0:5'>
           <div>
             <div class="pl-15 pr-15">
               <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
@@ -254,7 +319,7 @@
             </div>
             <div class="nk-gap-1"></div>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
