@@ -1153,3 +1153,138 @@ body {
 
 				/*Admin page end*/
 
+
+
+				/*Block tabs start*/
+
+#blog {
+	.mat-tab-group {
+		.mat-tab-header {
+			order: 2;
+			border-bottom: none;
+		}
+		.mat-tab-body-wrapper {
+			oprder: 1;
+	    margin-bottom: 50px;
+		}
+		.mat-ink-bar {
+			display: none;
+		}
+		.nk-gap-1 {
+			height: 0;
+		}
+		.mat-tab-labels {
+	    justify-content: center;
+      align-items: center;
+	    .mat-tab-label {
+	    	width: 18px;
+		    height: 18px;
+		    border-radius: 0;
+		    background: transparent;
+		    border: 1px solid;
+        min-width: 18px;
+		    min-height: 18px;
+		    padding: 0;
+		    margin: 0 5px;
+		    position: relative;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    transition: .3s;
+		    color: #d3d3d3;
+		    &:after {
+    	    width: 10px;
+			    height: 10px;
+			    border: 1px solid;
+			    position: absolute;
+			    content: "";
+		    }
+		    &:hover {
+		    	transition: .3s;
+		    	color: #000;
+		    }
+	    }
+	    .mat-tab-label-active {
+	    	width: 25px;
+		    height: 25px;
+		    border-radius: 0;
+		    background: transparent;
+		    border: 2px solid;
+        min-width: 25px;
+		    min-height: 25px;
+		    padding: 0;
+		    position: relative;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    transition: .3s;
+		    color: #000;
+		    &:after {
+    	    width: 15px;
+			    height: 15px;
+			    border: 2px solid;
+			    position: absolute;
+			    content: "";
+			    color: #000;
+			    transition: .3s;
+		    }
+	    }
+		}
+	}
+	.nk-blog-post {
+    background: #fff;
+    position: relative;
+    padding: 25px 30px;
+		&:focus {
+			outline: none;
+		}
+		&:hover {
+			a {
+				opacity: .6;
+				transition: .3s;
+			}
+			.nk-post-category {
+				a {
+					opacity: 1;
+				}
+			}
+		}
+		.nk-post-category {
+			position: relative;
+			a {
+				position: absolute;
+		    display: block;
+		    margin-left: 0;
+		    margin-top: 0;
+		    background-color: #252525;
+		    text-transform: uppercase;
+		    text-decoration: none;
+		    text-align: center;
+		    font-size: .8rem;
+		    font-weight: 500;
+		    left: 10px;
+		    bottom: 9px;
+		    padding: 5.5px 15px;
+		    min-width: 90px;
+		    color: #fff;
+		    transition: background-color .5s;
+			}
+		}
+		.nk-post-thumb {
+			transition: .3s;
+	    margin: -25px -30px 21px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	#blog {
+		.nk-blog-post {
+			margin-bottom: 50px;
+		}
+	}
+}
+
+
+
+				/*Blog tabs end*/
