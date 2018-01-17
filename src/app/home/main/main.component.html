@@ -227,7 +227,7 @@
   <div class="nk-gap-2 mt-12"></div>
   <div class="container">
     <!-- START: Carousel -->
-    
+
     <mat-tab-group>
       <mat-tab label="">
 
@@ -261,7 +261,7 @@
 
       <mat-tab label="">
 
-        <div *ngFor='let article of blogList | slice:4:6'>
+        <div *ngFor='let article of blogList | slice:3:6'>
           <div>
             <div class="col-md-4">
               <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
@@ -383,6 +383,13 @@
             (ngSubmit)='onSubmit()'>
         <div class="row vertical-gap">
           <div class="col-md-6">
+            <!--test for spam input-->
+            <input id="checkme"
+                   type="text"
+                   name="checkme"
+                   style='display: none;'
+                   formControlName='checkme'/>
+            <!--the rest of your form-->
             <input type="text" class="form-control required"
                    name="name" placeholder="Как к вам обращаться?"
                    formControlName='name'>
