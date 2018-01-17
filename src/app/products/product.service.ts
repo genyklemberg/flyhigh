@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import {IProduct} from './product';
 import {ICategory} from './category';
 import {ISubCategory} from './subcategory';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class ProductService {
@@ -25,16 +27,56 @@ export class ProductService {
     items: ['-L1wl2hN0hvmTN6ITyQg', '-L1wlXTLJvy5owN5ipbp', '-L1wkmNlD_N4nxlnpxjc']
   };
 
+  private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
+
   // productsRef: AngularFireList<IProduct>;
   // productRef:  AngularFireObject<IProduct>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase,
+              private _http: HttpClient,
+              public snackBar: MatSnackBar) {
     this.categoryRef = db.list('/products/category');
     // this.subCategoryRef = db.list('/products/subcategory', ref => ref.orderByChild('category').equalTo('-L1wUoBBtST1Bh8jyhPx'));
     this.subCategoryRef = db.list('/products/subcategory');
     this.productsRef = db.list('/products/items');
   }
 
+  /**
+   * admin form start
+   */
+  sendFormData(text) {
+    console.log(text);
+    const method = 'httpEmail';
+    // const bodyString = JSON.stringify({text: text});
+    const _headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.apiUrl + method, text, { headers: _headers })
+        .toPromise()
+        .catch(this._handleError);
+  }
+
+  newForm(comment: string) {
+    const date = new Date().toUTCString();
+    const path = `test/category/${date}`; // Endpoint on firebase
+    const userRef: AngularFireObject<any> = this.db.object(path);
+    const data = {
+      comment: comment
+    };
+    this.sendFormData(data)
+        .catch(error => this.snackBar.open(error, 'Ok', {
+          duration: 4000
+        }));
+    userRef.update(data)
+        .catch(error => this.snackBar.open(error, 'Ok', {
+          duration: 4000
+        }));
+  }
+  private _handleError(error) {
+    return Promise.reject(error.message ? error.message : error.toString());
+  }
+
+  /**
+   * admin form end
+   */
 
   createDB(): void {
     this.subCategoryRef.push(this.data);

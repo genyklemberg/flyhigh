@@ -2,39 +2,40 @@
 	<div class="container">
 		<div class="row">
 			<mat-tab-group>
-			  <mat-tab label="Сategories">
+				<mat-tab label="Сategories">
 
-			  	<div class="products-create-wrap">
+					<div class="products-create-wrap"
+						 [formGroup]='adminForm'>
 
-				  	<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
+						<!--<mat-form-field class="col-md-4">-->
+						<!--<mat-select  placeholder="Select Name">-->
+						<!--<mat-option value="option1">Option 1</mat-option>-->
+						<!--<mat-option value="option2">Option 2</mat-option>-->
+						<!--<mat-option value="option3">Option 3</mat-option>-->
+						<!--</mat-select>-->
+						<!--</mat-form-field>-->
 
-						<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
+						<!--<mat-form-field class="col-md-4">-->
+						<!--<mat-select  placeholder="Select Name">-->
+						<!--<mat-option value="option1">Option 1</mat-option>-->
+						<!--<mat-option value="option2">Option 2</mat-option>-->
+						<!--<mat-option value="option3">Option 3</mat-option>-->
+						<!--</mat-select>-->
+						<!--</mat-form-field>-->
 
-						<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
+						<!--<mat-form-field class="col-md-4">-->
+						<!--<mat-select  placeholder="Select Name">-->
+						<!--<mat-option value="option1">Option 1</mat-option>-->
+						<!--<mat-option value="option2">Option 2</mat-option>-->
+						<!--<mat-option value="option3">Option 3</mat-option>-->
+						<!--</mat-select>-->
+						<!--</mat-form-field>-->
 
 						<!--<form class="col-md-4">-->
-						  <!--<mat-form-field class="input-form">-->
-						    <!--<input matInput placeholder="Input field">-->
-						  <!--</mat-form-field>-->
-						  <!--<button class="add-new">+</button>-->
+						<!--<mat-form-field class="input-form">-->
+						<!--<input matInput placeholder="Input field">-->
+						<!--</mat-form-field>-->
+						<!--<button class="add-new">+</button>-->
 						<!--</form>-->
 
 						<div class="col-md-4 load-img-wrap">
@@ -42,13 +43,15 @@
 						</div>
 
 						<div class="col-md-4">
-							 <mat-form-field class="textarea-field">
-						    <textarea matInput placeholder="Leave a comment"></textarea>
-						  </mat-form-field>
+							<mat-form-field class="textarea-field">
+						    <textarea matInput placeholder="Leave a comment"
+									  formControlName='comment'></textarea>
+							</mat-form-field>
 						</div>
 
 						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new">Creat-new</button>
+							<button class="creat-new"
+									(click)='leaveComment()'>Create new</button>
 						</div>
 
 					</div>
@@ -111,15 +114,15 @@
 					</div>
 
 
-			  </mat-tab>
-			  <mat-tab label="Subcategories">Content 2</mat-tab>
-			  <mat-tab label="Products">Content 1</mat-tab>
+				</mat-tab>
+				<mat-tab label="Subcategories">Content 2</mat-tab>
+				<mat-tab label="Products">Content 1</mat-tab>
 
-        <!--Tab #4 START-->
-        <mat-tab label="Articles">
-          <fh-uploads-form></fh-uploads-form>
-        </mat-tab>
-        <!--Tab #4 END-->
+				<!--Tab #4 START-->
+				<mat-tab label="Articles">
+					<fh-uploads-form></fh-uploads-form>
+				</mat-tab>
+				<!--Tab #4 END-->
 
 			</mat-tab-group>
 		</div>
