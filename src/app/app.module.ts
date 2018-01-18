@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
 import {CarouselItemDirective} from './products/item/carousel-item.directive';
@@ -69,7 +70,8 @@ import {MatSnackBarModule} from '@angular/material';
     MatTabsModule,
     MatSelectModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
   providers: [ScrollService, ProductService, BlogService, MailService],

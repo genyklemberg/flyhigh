@@ -45,9 +45,9 @@ export class MainComponent implements AfterViewInit, OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    $.getScript('assets/js/combined.js', function(){});
-  }
+  // ngAfterViewInit() {
+  //   $.getScript('assets/js/combined.js', function(){});
+  // }
 
   getBackground(image) {
     return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
