@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const cors = require('cors');
+// const cors = require('cors');
 
 // const admin = require('firebase-admin');
 // admin.initializeApp(functions.config().firebase);
