@@ -633,16 +633,9 @@ body {
 }
 
 @media (max-width: 767px) {
-	#contact {
+	#contacts {
 		.contact-info.adress {
-			margin-top: -120px;
-		}
-		.contact-info.form {
-			margin-top: 0;
-			.nk-btn {
-		    margin-left: 50%;
-		    transform: translateX(-50%);
-			}
+			margin-top: -150px;
 		}
 	}
 }
@@ -1019,6 +1012,7 @@ body {
 	.mat-tab-labels {
     display: flex;
     justify-content: center;
+    height: 25px;
 	}
 	.mat-form-field {
 		margin-bottom: 50px;
@@ -1191,6 +1185,7 @@ body {
 		.mat-tab-labels {
 	    justify-content: center;
       align-items: center;
+      height: 25px;
 	    .mat-tab-label {
 	    	width: 18px;
 		    height: 18px;
@@ -1314,6 +1309,7 @@ body {
 .phrases {
 	.mat-tab-group {
 		.mat-tab-labels {
+			height: 25px;
 			.mat-tab-label {
 		    &:hover {
 		    	transition: .3s;
