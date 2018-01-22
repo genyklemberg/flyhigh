@@ -12,7 +12,7 @@ import { AngularFireDatabase } from "angularfire2/database";
   encapsulation: ViewEncapsulation.None
 })
 export class AdminPageComponent implements OnInit {
-  adminForm: FormGroup;
+  categoryForm: FormGroup;
   categories;
   categoriesRef;
 
@@ -24,22 +24,22 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adminForm = new FormGroup({
+    this.categoryForm = new FormGroup({
       'title': new FormControl('', Validators.required),
       'img': new FormControl('')
     });
 
   }
   createNewCategory() {
-    if(this.adminForm.value.title.length === 0) {
+    if(this.categoryForm.value.title.length === 0) {
       return false;
     }
     const promise = new Promise((resolve, reject) => {
       this.productService.newForm(
-          this.adminForm.value['title'],
-          this.adminForm.value['img']
+          this.categoryForm.value['title'],
+          this.categoryForm.value['img']
       );
-      this.adminForm.reset();
+      this.categoryForm.reset();
     });
 
   }

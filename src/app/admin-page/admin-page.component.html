@@ -5,7 +5,7 @@
 				<mat-tab label="Сategories">
 
 					<div class="products-create-wrap"
-						 [formGroup]='adminForm'>
+						 [formGroup]='categoryForm'>
 
 						<div class="col-md-4 load-img-wrap">
 							<button class="upload-img">Load img</button>
@@ -21,7 +21,7 @@
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='createNewCategory()'
-									[disabled]="!adminForm.valid">Create new</button>
+									[disabled]="!categoryForm.valid">Create new</button>
 						</div>
 
 					</div>
