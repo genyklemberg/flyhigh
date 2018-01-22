@@ -7,108 +7,34 @@
 					<div class="products-create-wrap"
 						 [formGroup]='adminForm'>
 
-						<!--<mat-form-field class="col-md-4">-->
-						<!--<mat-select  placeholder="Select Name">-->
-						<!--<mat-option value="option1">Option 1</mat-option>-->
-						<!--<mat-option value="option2">Option 2</mat-option>-->
-						<!--<mat-option value="option3">Option 3</mat-option>-->
-						<!--</mat-select>-->
-						<!--</mat-form-field>-->
-
-						<!--<mat-form-field class="col-md-4">-->
-						<!--<mat-select  placeholder="Select Name">-->
-						<!--<mat-option value="option1">Option 1</mat-option>-->
-						<!--<mat-option value="option2">Option 2</mat-option>-->
-						<!--<mat-option value="option3">Option 3</mat-option>-->
-						<!--</mat-select>-->
-						<!--</mat-form-field>-->
-
-						<!--<mat-form-field class="col-md-4">-->
-						<!--<mat-select  placeholder="Select Name">-->
-						<!--<mat-option value="option1">Option 1</mat-option>-->
-						<!--<mat-option value="option2">Option 2</mat-option>-->
-						<!--<mat-option value="option3">Option 3</mat-option>-->
-						<!--</mat-select>-->
-						<!--</mat-form-field>-->
-
-						<!--<form class="col-md-4">-->
-						<!--<mat-form-field class="input-form">-->
-						<!--<input matInput placeholder="Input field">-->
-						<!--</mat-form-field>-->
-						<!--<button class="add-new">+</button>-->
-						<!--</form>-->
-
 						<div class="col-md-4 load-img-wrap">
 							<button class="upload-img">Load img</button>
 						</div>
 
 						<div class="col-md-4">
 							<mat-form-field class="textarea-field">
-						    <textarea matInput placeholder="Leave a comment"
-									  formControlName='comment'></textarea>
+						    <textarea matInput placeholder="Create new category"
+									  formControlName='title'></textarea>
 							</mat-form-field>
 						</div>
 
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
-									(click)='leaveComment()'>Create new</button>
+									(click)='createNewCategory()'
+									[disabled]="!adminForm.valid">Create new</button>
 						</div>
 
 					</div>
 
-					<div class="products-list">
+					<div class="products-list"
+						 *ngFor='let category of categories | async'>
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
+									<img src="{{category?.img}}">
+									<p>{{category?.title}}</p>
 								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
+								<button (click)="deleteCategory(category?.$key)">Delete</button>
 							</div>
 						</div>
 					</div>

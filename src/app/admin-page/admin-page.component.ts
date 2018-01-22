@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ViewEncapsulation} from '@angular/core';
-import { FormGroup, FormControl } from "@angular/forms";
+import { ViewEncapsulation } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProductService } from "../products/product.service";
 import { Router } from "@angular/router";
+import { AngularFireDatabase } from "angularfire2/database";
 
 @Component({
   selector: 'fh-admin-page',
@@ -12,22 +13,39 @@ import { Router } from "@angular/router";
 })
 export class AdminPageComponent implements OnInit {
   adminForm: FormGroup;
+  categories;
+  categoriesRef;
+
   constructor(private productService: ProductService,
-              private router: Router) { }
+              private router: Router,
+              private db: AngularFireDatabase) {
+    this.categoriesRef = db.list('/products/category');
+    this.categories = productService.getCategoryList();
+  }
 
   ngOnInit() {
     this.adminForm = new FormGroup({
-      'comment': new FormControl('')
+      'title': new FormControl('', Validators.required),
+      'img': new FormControl('')
     });
+
   }
-  leaveComment() {
+  createNewCategory() {
+    if(this.adminForm.value.title.length === 0) {
+      return false;
+    }
     const promise = new Promise((resolve, reject) => {
       this.productService.newForm(
-          this.adminForm.value['comment']
+          this.adminForm.value['title'],
+          this.adminForm.value['img']
       );
-      //this.router.navigate(['/success']);
       this.adminForm.reset();
     });
+
+  }
+
+  deleteCategory(key: string):void {
+    this.db.object(`/products/category/${key}`).remove();
   }
 
 }

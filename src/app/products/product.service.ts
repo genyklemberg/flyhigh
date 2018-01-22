@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject, DatabaseQuery} from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import {IProduct} from './product';
-import {ICategory} from './category';
-import {ISubCategory} from './subcategory';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { IProduct } from './product';
+import { ICategory } from './category';
+import { ISubCategory } from './subcategory';
+import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 
 @Injectable()
@@ -13,24 +13,6 @@ export class ProductService {
   categoryRef;
   subCategoryRef;
   productsRef;
-  data = {
-    title: 'Маски',
-    body: 'От классики до модерна... ' +
-    'Мы предлагаем широкий спектр специально разработанных дорожных наборов в различных стилях и на любой бюджет.' +
-    '\n' +
-    'Мы можем разработать уникальный дизайн,  ' +
-    'чтобы отразить неповторимый стиль вашей компании и привлечь внимание ваших клиентов. ' +
-    'Если вы свяжетесь с нами и расскажите немного больше о вас и ваших клиентах, ' +
-    'мы сможем предоставить вам  решение, которое наилучшим образом будет соответствовать вашим требованиям.',
-    img: 'assets/images/old/product_2.jpg',
-    category: '-L1wUoBBtST1Bh8jyhPx',
-    items: ['-L1wl2hN0hvmTN6ITyQg', '-L1wlXTLJvy5owN5ipbp', '-L1wkmNlD_N4nxlnpxjc']
-  };
-
-  private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
-
-  // productsRef: AngularFireList<IProduct>;
-  // productRef:  AngularFireObject<IProduct>;
 
   constructor(private db: AngularFireDatabase,
               private _http: HttpClient,
@@ -44,43 +26,32 @@ export class ProductService {
   /**
    * admin form start
    */
-  sendFormData(text) {
-    console.log(text);
-    const method = 'httpEmail';
-    // const bodyString = JSON.stringify({text: text});
-    const _headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.apiUrl + method, text, { headers: _headers })
-        .toPromise()
-        .catch(this._handleError);
+  newForm(title: string, img: string) {
+    const path = `products/category/`; // Endpoint on firebase
+    const userRef: AngularFireList<any> = this.db.list(path);
+    const data = {
+      title: title
+    };
+    //userRef.push(data); // push data to Firebase
+
+    const promise = new Promise((resolve, reject) => {});
+    promise
+        .then(userRef.push(data) => this.snackBar.open('Successfully created category', 'Ok', {
+          duration: 4000
+        }))
+        .catch(error => this.snackBar.open(error, 'Ok', {
+          duration: 4000
+        }));
+
   }
 
-  newForm(comment: string) {
-    const date = new Date().toUTCString();
-    const path = `test/category/${date}`; // Endpoint on firebase
-    const userRef: AngularFireObject<any> = this.db.object(path);
-    const data = {
-      comment: comment
-    };
-    this.sendFormData(data)
-        .catch(error => this.snackBar.open(error, 'Ok', {
-          duration: 4000
-        }));
-    userRef.update(data)
-        .catch(error => this.snackBar.open(error, 'Ok', {
-          duration: 4000
-        }));
-  }
   private _handleError(error) {
     return Promise.reject(error.message ? error.message : error.toString());
   }
-
   /**
    * admin form end
    */
 
-  createDB(): void {
-    this.subCategoryRef.push(this.data);
-  }
 
   // Return an observable list of Products
   getSubCategoryList(category): Observable<ISubCategory[]> {
