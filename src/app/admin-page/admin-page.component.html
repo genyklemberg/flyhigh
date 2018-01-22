@@ -2,124 +2,53 @@
 	<div class="container">
 		<div class="row">
 			<mat-tab-group>
-			  <mat-tab label="Сategories">
+				<mat-tab label="Сategories">
 
-			  	<div class="products-create-wrap">
-
-				  	<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
-
-						<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
-
-						<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
-
-						<!--<form class="col-md-4">-->
-						  <!--<mat-form-field class="input-form">-->
-						    <!--<input matInput placeholder="Input field">-->
-						  <!--</mat-form-field>-->
-						  <!--<button class="add-new">+</button>-->
-						<!--</form>-->
+					<div class="products-create-wrap"
+						 [formGroup]='categoryForm'>
 
 						<div class="col-md-4 load-img-wrap">
 							<button class="upload-img">Load img</button>
 						</div>
 
 						<div class="col-md-4">
-							 <mat-form-field class="textarea-field">
-						    <textarea matInput placeholder="Leave a comment"></textarea>
-						  </mat-form-field>
+							<mat-form-field class="textarea-field">
+						    <textarea matInput placeholder="Create new category"
+									  formControlName='title'></textarea>
+							</mat-form-field>
 						</div>
 
 						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new">Creat-new</button>
+							<button class="creat-new"
+									(click)='createNewCategory()'
+									[disabled]="!categoryForm.valid">Create new</button>
 						</div>
 
 					</div>
 
-					<div class="products-list">
+					<div class="products-list"
+						 *ngFor='let category of categories | async'>
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
+									<img src="{{category?.img}}">
+									<p>{{category?.title}}</p>
 								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
+								<button (click)="deleteCategory(category?.$key)">Delete</button>
 							</div>
 						</div>
 					</div>
 
 
-			  </mat-tab>
-			  <mat-tab label="Subcategories">Content 2</mat-tab>
-			  <mat-tab label="Products">Content 1</mat-tab>
+				</mat-tab>
+				<mat-tab label="Subcategories">Content 2</mat-tab>
+				<mat-tab label="Products">Content 1</mat-tab>
 
-        <!--Tab #4 START-->
-        <mat-tab label="Articles">
-          <fh-uploads-form></fh-uploads-form>
-        </mat-tab>
-        <!--Tab #4 END-->
+				<!--Tab #4 START-->
+				<mat-tab label="Articles">
+					<fh-uploads-form></fh-uploads-form>
+				</mat-tab>
+				<!--Tab #4 END-->
 
 			</mat-tab-group>
 		</div>
