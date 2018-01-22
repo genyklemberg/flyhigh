@@ -18,11 +18,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   element;
   profileForm: FormGroup;
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
-  body = {
-    from: 'test@test.com',
-    subject: 'Test component',
-    html: '<h1>My</h1><br><p>html indeed</p>'
-  };
+
   constructor(private prDB: ProductService,
               private blogDB: BlogService,
               private mailService: MailService,
@@ -41,19 +37,27 @@ export class MainComponent implements AfterViewInit, OnInit {
       'name': new FormControl('', [Validators.required,  Validators.minLength(2)]),
       'email': new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
       'topic': new FormControl('', [Validators.required,  Validators.minLength(2)]),
-      'textarea': new FormControl('', [Validators.required,  Validators.minLength(5)])
+      'textarea': new FormControl('', [Validators.required,  Validators.minLength(5)]),
+      'checkme': new FormControl('')
     });
   }
 
   ngAfterViewInit() {
-    $.getScript('assets/js/combined.js', function(){});
+    // $.getScript('assets/js/combined.js', function(){});
   }
 
   getBackground(image) {
     return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
   }
 
+  validateHuman(honeypot) {
+    if (honeypot) { return true; } // if hidden form filled up
+  }
+
   onSubmit() {
+    if (this.validateHuman(this.profileForm.get('checkme').touched)) {  // if form is filled, form will not be submitted
+      return false;
+    }
     const promise = new Promise((resolve, reject) => {
       this.mailService.newForm(
         this.profileForm.value['name'],

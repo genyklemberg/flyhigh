@@ -11,8 +11,6 @@
         <h2 class="nk-subtitle text-white">FlyHigh Avia</h2>
 
         <h1 class="nk-title display-3 text-white">Все для сервиса на высоте
-          <!--<br>-->
-          <!--<em class="fw-400">сделать ваши услуги  уникальными</em>-->
         </h1>
 
 
@@ -33,7 +31,6 @@
   </div>
 
 </div>
-
 <!-- END: Header Title -->
 
 <!-- START: About Our Agency -->
@@ -51,7 +48,7 @@
           Как компания полного цикла мы предоставляем полный комплекс услуг по разработке концепций, проектирования,  дизайна, изготовления и доставки необходимых товаров или услуг для наших клиентов.
         </p>
 
-        <img src="assets/images/signature.png" alt="" class="nk-img-fit">
+        <!-- <img src="assets/images/signature.png" alt="" class="nk-img-fit"> -->
 
         <div class="nk-gap-4 mt-25"></div>
       </div>
@@ -73,7 +70,6 @@
             <span class="pe-7s-like"></span>
           </div>
           <div class="nk-ibox-cont">
-            <!--<div class="nk-ibox-title">1465</div>-->
             <div class="nk-ibox-text">За что нас любят клиенты</div>
           </div>
         </div>
@@ -85,7 +81,6 @@
             <span class="pe-7s-star"></span>
           </div>
           <div class="nk-ibox-cont">
-            <!--<div class="nk-ibox-title">735</div>-->
             <div class="nk-ibox-text">Мы гарантируем</div>
           </div>
         </div>
@@ -97,7 +92,6 @@
             <span class="pe-7s-clock"></span>
           </div>
           <div class="nk-ibox-cont">
-            <!--<div class="nk-ibox-title">612</div>-->
             <div class="nk-ibox-text">Этапы выполнения проекта</div>
           </div>
         </div>
@@ -109,7 +103,6 @@
             <span class="pe-7s-portfolio"></span>
           </div>
           <div class="nk-ibox-cont">
-            <!--<div class="nk-ibox-title">548</div>-->
             <div class="nk-ibox-text" style='text-align: center'>Сроки и цены</div>
           </div>
         </div>
@@ -164,13 +157,50 @@
 <!-- END: Portfolio -->
 
 <!-- START: Reviews -->
-<div class="nk-box bg-dark-1">
+<div class="nk-box bg-dark-1 phrases">
   <div class="bg-image bg-image-parallax" style="background-image: url('assets/images/bg-pattern.jpg');"></div>
   <div class="nk-gap-5 mnt-6"></div>
   <div class="nk-gap-3 hidden-sm-down"></div>
   <div class="container-fluid">
     <!-- START: Carousel -->
-    <div class="nk-carousel nk-carousel-all-visible text-white" data-autoplay="18000" data-dots="true">
+
+    <mat-tab-group>
+
+      <mat-tab label="">
+        <div>
+          <blockquote class="nk-blockquote-style-1 text-white">
+            <p>Гостеприимство обречено на провал до тех пор, пока ваши гости не почувствуют всем нутром, что вы на их стороне</p>
+            <cite>Дэнни Мейер</cite>
+          </blockquote>
+          <div class="nk-gap-3 mt-10 hidden-md-down"></div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="">
+        <div>
+          <blockquote class="nk-blockquote-style-1 text-white">
+            <p>Суть не в том, как больше зарабатывать, а в том, как больше делать для других</p>
+            <cite>Нил Блюменталь</cite>
+          </blockquote>
+          <div class="nk-gap-3 mt-10 hidden-md-down"></div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="">
+        <div>
+          <blockquote class="nk-blockquote-style-1 text-white">
+            <p>Если ты начинаешь считать себя совершенством, развитие на этом останавливается</p>
+            <cite>Джессика Альба</cite>
+          </blockquote>
+          <div class="nk-gap-3 mt-10 hidden-md-down"></div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+
+
+
+    <!-- <div class="nk-carousel nk-carousel-all-visible text-white" data-autoplay="18000" data-dots="true">
       <div class="nk-carousel-inner">
         <div>
           <div>
@@ -200,7 +230,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
     <!-- END: Carousel -->
   </div>
   <div class="nk-gap-4 mt-3"></div>
@@ -211,7 +242,7 @@
 <div class="nk-box bg-gray-1" id="blog">
   <div class="nk-gap-4 mt-5"></div>
 
-  <h2 class="text-xs-center display-4">Наш блог</h2>
+  <h2 class="text-xs-center display-4">Наши новости</h2>
 
   <div class="nk-gap mnt-6"></div>
   <div class="container">
@@ -227,7 +258,7 @@
   <div class="nk-gap-2 mt-12"></div>
   <div class="container">
     <!-- START: Carousel -->
-    
+
     <mat-tab-group>
       <mat-tab label="">
 
@@ -261,7 +292,7 @@
 
       <mat-tab label="">
 
-        <div *ngFor='let article of blogList | slice:4:6'>
+        <div *ngFor='let article of blogList | slice:3:6'>
           <div>
             <div class="col-md-4">
               <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
@@ -295,32 +326,6 @@
     <div class="nk-carousel-2 nk-carousel-x2 nk-carousel-no-margin nk-carousel-all-visible nk-blog-isotope" data-dots="true">
       <div class="nk-carousel-inner">
 
-        <!-- ToDO: without JQuery -->
-        <!-- <div *ngFor='let article of blogList | slice:0:5'>
-          <div>
-            <div class="pl-15 pr-15">
-              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
-                <div class="nk-post-thumb">
-                  <a>
-                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
-                  </a>
-                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
-                </div>
-                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
-                <div class="nk-post-date">
-                  {{ article.timeStamp | date: "fullDate" }}
-                </div>
-                <div class="nk-post-text">
-                  <p>
-                    {{ article.body | slice:0:255 }}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="nk-gap-1"></div>
-          </div>
-        </div> -->
-
       </div>
     </div>
     <!-- END: Carousel -->
@@ -331,23 +336,6 @@
 
 <!-- START: Contact Info -->
 <div class="container" id="contacts">
-  <!--<div class="nk-gap-4 mt-5"></div>-->
-
-  <!--<h2 class="text-xs-center display-4">Наши контакты:</h2>-->
-
-  <!--<div class="nk-gap mnt-6"></div>-->
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="col-lg-9 offset-lg-2">-->
-        <!--<div class="text-xs-center">-->
-          <!--Мы стараемся всегжа быть на связи с нашими клиентами, если по каким-то причинам вам не удалось с нами связаться, вы можете отправить нам запрос и мы перезвоним вам в ближайшее время-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div class="nk-gap-2 mt-12"></div>-->
-  <!--<div class="nk-gap-5"></div>-->
   <div class="row vertical-gap">
     <div class="col-md-12">
       <div class="contact-map">
@@ -361,7 +349,6 @@
       <h2 class="display-4">Наши контакты:</h2>
       <div class="nk-gap mnt-3"></div>
 
-      <!--<p>Мы стараемся всегжа быть на связи с нашими клиентами, если по каким-то причинам вам не удалось с нами связаться, вы можете отправить нам запрос и мы перезвоним вам в ближайшее время</p>-->
 
       <ul class="nk-contact-info" style='text-align: right'>
         <li>
@@ -383,6 +370,13 @@
             (ngSubmit)='onSubmit()'>
         <div class="row vertical-gap">
           <div class="col-md-6">
+            <!--test for spam input-->
+            <input id="checkme"
+                   type="text"
+                   name="checkme"
+                   style='display: none;'
+                   formControlName='checkme'/>
+            <!--the rest of your form-->
             <input type="text" class="form-control required"
                    name="name" placeholder="Как к вам обращаться?"
                    formControlName='name'>
@@ -390,7 +384,6 @@
                   *ngIf="profileForm.get('name').invalid && (profileForm.get('name').dirty || profileForm.get('name').touched)">
                 Пожалуйста, введите свое Имя
             </span>
-            <!--<p *ngIf="nickname.errors.required">Nickname is required</p>-->
           </div>
           <div class="col-md-6">
             <input type="email" class="form-control required"
