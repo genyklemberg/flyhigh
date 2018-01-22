@@ -1126,6 +1126,10 @@ body {
     &:focus {
     	outline: none;
     }
+
+	}
+	.creat-new[disabled] {
+		cursor: not-allowed;
 	}
 
 	/*Product-list*/
