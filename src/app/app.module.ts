@@ -38,6 +38,7 @@ import {MailService} from './mail.service';
 import {MatSnackBarModule} from '@angular/material';
 import { UploadsFormComponent } from './admin-page/uploads/uploads-form.component';
 import {UploadsService} from './admin-page/uploads/uploads.service';
+import {AdminPageGuard} from './admin-page.guard';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,7 @@ import {UploadsService} from './admin-page/uploads/uploads.service';
     MatMenuModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
-  providers: [ScrollService, ProductService, BlogService, MailService, UploadsService],
+  providers: [ScrollService, ProductService, BlogService, MailService, UploadsService, AdminPageGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

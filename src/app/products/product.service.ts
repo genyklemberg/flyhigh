@@ -32,17 +32,13 @@ export class ProductService {
     const data = {
       title: title
     };
-    //userRef.push(data); // push data to Firebase
-
-    const promise = new Promise((resolve, reject) => {});
-    promise
-        .then(userRef.push(data) => this.snackBar.open('Successfully created category', 'Ok', {
-          duration: 4000
-        }))
-        .catch(error => this.snackBar.open(error, 'Ok', {
-          duration: 4000
-        }));
-
+    Promise.resolve(userRef.push(data)).then(() => {
+      this.snackBar.open('Successfully created category', 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
   }
 
   private _handleError(error) {

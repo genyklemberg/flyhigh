@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material';
 // Import RxJs required methods
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
+import {Router} from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ export class MailService {
 
   constructor(private _http: HttpClient,
               private db: AngularFireDatabase,
-              public snackBar: MatSnackBar,) { }
+              public snackBar: MatSnackBar,
+              private router: Router) { }
 
   sendFormData(text) {
     console.log(text);
@@ -31,8 +33,12 @@ export class MailService {
   }
 
   newForm(name: string, email: string, topic: string, textarea: string) {
-    const date = new Date().toUTCString();
-    const path = `requests/${date}`; // Endpoint on firebase
+    const dateObj = new Date();
+    const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+    const date = ('0' + dateObj.getDate()).slice(-2);
+    const year = dateObj.getFullYear();
+    const dateString = year + '_' + month + '_' + date;
+    const path = `requests/${dateString}`; // Endpoint on firebase
     const userRef: AngularFireObject<any> = this.db.object(path);
     const data = {
       name: name,
@@ -41,9 +47,12 @@ export class MailService {
       text: textarea
     };
     this.sendFormData(data)
-      .catch(error => this.snackBar.open(error, 'Ok', {
-        duration: 4000
-      }));
+      .catch(error => {
+        console.log(error);
+        this.snackBar.open(error, 'Ok', {
+          duration: 4000
+        });
+      });
     userRef.update(data)
       .catch(error => this.snackBar.open(error, 'Ok', {
         duration: 4000

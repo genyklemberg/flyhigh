@@ -65,8 +65,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.profileForm.value['topic'],
         this.profileForm.value['textarea']
       );
-      this.router.navigate(['/success']);
-    });
+    }).then(() => { this.router.navigate(['home']); });
   }
   //
   // send() {
