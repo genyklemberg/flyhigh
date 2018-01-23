@@ -90,13 +90,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="products-list" *ngFor="let sub of subcategories | async; index as j">
+					<div class="products-list" *ngFor="let sub of subcategories | async">
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<p>List of Subcategories</p>
-								<p>{{j}}{{sub?.title}}</p>
-								<p>{{j}}{{sub?.category}}</p>
-								<p>{{j}}{{sub?.body}}</p>
+								<p>{{sub?.title}}</p>
+								<p>{{sub?.category}}</p>
+								<p>{{sub?.body}}</p>
 							</div>
 						</div>
 					</div>
@@ -108,10 +108,32 @@
 					<div class="products-create-wrap"
 						 [formGroup]='itemsForm'>
 
+						<!-- todo need to fix subcategories select -->
+						<!--<mat-form-field class="col-md-4">-->
+							<!--<mat-select  placeholder="Select SubCategory" formControlName='title'>-->
+								<!--<mat-option *ngFor='let sub of subcategories | async'-->
+											<!--[value]="subcategory.$key">{{sub.title}}-->
+								<!--</mat-option>-->
+							<!--</mat-select>-->
+						<!--</mat-form-field>-->
+						<div class="col-md-4">
+							<mat-form-field class="example-full-width">
+								<input matInput placeholder="Add item Name"
+									   value=""
+									   formControlName='title'>
+							</mat-form-field>
+						</div>
 						<div class="col-md-4">
 							<mat-form-field class="textarea-field">
-						    <textarea matInput placeholder="Create 'body'"
-									  formControlName='body'></textarea>
+								<textarea matInput placeholder="Add description"
+										  formControlName='body'></textarea>
+							</mat-form-field>
+						</div>
+						<div class="col-md-4">
+							<mat-form-field class="example-full-width">
+								<input matInput placeholder="Add item Code"
+									   value=""
+									   formControlName='item_id'>
 							</mat-form-field>
 						</div>
 
@@ -120,8 +142,23 @@
 									(click)='createItems()'
 									[disabled]="!itemsForm.valid">Create new Item</button>
 						</div>
-
 					</div>
+
+					<div class="products-list"
+						 *ngFor='let i of items | async'>
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<div>
+									<!-- todo uncomment line below when added possibility to upload imgages -->
+									<!--<img src="{{i?.images[0]}}">-->
+									<p>{{i?.title}}</p>
+									<p>{{i?.item_id}}</p>
+								</div>
+								<button (click)="deleteItem(i?.$key)">Delete</button>
+							</div>
+						</div>
+					</div>
+
 				</mat-tab>
 				<!--Tab #3 END-->
 

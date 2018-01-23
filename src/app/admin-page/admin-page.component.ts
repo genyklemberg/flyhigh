@@ -17,6 +17,7 @@ export class AdminPageComponent implements OnInit {
   itemsForm: FormGroup;
   categories;
   subcategories;
+  items;
   categoriesRef;
 
   constructor(private productService: ProductService,
@@ -24,10 +25,13 @@ export class AdminPageComponent implements OnInit {
               private db: AngularFireDatabase) {
     this.categoriesRef = db.list('/products/category');
     this.categories = productService.getCategoryList();
-    this.subcategories = productService.getSubCategoryList(this.categories);
+    this.subcategories = productService.getSubCategoryList();
+    this.items = productService.getProductsList();
+
     console.log('subcategories: ', this.subcategories);// return Observable
                                             // {_isScalar: false, source: Observable, operator: MapOperator}
     console.log('this.categories: ', this.categories);
+    console.log('this.items: ', this.items);
   }
 
   ngOnInit() {
@@ -43,7 +47,9 @@ export class AdminPageComponent implements OnInit {
     });
 
     this.itemsForm = new FormGroup({
-      'body': new FormControl('', Validators.required)
+      'title': new FormControl('', Validators.required),
+      'body': new FormControl('', Validators.required),
+      'item_id': new FormControl('', Validators.required)
     })
 
   }
@@ -75,7 +81,10 @@ export class AdminPageComponent implements OnInit {
   createItems() {
     const promise = new Promise((resolve, reject) => {
       this.productService.itForm(
-          this.itemsForm.value['body']
+          this.itemsForm.value['title'],
+          this.itemsForm.value['body'],
+          this.itemsForm.value['item_id']
+
       );
       this.itemsForm.reset();
     });
@@ -83,6 +92,10 @@ export class AdminPageComponent implements OnInit {
 
   deleteCategory(key: string):void {
     this.db.object(`/products/category/${key}`).remove();
+  }
+
+  deleteItem(key:string):void {
+    this.db.object(`/products/items/${key}`).remove();
   }
 
 }

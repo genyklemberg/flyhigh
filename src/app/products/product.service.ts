@@ -77,15 +77,17 @@ export class ProductService {
   /**
    * Item form
    */
-  itForm(body: string) {
+  itForm(title: string, body: string, item_id: string) {
     const path = `products/items/`;
     const userRef: AngularFireList<any> = this.db.list(path);
     const data = {
-      body: body
+      title: title,
+      body: body,
+      item_id: item_id
     };
 
     Promise.resolve(userRef.push(data)).then(() => {
-      this.snackBar.open(`Successfully added item ${body}`, 'Ok', {
+      this.snackBar.open(`Successfully added item ${title} with description ${body} and code ${item_id}`, 'Ok', {
         duration: 4000
       });
     }).catch(error => this.snackBar.open(error, 'Ok', {
@@ -97,7 +99,7 @@ export class ProductService {
    */
 
   // Return an observable list of Products
-  getSubCategoryList(category): Observable<ISubCategory[]> {
+  getSubCategoryList(category?): Observable<ISubCategory[]> {
     return this.subCategoryRef.snapshotChanges().map((arr) => {
       return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }))
         .filter(val => val.category === category);
