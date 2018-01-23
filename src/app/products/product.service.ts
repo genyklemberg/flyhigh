@@ -24,7 +24,7 @@ export class ProductService {
   }
 
   /**
-   * admin form start
+   * category form start
    */
   newForm(title: string, img: string) {
     const path = `products/category/`; // Endpoint on firebase
@@ -45,9 +45,56 @@ export class ProductService {
     return Promise.reject(error.message ? error.message : error.toString());
   }
   /**
-   * admin form end
+   * category form end
    */
 
+
+
+  /**
+   * subCategory form
+   */
+  subForm(category: string, body: string, title: string) {
+    const path = `products/subcategory/`;
+    const userRef: AngularFireList<any> = this.db.list(path);
+    const data = {
+      category: category,
+      body: body,
+      title: title
+    };
+
+    Promise.resolve(userRef.push(data)).then(() => {
+      this.snackBar.open(`Successfully added subcategory ${body} to ${category} category with title: ${title}`, 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
+  }
+  /**
+   * subCategory form end
+   */
+
+  /**
+   * Item form
+   */
+  itForm(body: string) {
+    const path = `products/items/`;
+    const userRef: AngularFireList<any> = this.db.list(path);
+    const data = {
+      body: body
+    };
+
+    Promise.resolve(userRef.push(data)).then(() => {
+      this.snackBar.open(`Successfully added item ${body}`, 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
+  }
+  /**
+   * Item form end
+   */
 
   // Return an observable list of Products
   getSubCategoryList(category): Observable<ISubCategory[]> {

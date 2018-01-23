@@ -38,11 +38,92 @@
 							</div>
 						</div>
 					</div>
+				</mat-tab>
 
+				<mat-tab label="Subcategories">
+					<div [formGroup]='subCategoryForm'>
+						<mat-form-field class="col-md-4">
+							<mat-select  placeholder="Select Category" formControlName='category'>
+								<mat-option *ngFor='let category of categories | async'
+											[value]="category.$key">{{category.title}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<div class="col-md-4">
+							<mat-form-field class="textarea-field">
+								<textarea matInput placeholder="Add subcategory to category"
+										  formControlName='body'></textarea>
+							</mat-form-field>
+						</div>
+
+						<div class="col-md-4">
+							<mat-form-field class="example-full-width">
+								<input matInput placeholder="Add title"
+									   value=""
+									   formControlName='title'>
+							</mat-form-field>
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='addSubCategory()'
+									[disabled]="!subCategoryForm.valid">Add SubCategory</button>
+						</div>
+					</div>
+
+					<!-- todo create two nested loops *ngFor for categories and subcategories to retrieve data-->
+					<div class="products-list"
+						 *ngFor='let category of categories | async'>
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<div>
+									<img src="{{category?.img}}">
+									<p>{{category?.title}}</p>
+								</div>
+								<div *ngFor="let sub of subcategories | async">
+									<p>List of Subcategories</p>
+									<p>{{sub?.title}}</p>
+									<p>{{sub?.category}}</p>
+									<p>{{sub?.body}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="products-list" *ngFor="let sub of subcategories | async; index as j">
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<p>List of Subcategories</p>
+								<p>{{j}}{{sub?.title}}</p>
+								<p>{{j}}{{sub?.category}}</p>
+								<p>{{j}}{{sub?.body}}</p>
+							</div>
+						</div>
+					</div>
 
 				</mat-tab>
-				<mat-tab label="Subcategories">Content 2</mat-tab>
-				<mat-tab label="Products">Content 1</mat-tab>
+
+				<!--Tab #3 START-->
+				<mat-tab label="Products">
+					<div class="products-create-wrap"
+						 [formGroup]='itemsForm'>
+
+						<div class="col-md-4">
+							<mat-form-field class="textarea-field">
+						    <textarea matInput placeholder="Create 'body'"
+									  formControlName='body'></textarea>
+							</mat-form-field>
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='createItems()'
+									[disabled]="!itemsForm.valid">Create new Item</button>
+						</div>
+
+					</div>
+				</mat-tab>
+				<!--Tab #3 END-->
 
 				<!--Tab #4 START-->
 				<mat-tab label="Articles">
