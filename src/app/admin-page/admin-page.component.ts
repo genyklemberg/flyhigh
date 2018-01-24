@@ -32,11 +32,6 @@ export class AdminPageComponent implements OnInit {
     this.subcategories = productService.getSubCategoryList();
     this.items = productService.getProductsList();
     this.article = blogService.getBlogList();
-
-    console.log('subcategories: ', this.subcategories);
-    console.log('this.categories: ', this.categories);
-    console.log('this.items: ', this.items);
-    console.log('this.article: ', this.article);
   }
 
   ngOnInit() {
@@ -101,6 +96,7 @@ export class AdminPageComponent implements OnInit {
       this.itemsForm.reset();
     });
   }
+
 
   addArticle() {
     const promise = new Promise((resolve, reject) => {

@@ -36,6 +36,9 @@ import { LoadingSpinnerComponent } from './home/loading-spinner.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MailService} from './mail.service';
 import {MatSnackBarModule} from '@angular/material';
+import { UploadsFormComponent } from './admin-page/uploads/uploads-form.component';
+import {UploadsService} from './admin-page/uploads/uploads.service';
+import {AdminPageGuard} from './admin-page.guard';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import {MatSnackBarModule} from '@angular/material';
     ServicesComponent,
     SuccesComponent,
     AdminPageComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    UploadsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,7 @@ import {MatSnackBarModule} from '@angular/material';
     MatMenuModule
   ],
   entryComponents: [ DialogDataExampleDialog ],
-  providers: [ScrollService, ProductService, BlogService, MailService],
+  providers: [ScrollService, ProductService, BlogService, MailService, UploadsService, AdminPageGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
