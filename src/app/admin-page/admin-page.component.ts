@@ -27,11 +27,6 @@ export class AdminPageComponent implements OnInit {
     this.categories = productService.getCategoryList();
     this.subcategories = productService.getSubCategoryList();
     this.items = productService.getProductsList();
-
-    console.log('subcategories: ', this.subcategories);// return Observable
-                                            // {_isScalar: false, source: Observable, operator: MapOperator}
-    console.log('this.categories: ', this.categories);
-    console.log('this.items: ', this.items);
   }
 
   ngOnInit() {
