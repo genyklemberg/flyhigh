@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject, DatabaseQuery} from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import {IProduct} from './product';
-import {ICategory} from './category';
-import {ISubCategory} from './subcategory';
+import { IProduct } from './product';
+import { ICategory } from './category';
+import { ISubCategory } from './subcategory';
+import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class ProductService {
@@ -11,37 +13,91 @@ export class ProductService {
   categoryRef;
   subCategoryRef;
   productsRef;
-  data = {
-    title: 'Маски',
-    body: 'От классики до модерна... ' +
-    'Мы предлагаем широкий спектр специально разработанных дорожных наборов в различных стилях и на любой бюджет.' +
-    '\n' +
-    'Мы можем разработать уникальный дизайн,  ' +
-    'чтобы отразить неповторимый стиль вашей компании и привлечь внимание ваших клиентов. ' +
-    'Если вы свяжетесь с нами и расскажите немного больше о вас и ваших клиентах, ' +
-    'мы сможем предоставить вам  решение, которое наилучшим образом будет соответствовать вашим требованиям.',
-    img: 'assets/images/old/product_2.jpg',
-    category: '-L1wUoBBtST1Bh8jyhPx',
-    items: ['-L1wl2hN0hvmTN6ITyQg', '-L1wlXTLJvy5owN5ipbp', '-L1wkmNlD_N4nxlnpxjc']
-  };
 
-  // productsRef: AngularFireList<IProduct>;
-  // productRef:  AngularFireObject<IProduct>;
-
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase,
+              private _http: HttpClient,
+              public snackBar: MatSnackBar) {
     this.categoryRef = db.list('/products/category');
     // this.subCategoryRef = db.list('/products/subcategory', ref => ref.orderByChild('category').equalTo('-L1wUoBBtST1Bh8jyhPx'));
     this.subCategoryRef = db.list('/products/subcategory');
     this.productsRef = db.list('/products/items');
   }
 
-
-  createDB(): void {
-    this.subCategoryRef.push(this.data);
+  /**
+   * category form start
+   */
+  newForm(title: string, img: string) {
+    const path = `products/category/`; // Endpoint on firebase
+    const userRef: AngularFireList<any> = this.db.list(path);
+    const data = {
+      title: title
+    };
+    Promise.resolve(userRef.push(data)).then(() => {
+      this.snackBar.open('Successfully created category', 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
   }
 
+  private _handleError(error) {
+    return Promise.reject(error.message ? error.message : error.toString());
+  }
+  /**
+   * category form end
+   */
+
+  /**
+   * subCategory form
+   */
+  subForm(category: string, body: string, title: string) {
+    const path = `products/subcategory/`;
+    const userRef: AngularFireList<any> = this.db.list(path);
+    const data = {
+      category: category,
+      body: body,
+      title: title
+    };
+
+    Promise.resolve(userRef.push(data)).then(() => {
+      this.snackBar.open(`Successfully added subcategory ${body} to ${category} category with title: ${title}`, 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
+  }
+  /**
+   * subCategory form end
+   */
+
+  /**
+   * Item form
+   */
+  itForm(title: string, body: string, item_id: string) {
+    const path = `products/items/`;
+    const userRef: AngularFireList<any> = this.db.list(path);
+    const data = {
+      title: title,
+      body: body,
+      item_id: item_id
+    };
+
+    Promise.resolve(userRef.push(data)).then(() => {
+      this.snackBar.open(`Successfully added item ${title} with description ${body} and code ${item_id}`, 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
+  }
+  /**
+   * Item form end
+   */
+
   // Return an observable list of Products
-  getSubCategoryList(category): Observable<ISubCategory[]> {
+  getSubCategoryList(category?): Observable<ISubCategory[]> {
     return this.subCategoryRef.snapshotChanges().map((arr) => {
       return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }))
         .filter(val => val.category === category);

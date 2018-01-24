@@ -2,119 +2,266 @@
 	<div class="container">
 		<div class="row">
 			<mat-tab-group>
-			  <mat-tab label="Сategories">
+				<!--Tab #1 START-->
+				<mat-tab label="Сategories">
 
-			  	<div class="products-create-wrap">
+					<div class="products-create-wrap"
+						 [formGroup]='categoryForm'>
 
-				  	<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
-
-						<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
-
-						<mat-form-field class="col-md-4">
-						  <mat-select  placeholder="Select Name">
-						    <mat-option value="option1">Option 1</mat-option>
-						    <mat-option value="option2">Option 2</mat-option>
-						    <mat-option value="option3">Option 3</mat-option>
-						  </mat-select>
-						</mat-form-field>
-
-						<!--<form class="col-md-4">-->
-						  <!--<mat-form-field class="input-form">-->
-						    <!--<input matInput placeholder="Input field">-->
-						  <!--</mat-form-field>-->
-						  <!--<button class="add-new">+</button>-->
-						<!--</form>-->
-
-						<div class="col-md-4 load-img-wrap">
+						
+						<div class="col-md-4 offset-md-4 load-img-wrap">
 							<button class="upload-img">Load img</button>
 						</div>
 
-						<div class="col-md-4">
-							 <mat-form-field class="textarea-field">
-						    <textarea matInput placeholder="Leave a comment"></textarea>
-						  </mat-form-field>
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-4 offset-md-4">
+								<mat-form-field class="textarea-field">
+							    <textarea matInput placeholder="Create new category"
+										  formControlName='title'></textarea>
+								</mat-form-field>
+							</div>
+
 						</div>
 
 						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new">Creat-new</button>
+							<button class="creat-new"
+									(click)='createNewCategory()'
+									[disabled]="!categoryForm.valid">Create new</button>
 						</div>
 
 					</div>
 
-					<div class="products-list">
+					<div class="products-list"
+						 *ngFor='let category of categories | async'>
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
+									<img src="{{category?.img}}">
+									<p>{{category?.title}}</p>
 								</div>
-								<button>Delete</button>
+								<button (click)="deleteCategory(category?.$key)">Delete</button>
 							</div>
 						</div>
+					</div>
+				</mat-tab>
+				<!--Tab #1 END -->
+
+				<!--Tab #2 START-->
+				<mat-tab label="Subcategories">
+					<div class="products-create-wrap"
+						 [formGroup]='subCategoryForm'>
+
+						
+
+						<div class="col-md-4 offset-md-4 load-img-wrap">
+							<button class="upload-img">Load img</button>
+						</div>
+
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-4">
+								<mat-form-field>
+									<mat-select  placeholder="Select Category" formControlName='category'>
+										<mat-option *ngFor='let category of categories | async'
+													[value]="category.$key">{{category.title}}
+										</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+							
+							<div class="col-md-4">
+								<mat-form-field class="textarea-field">
+									<textarea matInput placeholder="Add subcategory to category"
+											  formControlName='body'></textarea>
+								</mat-form-field>
+							</div>
+
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add title"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
+							</div>
+
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='addSubCategory()'
+									[disabled]="!subCategoryForm.valid">Add SubCategory</button>
+						</div>
+					</div>
+
+					<!-- todo create two nested loops *ngFor for categories and subcategories to retrieve data-->
+					<div class="products-list"
+						 *ngFor='let category of categories | async'>
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
+									<img src="{{category?.img}}">
+									<p>{{category?.title}}</p>
 								</div>
-								<button>Delete</button>
+								<div *ngFor="let sub of subcategories | async">
+									<p>List of Subcategories</p>
+									<p>{{sub?.title}}</p>
+									<p>{{sub?.category}}</p>
+									<p>{{sub?.body}}</p>
+								</div>
 							</div>
 						</div>
+					</div>
+					<div class="products-list" *ngFor="let sub of subcategories | async">
 						<div class="col-md-12">
 							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
+								<p>List of Subcategories</p>
+								<p>{{sub?.title}}</p>
+								<p>{{sub?.category}}</p>
+								<p>{{sub?.body}}</p>
 							</div>
+							<button (click)="deleteSubcategory(sub?.$key)">Delete</button>
 						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
+					</div>
+
+				</mat-tab>
+				<!--Tab #2 END -->
+
+				<!--Tab #3 START-->
+				<mat-tab label="Products">
+					<div class="products-create-wrap"
+						 [formGroup]='itemsForm'>
+
+						<div class="col-md-4 offset-md-4 load-img-wrap">
+							<button class="upload-img">Load img</button>
+						</div>
+						<!-- todo need to fix subcategories select -->
+
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-6">
+								<mat-form-field>
+									<mat-select  placeholder="Select SubCategory" formControlName='title'>
+										<mat-option></mat-option>
+										<!--<mat-option *ngFor='let sub of subcategories | async'-->
+													<!--[value]="subcategory.$key">{{sub.title}}-->
+										<!--</mat-option>-->
+									</mat-select>
+								</mat-form-field>
 							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="product-list-item">
-								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
-								</div>
-								<button>Delete</button>
+							<div class="col-md-6">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add item Name"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
 							</div>
+
 						</div>
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-6">
+								<mat-form-field class="textarea-field">
+									<textarea matInput placeholder="Add description"
+											  formControlName='body'></textarea>
+								</mat-form-field>
+							</div>
+							<div class="col-md-6">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add item Code"
+										   value=""
+										   formControlName='item_id'>
+								</mat-form-field>
+							</div>
+
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='createItems()'
+									[disabled]="!itemsForm.valid">Create new Item</button>
+						</div>
+					</div>
+
+					<div class="products-list"
+						 *ngFor='let i of items | async'>
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<div>
-									<p>Product title</p>
-									<img src="assets/images/old/item_1.jpg">
+									<!-- todo uncomment line below when added possibility to upload imgages -->
+									<!--<img src="{{i?.images[0]}}">-->
+									<p>{{i?.title}}</p>
+									<p>{{i?.item_id}}</p>
 								</div>
-								<button>Delete</button>
+								<button (click)="deleteItem(i?.$key)">Delete</button>
 							</div>
 						</div>
 					</div>
 
+				</mat-tab>
+				<!--Tab #3 END-->
 
-			  </mat-tab>
-			  <mat-tab label="Subcategories">Content 2</mat-tab>
-			  <mat-tab label="Products">Content 1</mat-tab>
-			  <mat-tab label="Articles">Content 1</mat-tab>
+				<!-- todo work with Articles tab-->
+				<!--Tab #4 START-->
+				<mat-tab label="Articles">
+					<div class="products-create-wrap"
+						 [formGroup]='blogForm'>
+
+						<div class="col-md-4 offset-md-4 load-img-wrap">
+							<button class="upload-img">Load img</button>
+						</div>
+
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add Article body"
+										   value=""
+										   formControlName='body'>
+								</mat-form-field>
+							</div>
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add Article title"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
+							</div>
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add Article type"
+										   value=""
+										   formControlName='type'>
+								</mat-form-field>
+							</div>
+
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='addArticle()'
+									[disabled]="!blogForm.valid">Add Article</button>
+						</div>
+					</div>
+
+					<div class="products-list"
+						 *ngFor='let art of article | async'>
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<div>
+									<p>{{art?.title}}</p>
+									<p>{{art?.type}}</p>
+								</div>
+								<button (click)="deleteArticle(art?.$key)">Delete</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- file uploads form -->
+					<!--<fh-uploads-form></fh-uploads-form>-->
+				</mat-tab>
+				<!--Tab #4 END-->
+
 			</mat-tab-group>
 		</div>
 	</div>

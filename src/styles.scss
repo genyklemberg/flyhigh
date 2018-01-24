@@ -994,13 +994,22 @@ body {
 .admin-page {
 	margin-top: 70px;
   padding: 50px 0;
-
   .products-create-wrap {
   	border: 2px solid;
   	overflow: hidden;
     padding: 20px 0;
     margin-bottom: 50px;
   }
+	.tab-wrapper {
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+	}
+	.product-list-item {
+		img {
+			margin-right: 15px;
+		}
+	}
 
   /*Tabs start*/
 	.mat-tab-header {
@@ -1015,10 +1024,11 @@ body {
 	.mat-tab-labels {
     display: flex;
     justify-content: center;
-    height: 25px;
+    height: 50px;
 	}
 	.mat-form-field {
 		margin-bottom: 50px;
+		width: 100%;
 	}
 
 	/*Input start*/
@@ -1132,7 +1142,8 @@ body {
 	    align-items: center;
 	    margin-bottom: 20px;
       justify-content: space-between;
-			border-bottom: 2px solid;
+			border-bottom: 2px solid #ccc;
+			padding: 10px 0;
 	    div {
   	    display: flex;
 		    align-items: center;
@@ -1160,6 +1171,9 @@ body {
 			}
 		}
 	}
+}
+.creat-new[disabled] {
+	cursor: not-allowed;
 }
 
 
