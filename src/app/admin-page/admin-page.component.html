@@ -38,11 +38,129 @@
 							</div>
 						</div>
 					</div>
+				</mat-tab>
 
+				<mat-tab label="Subcategories">
+					<div [formGroup]='subCategoryForm'>
+						<mat-form-field class="col-md-4">
+							<mat-select  placeholder="Select Category" formControlName='category'>
+								<mat-option *ngFor='let category of categories | async'
+											[value]="category.$key">{{category.title}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<div class="col-md-4">
+							<mat-form-field class="textarea-field">
+								<textarea matInput placeholder="Add subcategory to category"
+										  formControlName='body'></textarea>
+							</mat-form-field>
+						</div>
+
+						<div class="col-md-4">
+							<mat-form-field class="example-full-width">
+								<input matInput placeholder="Add title"
+									   value=""
+									   formControlName='title'>
+							</mat-form-field>
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='addSubCategory()'
+									[disabled]="!subCategoryForm.valid">Add SubCategory</button>
+						</div>
+					</div>
+
+					<!-- todo create two nested loops *ngFor for categories and subcategories to retrieve data-->
+					<div class="products-list"
+						 *ngFor='let category of categories | async'>
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<div>
+									<img src="{{category?.img}}">
+									<p>{{category?.title}}</p>
+								</div>
+								<div *ngFor="let sub of subcategories | async">
+									<p>List of Subcategories</p>
+									<p>{{sub?.title}}</p>
+									<p>{{sub?.category}}</p>
+									<p>{{sub?.body}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="products-list" *ngFor="let sub of subcategories | async">
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<p>List of Subcategories</p>
+								<p>{{sub?.title}}</p>
+								<p>{{sub?.category}}</p>
+								<p>{{sub?.body}}</p>
+							</div>
+						</div>
+					</div>
 
 				</mat-tab>
-				<mat-tab label="Subcategories">Content 2</mat-tab>
-				<mat-tab label="Products">Content 1</mat-tab>
+
+				<!--Tab #3 START-->
+				<mat-tab label="Products">
+					<div class="products-create-wrap"
+						 [formGroup]='itemsForm'>
+
+						<!-- todo need to fix subcategories select -->
+						<!--<mat-form-field class="col-md-4">-->
+							<!--<mat-select  placeholder="Select SubCategory" formControlName='title'>-->
+								<!--<mat-option *ngFor='let sub of subcategories | async'-->
+											<!--[value]="subcategory.$key">{{sub.title}}-->
+								<!--</mat-option>-->
+							<!--</mat-select>-->
+						<!--</mat-form-field>-->
+						<div class="col-md-4">
+							<mat-form-field class="example-full-width">
+								<input matInput placeholder="Add item Name"
+									   value=""
+									   formControlName='title'>
+							</mat-form-field>
+						</div>
+						<div class="col-md-4">
+							<mat-form-field class="textarea-field">
+								<textarea matInput placeholder="Add description"
+										  formControlName='body'></textarea>
+							</mat-form-field>
+						</div>
+						<div class="col-md-4">
+							<mat-form-field class="example-full-width">
+								<input matInput placeholder="Add item Code"
+									   value=""
+									   formControlName='item_id'>
+							</mat-form-field>
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='createItems()'
+									[disabled]="!itemsForm.valid">Create new Item</button>
+						</div>
+					</div>
+
+					<div class="products-list"
+						 *ngFor='let i of items | async'>
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<div>
+									<!-- todo uncomment line below when added possibility to upload imgages -->
+									<!--<img src="{{i?.images[0]}}">-->
+									<p>{{i?.title}}</p>
+									<p>{{i?.item_id}}</p>
+								</div>
+								<button (click)="deleteItem(i?.$key)">Delete</button>
+							</div>
+						</div>
+					</div>
+
+				</mat-tab>
+				<!--Tab #3 END-->
 
 				<!--Tab #4 START-->
 				<mat-tab label="Articles">
