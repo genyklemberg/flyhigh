@@ -2,20 +2,24 @@
 	<div class="container">
 		<div class="row">
 			<mat-tab-group>
+				<!--Tab #1 START-->
 				<mat-tab label="Сategories">
 
 					<div class="products-create-wrap"
 						 [formGroup]='categoryForm'>
-
-						<div class="col-md-4 load-img-wrap">
+            
+						<div class="col-md-4 offset-md-4 load-img-wrap">
 							<button class="upload-img">Load img</button>
 						</div>
 
-						<div class="col-md-4">
-							<mat-form-field class="textarea-field">
-						    <textarea matInput placeholder="Create new category"
-									  formControlName='title'></textarea>
-							</mat-form-field>
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-4 offset-md-4">
+								<mat-form-field class="textarea-field">
+							    <textarea matInput placeholder="Create new category"
+										  formControlName='title'></textarea>
+								</mat-form-field>
+							</div>
 						</div>
 
 						<div class="col-md-12 creat-new-wrap">
@@ -39,32 +43,48 @@
 						</div>
 					</div>
 				</mat-tab>
+				<!--Tab #1 END -->
 
+				<!--Tab #2 START-->
 				<mat-tab label="Subcategories">
-					<div [formGroup]='subCategoryForm'>
-						<mat-form-field class="col-md-4">
-							<mat-select  placeholder="Select Category" formControlName='category'>
-								<mat-option *ngFor='let category of categories | async'
-											[value]="category.$key">{{category.title}}
-								</mat-option>
-							</mat-select>
-						</mat-form-field>
+					<div class="products-create-wrap"
+						 [formGroup]='subCategoryForm'>
 
-						<div class="col-md-4">
-							<mat-form-field class="textarea-field">
-								<textarea matInput placeholder="Add subcategory to category"
-										  formControlName='body'></textarea>
-							</mat-form-field>
+						
+
+						<div class="col-md-4 offset-md-4 load-img-wrap">
+							<button class="upload-img">Load img</button>
 						</div>
 
-						<div class="col-md-4">
-							<mat-form-field class="example-full-width">
-								<input matInput placeholder="Add title"
-									   value=""
-									   formControlName='title'>
-							</mat-form-field>
-						</div>
+						<div class="tab-wrapper col-md-12">
 
+							<div class="col-md-4">
+								<mat-form-field>
+									<mat-select  placeholder="Select Category" formControlName='category'>
+										<mat-option *ngFor='let category of categories | async'
+													[value]="category.$key">{{category.title}}
+										</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+							
+							<div class="col-md-4">
+								<mat-form-field class="textarea-field">
+									<textarea matInput placeholder="Add subcategory to category"
+											  formControlName='body'></textarea>
+								</mat-form-field>
+							</div>
+
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add title"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
+							</div>
+
+						</div>
+            
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='addSubCategory()'
@@ -98,45 +118,62 @@
 								<p>{{sub?.category}}</p>
 								<p>{{sub?.body}}</p>
 							</div>
+							<button (click)="deleteSubcategory(sub?.$key)">Delete</button>
 						</div>
 					</div>
 
 				</mat-tab>
+				<!--Tab #2 END -->
 
 				<!--Tab #3 START-->
 				<mat-tab label="Products">
 					<div class="products-create-wrap"
 						 [formGroup]='itemsForm'>
 
+						<div class="col-md-4 offset-md-4 load-img-wrap">
+							<button class="upload-img">Load img</button>
+						</div>
 						<!-- todo need to fix subcategories select -->
-						<!--<mat-form-field class="col-md-4">-->
-							<!--<mat-select  placeholder="Select SubCategory" formControlName='title'>-->
-								<!--<mat-option *ngFor='let sub of subcategories | async'-->
-											<!--[value]="subcategory.$key">{{sub.title}}-->
-								<!--</mat-option>-->
-							<!--</mat-select>-->
-						<!--</mat-form-field>-->
-						<div class="col-md-4">
-							<mat-form-field class="example-full-width">
-								<input matInput placeholder="Add item Name"
-									   value=""
-									   formControlName='title'>
-							</mat-form-field>
-						</div>
-						<div class="col-md-4">
-							<mat-form-field class="textarea-field">
-								<textarea matInput placeholder="Add description"
-										  formControlName='body'></textarea>
-							</mat-form-field>
-						</div>
-						<div class="col-md-4">
-							<mat-form-field class="example-full-width">
-								<input matInput placeholder="Add item Code"
-									   value=""
-									   formControlName='item_id'>
-							</mat-form-field>
-						</div>
 
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-6">
+								<mat-form-field>
+									<mat-select  placeholder="Select SubCategory" formControlName='title'>
+										<mat-option></mat-option>
+										<!--<mat-option *ngFor='let sub of subcategories | async'-->
+													<!--[value]="subcategory.$key">{{sub.title}}-->
+										<!--</mat-option>-->
+									</mat-select>
+								</mat-form-field>
+							</div>
+							<div class="col-md-6">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add item Name"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
+							</div>
+
+						</div>
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-6">
+								<mat-form-field class="textarea-field">
+									<textarea matInput placeholder="Add description"
+											  formControlName='body'></textarea>
+								</mat-form-field>
+							</div>
+							<div class="col-md-6">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add item Code"
+										   value=""
+										   formControlName='item_id'>
+								</mat-form-field>
+							</div>
+
+						</div>
+            
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='createItems()'
@@ -160,11 +197,67 @@
 					</div>
 
 				</mat-tab>
+
 				<!--Tab #3 END-->
 
+				<!-- todo work with Articles tab-->
 				<!--Tab #4 START-->
 				<mat-tab label="Articles">
-					<fh-uploads-form></fh-uploads-form>
+					<div class="products-create-wrap"
+						 [formGroup]='blogForm'>
+
+						<div class="col-md-4 offset-md-4 load-img-wrap">
+							<button class="upload-img">Load img</button>
+						</div>
+
+						<div class="tab-wrapper col-md-12">
+
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add Article body"
+										   value=""
+										   formControlName='body'>
+								</mat-form-field>
+							</div>
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add Article title"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
+							</div>
+							<div class="col-md-4">
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Add Article type"
+										   value=""
+										   formControlName='type'>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="col-md-12 creat-new-wrap">
+							<button class="creat-new"
+									(click)='addArticle()'
+									[disabled]="!blogForm.valid">Add Article</button>
+						</div>
+					</div>
+
+					<div class="products-list"
+						 *ngFor='let art of article | async'>
+						<div class="col-md-12">
+							<div class="product-list-item">
+								<div>
+									<p>{{art?.title}}</p>
+									<p>{{art?.type}}</p>
+								</div>
+								<button (click)="deleteArticle(art?.$key)">Delete</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- file uploads form -->
+					<!--<fh-uploads-form></fh-uploads-form>-->
+
 				</mat-tab>
 				<!--Tab #4 END-->
 

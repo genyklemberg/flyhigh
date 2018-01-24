@@ -216,6 +216,9 @@ body {
 	p {
 		font-size: 18px;
 	}
+	h2 {
+		font-family: Agency-FB, sans-serif !important;
+	}
 }
 
 
@@ -633,16 +636,9 @@ body {
 }
 
 @media (max-width: 767px) {
-	#contact {
+	#contacts {
 		.contact-info.adress {
-			margin-top: -120px;
-		}
-		.contact-info.form {
-			margin-top: 0;
-			.nk-btn {
-		    margin-left: 50%;
-		    transform: translateX(-50%);
-			}
+			margin-top: -150px;
 		}
 	}
 }
@@ -998,13 +994,22 @@ body {
 .admin-page {
 	margin-top: 70px;
   padding: 50px 0;
-
   .products-create-wrap {
   	border: 2px solid;
   	overflow: hidden;
     padding: 20px 0;
     margin-bottom: 50px;
   }
+	.tab-wrapper {
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+	}
+	.product-list-item {
+		img {
+			margin-right: 15px;
+		}
+	}
 
   /*Tabs start*/
 	.mat-tab-header {
@@ -1019,9 +1024,11 @@ body {
 	.mat-tab-labels {
     display: flex;
     justify-content: center;
+    height: 50px;
 	}
 	.mat-form-field {
 		margin-bottom: 50px;
+		width: 100%;
 	}
 
 	/*Input start*/
@@ -1139,7 +1146,8 @@ body {
 	    align-items: center;
 	    margin-bottom: 20px;
       justify-content: space-between;
-			border-bottom: 2px solid;
+			border-bottom: 2px solid #ccc;
+			padding: 10px 0;
 	    div {
   	    display: flex;
 		    align-items: center;
@@ -1168,6 +1176,9 @@ body {
 		}
 	}
 }
+.creat-new[disabled] {
+	cursor: not-allowed;
+}
 
 
 				/*Admin page end*/
@@ -1195,6 +1206,7 @@ body {
 		.mat-tab-labels {
 	    justify-content: center;
       align-items: center;
+      height: 25px;
 	    .mat-tab-label {
 	    	width: 18px;
 		    height: 18px;
@@ -1318,6 +1330,7 @@ body {
 .phrases {
 	.mat-tab-group {
 		.mat-tab-labels {
+			height: 25px;
 			.mat-tab-label {
 		    &:hover {
 		    	transition: .3s;
