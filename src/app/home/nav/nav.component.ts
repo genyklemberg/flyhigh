@@ -34,8 +34,8 @@ export class NavComponent implements OnInit {
 
   window.addEventListener('scroll', function(){ 
       //Here you forgot to update the value
-      scrollpos = window.scrollY;
-      header = document.getElementById("header");
+      var scrollpos = window.scrollY;
+      var header = document.getElementById("header");
 
       if(scrollpos > 10){
         header.classList.add("white-bg");
