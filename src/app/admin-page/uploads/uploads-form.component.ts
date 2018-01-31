@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import {Upload} from './upload';
-import {UploadsService} from './uploads.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'fh-uploads-form',
@@ -10,34 +8,19 @@ import {UploadsService} from './uploads.service';
 export class UploadsFormComponent {
 
   selectedFiles: FileList | null;
-  currentUpload: Upload;
+  @Input() showMulti = true;
+  @Input() currentUpload: number;
+  @Output() newFiles: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private upSvc: UploadsService) { }
+  constructor() { }
 
   detectFiles($event: Event) {
     this.selectedFiles = ($event.target as HTMLInputElement).files;
+    this.passFiles();
   }
 
-  uploadSingle() {
+  passFiles() {
     const file = this.selectedFiles;
-    if (file && file.length === 1) {
-      this.currentUpload = new Upload(file.item(0));
-      this.upSvc.pushUpload(this.currentUpload);
-    } else {
-      console.error('No file found!');
-    }
-  }
-
-  uploadMulti() {
-    const files = this.selectedFiles;
-    if (!files || files.length === 0) {
-      console.error('No Multi Files found!');
-      return;
-    }
-
-    Array.from(files).forEach((file) => {
-      this.currentUpload = new Upload(file);
-      this.upSvc.pushUpload(this.currentUpload);
-    });
+    this.newFiles.emit(file);
   }
 }

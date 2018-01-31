@@ -75,13 +75,14 @@ export class ProductService {
   /**
    * Item form
    */
-  itForm(title: string, body: string, item_id: string) {
+  itForm(title: string, body: string, item_id: string, images) {
     const path = `products/items/`;
     const userRef: AngularFireList<any> = this.db.list(path);
     const data = {
       title: title,
       body: body,
-      item_id: item_id
+      item_id: item_id,
+      images: images
     };
 
     Promise.resolve(userRef.push(data)).then(() => {
