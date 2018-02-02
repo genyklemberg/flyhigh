@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList, AngularFireObject, DatabaseQuery} from 'angularfire2/database';
 import {IArticle} from './article';
 import {Observable} from 'rxjs/Observable';
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class BlogService {
@@ -17,17 +17,16 @@ export class BlogService {
   /**
    * Article form
    */
-  articleForm(title: string, body: string, type: string, img: string, img_name: string) {
+  articleForm(title: string, type: string, text: any, img: string, img_name: string) {
     const path = `/blog`;
     const userRef: AngularFireList<any> = this.db.list(path);
     const data = {
       title: title,
-      body: body,
       type: type,
+      text: text,
       img: img,
       img_name: img_name
     };
-
     console.log('blog data:', data);
     Promise.resolve(userRef.push(data)).then(() => {
       this.snackBar.open(`Successfully added article ${title}`, 'Ok', {

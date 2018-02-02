@@ -9,7 +9,11 @@
 						 [formGroup]='categoryForm'>
 
 						<div class="col-md-4 offset-md-4 load-img-wrap">
-							<button class="upload-img">Load img</button>
+              <fh-uploads-form
+                [showMulti]='false'
+                [currentUpload]='currentUpload'
+                (newFiles)='imageFile($event)'
+              ></fh-uploads-form>
 						</div>
 
 						<div class="tab-wrapper col-md-12">
@@ -51,7 +55,11 @@
 						 [formGroup]='subCategoryForm'>
 
 						<div class="col-md-4 offset-md-4 load-img-wrap">
-							<button class="upload-img">Load img</button>
+              <fh-uploads-form
+                [showMulti]='false'
+                [currentUpload]='currentUpload'
+                (newFiles)='imageFile($event)'
+              ></fh-uploads-form>
 						</div>
 
 						<div class="tab-wrapper col-md-12">
@@ -116,8 +124,9 @@
 						 [formGroup]='itemsForm'>
 
 						<div class="col-md-4 offset-md-4 load-img-wrap">
-              <fh-uploads-form [currentUpload]='currentUpload'
-                               (newFiles)='imageFile($event)'
+              <fh-uploads-form
+                [currentUpload]='currentUpload'
+                (newFiles)='imageFile($event)'
               ></fh-uploads-form>
 						</div>
 
@@ -204,11 +213,25 @@
 						<div class="tab-wrapper col-md-12">
 
 							<div class="col-md-4">
-								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Add Article body"
-										   value=""
-										   formControlName='body'>
-								</mat-form-field>
+                <div><a (click)="addP()"> Add</a></div>
+                <div formArrayName="text">
+                  <div *ngFor="let p of blogForm.controls.text.controls; let i=index">
+                    <div>
+                      <span>Link {{i + 1}}</span>
+                      <span *ngIf="blogForm.controls.text.controls.length > 1"><a (click)="removeP(i)">REMOVE</a></span>
+                    </div>
+
+                    <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                    <div [formGroupName]="i">
+                      <input type="text" placeholder="Enter Paragraph" formControlName="paragraph">
+                    </div>
+                  </div>
+                </div>
+								<!--<mat-form-field class="example-full-width">-->
+									<!--<input matInput placeholder="Add Article body"-->
+										   <!--value=""-->
+										   <!--formControlName='body'>-->
+								<!--</mat-form-field>-->
 							</div>
 							<div class="col-md-4">
 								<mat-form-field class="example-full-width">
@@ -229,7 +252,7 @@
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='addArticle()'
-									[disabled]="!(blogForm.valid && imageFiles)">Add Article</button>
+									[disabled]="!blogForm.valid || !imageFiles">Add Article</button>
 						</div>
 					</div>
 

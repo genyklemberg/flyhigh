@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormBuilder, FormArray} from '@angular/forms';
 import { ProductService } from '../products/product.service';
 import { BlogService } from '../blog/blog.service';
 import { Router } from '@angular/router';
@@ -30,7 +30,8 @@ export class AdminPageComponent implements OnInit {
   constructor(private productService: ProductService,
               private blogService: BlogService,
               private upSvc: UploadsService,
-              private db: AngularFireDatabase) {
+              private db: AngularFireDatabase,
+              private formBuilder: FormBuilder) {
     this.categories = productService.getCategoryList();
     this.subcategories = productService.getSubCategoryList();
     this.items = productService.getProductsList();
@@ -56,12 +57,34 @@ export class AdminPageComponent implements OnInit {
       'item_id': new FormControl('', Validators.required)
     });
 
-    this.blogForm = new FormGroup({
-      'body': new FormControl('', Validators.required),
-      'title': new FormControl('', Validators.required),
-      'type': new FormControl('', Validators.required)
+    this.blogForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      type: ['', Validators.required],
+      text: this.formBuilder.array([
+        this._initP(),
+      ])
     });
+    // this.blogForm = new FormGroup({
+    //   'body': new FormControl('', Validators.required),
+    //   'title': new FormControl('', Validators.required),
+    //   'type': new FormControl('', Validators.required),
+    //   'text': new FormArray(this._initP())
+    // });
+  }
 
+  private _initP(): any {
+    return new FormGroup({
+      'paragraph': new FormControl('')
+    });
+  }
+
+  addP() {
+    const control = < FormArray > this.blogForm.controls['text'];
+    control.push(this._initP());
+  }
+  removeP(i: number) {
+    const control = < FormArray > this.blogForm.controls['text'];
+    control.removeAt(i);
   }
 
   imageFile(event) {
@@ -70,6 +93,7 @@ export class AdminPageComponent implements OnInit {
 
   singleImgUpload(): any {
     const file = this.imageFiles;
+    this.imageFiles = null;
     if (file && file.length === 1) {
       this.currentUpload = new Upload(file.item(0));
       return Promise.resolve(this.upSvc.pushUpload(this.currentUpload)).then((res) => {
@@ -82,6 +106,7 @@ export class AdminPageComponent implements OnInit {
 
   multiImgUpload(): any {
     const files = this.imageFiles;
+    this.imageFiles = null;
     const storedResults = [];
     const that = this;
     if (!files || files.length === 0) {
@@ -144,12 +169,13 @@ export class AdminPageComponent implements OnInit {
   }
 
   addArticle() {
+    console.log(this.blogForm.valid);
     return Promise.resolve(this.singleImgUpload()).then((res) => {
       console.log(res);
       this.blogService.articleForm(
         this.blogForm.value['title'],
-        this.blogForm.value['body'],
         this.blogForm.value['type'],
+        this.blogForm.value['text'],
         res.url,
         res.name
       );
