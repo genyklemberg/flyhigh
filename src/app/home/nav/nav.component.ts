@@ -23,17 +23,10 @@ export class NavComponent implements OnInit {
     this.scrollService.triggerScrollTo(target);
   }
 
-  // toggleNav() {
-  //   this.mobileNav=true;
-  // }
-
-    //use window.scrollY
   var scrollpos = window.scrollY;
   var header = document.getElementById("header");
 
-
   window.addEventListener('scroll', function(){ 
-      //Here you forgot to update the value
       var scrollpos = window.scrollY;
       var header = document.getElementById("header");
 
@@ -42,11 +35,12 @@ export class NavComponent implements OnInit {
         console.log('scroll to bottom');
       }
       else {
-        header.classList.remove("white-bg")
+        header.classList.remove("white-bg");
         console.log('top of page');
       }
       console.log(scrollpos);
   });
 
-};
+
+}
 

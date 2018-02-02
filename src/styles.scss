@@ -605,6 +605,8 @@ body {
 	}
 }
 
+
+
 @media (max-width: 1024px) {
 	#contacts {
 		.contact-info {
@@ -1204,13 +1206,13 @@ body {
       align-items: center;
       height: 25px;
 	    .mat-tab-label {
-	    	width: 18px;
-		    height: 18px;
+	    	width: 19px;
+		    height: 19px;
 		    border-radius: 0;
 		    background: transparent;
 		    border: 1px solid;
-        min-width: 18px;
-		    min-height: 18px;
+        min-width: 19px;
+		    min-height: 19px;
 		    padding: 0;
 		    margin: 0 5px;
 		    position: relative;
@@ -1397,7 +1399,22 @@ body {
 	.cdk-overlay-backdrop {
 		display: none;
 	}
-	#cdk-overlay-0 {
+	.cdk-overlay-pane {
+    // left: 0 !important;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+    // top: 0 !important;
+    bottom: 0;
+    height: 100vh;
+    z-index: 999;
+	}
+
+	
+	.mat-menu-panel {
+    min-width: 120%;
+    min-height: 102vh;
+    background: rgba(0,0,0, .9);
     z-index: 10;
     left: 0 !important;
     width: 100%;
@@ -1407,11 +1424,7 @@ body {
     bottom: 0;
     height: 100vh;
     z-index: 999;
-	}
-	.mat-menu-panel {
-    min-width: 100%;
-    min-height: 100vh;
-    background: rgba(0,0,0, .9);
+    margin-top: -20px;
 	}
 	.mat-menu-content {
     width: 100%;
@@ -1427,6 +1440,7 @@ body {
 		}
 	}
 	.mat-menu-item {
+		padding: 0;
 		li {
 			list-style-type: none;
 			a {
@@ -1464,4 +1478,35 @@ body {
 	}
 }
 
+@media(max-width: 600px) {
+	.cdk-overlay-container {
+		.mat-menu-panel {
+	    min-width: 115%;
+		}
+	}
+}
+@media(min-width: 601px) and (max-width: 767px) {
+	.cdk-overlay-container {
+		.mat-menu-panel {
+	    min-width: 115%;
+		}
+		.mat-menu-content {
+			.mat-menu-item {
+				margin-left: 100px;
+			}
+		}
+	}
+}
+
+
 				/*Nav menu whis mat-menu end*/
+
+
+.mat-snack-bar-container {
+	bottom: 0 !important;
+	position: absolute;
+	left: 0 !important;
+	right: 0 !important;
+	z-index: 9999999999999;
+	min-width: 100%;
+}
