@@ -11,12 +11,22 @@ import {ViewEncapsulation} from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  mobileNav=false;
-
   constructor(public router: Router,
               private scrollService: ScrollService) { }
 
   ngOnInit() {
+
+    window.addEventListener('scroll', function() {
+      // //Here you forgot to update the value
+      const scrollpos = window.scrollY;
+      const header = document.getElementById('header');
+
+      if (scrollpos > 10) {
+        header.classList.add('white-bg');
+      } else {
+        header.classList.remove('white-bg');
+      }
+    });
   }
 
   scrollTo(target) {
@@ -41,4 +51,3 @@ export class NavComponent implements OnInit {
       console.log(scrollpos);
   });
 }
-

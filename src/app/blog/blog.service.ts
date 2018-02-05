@@ -2,21 +2,12 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList, AngularFireObject, DatabaseQuery} from 'angularfire2/database';
 import {IArticle} from './article';
 import {Observable} from 'rxjs/Observable';
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class BlogService {
   blogRef;
   Date = new Date().getTime();
-  data: IArticle = {
-    title: 'Ten things about Photography',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus orci a purus lacinia consectetur. Vestibulum rutrum ex in odio placerat dictum. Morbi sit amet tortor mollis, tincidunt magna a, iaculis nisl. Cras varius odio a arcu rutrum, nec posuere lacus imperdiet. Proin iaculis, nibh eleifend elementum pulvinar, erat nisl consequat quam, ac ornare est sem nec libero. Fusce ac sagittis quam. Phasellus mattis, nunc a venenatis laoreet, est ipsum consectetur turpis, in ullam corper urna tortor eu purus.' +
-  'Quisque cursus risus id ante fermentum, in auctor quam consectetur. Vestibulum est nisi, tempus ac vehicula sit amet, blandit et sapien. Ut congue dui enim, at viverra nisl tempor a. Donec in enim nec massa lacinia porta. Nullam lobortis, enim aliquam congue bibendum, libero turpis tincidunt enim, vel dapibus justo lectus et risus. Proin eget mi a tortor laoreet dictum.',
-    img: 'assets/images/post-9-mid.jpg',
-    type: 'услуги',
-    timeStamp: this.Date
-  };
-
 
   constructor(private db: AngularFireDatabase,
               public snackBar: MatSnackBar) {
@@ -26,16 +17,16 @@ export class BlogService {
   /**
    * Article form
    */
-  articleForm(title: string, body: string, type: string, img: string) {
+  articleForm(title: string, type: string, text: any, img: string, img_name: string) {
     const path = `/blog`;
     const userRef: AngularFireList<any> = this.db.list(path);
     const data = {
       title: title,
-      body: body,
       type: type,
-      img: img
+      text: text,
+      img: img,
+      img_name: img_name
     };
-
     console.log('blog data:', data);
     Promise.resolve(userRef.push(data)).then(() => {
       this.snackBar.open(`Successfully added article ${title}`, 'Ok', {

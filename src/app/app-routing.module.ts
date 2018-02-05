@@ -9,6 +9,7 @@ import {ItemComponent} from './products/item/item.component';
 import {ServicesComponent} from './services/services.component';
 import { SuccesComponent } from './home/succes.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import {AdminPageGuard} from './admin-page.guard';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'article/:id', component: ArticleComponent},
   {path: 'service/:type', component: ServicesComponent},
   {path: 'success', component: SuccesComponent},
+  // {path: 'admin', canActivate: [AdminPageGuard], component: AdminPageComponent},
   {path: 'admin', component: AdminPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
