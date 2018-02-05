@@ -1,13 +1,13 @@
 <div class="box">
   <div *ngIf='!showMulti'>
-    <h3>Single File Upload</h3>
+    <h3>Загрузить изображение</h3>
 
     <label>
       <input type="file" class="button" (change)="detectFiles($event)">
     </label>
   </div>
   <div *ngIf='showMulti'>
-    <h3>Multiple File Upload</h3>
+    <h3>Загрузка нескольких файлов</h3>
     <label>
       <input type="file" class="button" (change)="detectFiles($event)" multiple>
     </label>

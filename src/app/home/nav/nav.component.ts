@@ -33,5 +33,21 @@ export class NavComponent implements OnInit {
     this.scrollService.triggerScrollTo(target);
   }
 
-}
+  var scrollpos = window.scrollY;
+  var header = document.getElementById("header");
 
+  window.addEventListener('scroll', function(){ 
+      var scrollpos = window.scrollY;
+      var header = document.getElementById("header");
+
+      if(scrollpos > 10){
+        header.classList.add("white-bg");
+        console.log('scroll to bottom');
+      }
+      else {
+        header.classList.remove("white-bg");
+        console.log('top of page');
+      }
+      console.log(scrollpos);
+  });
+}
