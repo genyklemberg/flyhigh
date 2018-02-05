@@ -1258,13 +1258,16 @@ body {
 		}
 		textarea {
 	    width: 75%;
-	    min-height: 150px;
 	    overflow: hidden;
+	    background: transparent;
+		  border: none;
+		  border-bottom: 1px solid;
+		  border-bottom-color: rgba(0,0,0,.42);
 		}
 		.add-wrap {
 			position: absolute;
 	    right: 50px;
-	    top: 75px;
+	    top: 50px;
 		}
 		.box {
 			margin-bottom: 50px;

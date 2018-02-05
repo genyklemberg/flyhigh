@@ -202,13 +202,15 @@
                    <div>
                      <span>Параграф №{{i + 1}}</span>
                    </div>
-
+						
+										
                    <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
                    <div class="blog-description" [formGroupName]="i">
-                     <textarea type="text" placeholder="Описание" formControlName="paragraph"></textarea>
+                     <textarea class="col-md-8" type="text" placeholder="Описание" formControlName="paragraph"></textarea>
                      <span class="remove" *ngIf="(blogForm.get('text')['controls'].length > 1) && (i != 0)"><a (click)="removeP(i)">УДАЛИТЬ</a></span>
                    </div>
                  </div>
+                 
                </div>
               </div>
 
