@@ -39,7 +39,6 @@ import {MatSnackBarModule} from '@angular/material';
 import { UploadsFormComponent } from './admin-page/uploads/uploads-form.component';
 import {UploadsService} from './admin-page/uploads/uploads.service';
 import {AdminPageGuard} from './admin-page.guard';
-import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -59,8 +58,7 @@ import { CategoryFilterPipe } from './pipes/category-filter.pipe';
     SuccesComponent,
     AdminPageComponent,
     LoadingSpinnerComponent,
-    UploadsFormComponent,
-    CategoryFilterPipe
+    UploadsFormComponent
   ],
   imports: [
     BrowserModule,

@@ -65,17 +65,7 @@ export class ProductService {
       img_name: img_name
     };
 
-    Promise.resolve(subRef.push(data)).then(res => {
-      // const pathForCategory = `products/category/${category}/subcategories/${res.key}`;
-      // const catRef: AngularFireObject<any> = this.db.object(pathForCategory);
-      // return catRef.set(data);
-      const pathForCategory = `products/category/${category}/subcategories`;
-      const catRef: AngularFireList<any> = this.db.list(pathForCategory);
-      return catRef.update(res.key, {
-        img: img,
-        img_name: img_name
-      });
-    }).then(() => {
+    Promise.resolve(subRef.push(data)).then(() => {
       this.snackBar.open(`Successfully added subcategory ${body} to ${category} category with title: ${title}`, 'Ok', {
         duration: 4000
       });

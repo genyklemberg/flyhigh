@@ -108,7 +108,23 @@
 
           <div *ngFor='let category of categories | async'>
             <h3>{{ category.title }}</h3>
+
+            <div *ngFor='let sub of subcategories | async'>
+              <div class="products-list" *ngIf='sub.category === category.$key'>
+                <div class="col-md-12">
+                  <div class="product-list-item">
+                    <div>
+                      <img [src]='sub.img' [alt]='sub.title'>
+                      <p>{{sub.title}}</p>
+                    </div>
+                    <button (click)="deleteSubcategory(sub.$key, sub.img_name)">Удалить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
 				</mat-tab>
 				<!--Tab #2 END -->
 
