@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { IProduct } from './product';
 import { ICategory } from './category';
 import { ISubCategory } from './subcategory';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
+import {FirebaseObjectObservable} from 'angularfire2/database-deprecated';
 
 @Injectable()
 export class ProductService {
@@ -26,13 +27,15 @@ export class ProductService {
   /**
    * category form start
    */
-  newForm(title: string, img: string) {
+  categoryForm(title: string, img: string, img_name: string) {
     const path = `products/category/`; // Endpoint on firebase
-    const userRef: AngularFireList<any> = this.db.list(path);
+    const categoryRef: AngularFireList<any> = this.db.list(path);
     const data = {
-      title: title
+      title: title,
+      img: img,
+      img_name: img_name
     };
-    Promise.resolve(userRef.push(data)).then(() => {
+    Promise.resolve(categoryRef.push(data)).then(() => {
       this.snackBar.open('Successfully created category', 'Ok', {
         duration: 4000
       });
@@ -41,9 +44,9 @@ export class ProductService {
     }));
   }
 
-  private _handleError(error) {
-    return Promise.reject(error.message ? error.message : error.toString());
-  }
+  // private _handleError(error) {
+  //   return Promise.reject(error.message ? error.message : error.toString());
+  // }
   /**
    * category form end
    */
@@ -51,16 +54,28 @@ export class ProductService {
   /**
    * subCategory form
    */
-  subForm(category: string, body: string, title: string) {
+  subForm(category: string, body: string, title: string, img: string, img_name: string) {
     const path = `products/subcategory/`;
-    const userRef: AngularFireList<any> = this.db.list(path);
+    const subRef: AngularFireList<any> = this.db.list(path);
     const data = {
       category: category,
       body: body,
-      title: title
+      title: title,
+      img: img,
+      img_name: img_name
     };
 
-    Promise.resolve(userRef.push(data)).then(() => {
+    Promise.resolve(subRef.push(data)).then(res => {
+      // const pathForCategory = `products/category/${category}/subcategories/${res.key}`;
+      // const catRef: AngularFireObject<any> = this.db.object(pathForCategory);
+      // return catRef.set(data);
+      const pathForCategory = `products/category/${category}/subcategories`;
+      const catRef: AngularFireList<any> = this.db.list(pathForCategory);
+      return catRef.update(res.key, {
+        img: img,
+        img_name: img_name
+      });
+    }).then(() => {
       this.snackBar.open(`Successfully added subcategory ${body} to ${category} category with title: ${title}`, 'Ok', {
         duration: 4000
       });
@@ -77,7 +92,7 @@ export class ProductService {
    */
   itForm(title: string, body: string, item_id: string, images) {
     const path = `products/items/`;
-    const userRef: AngularFireList<any> = this.db.list(path);
+    const itemRef: AngularFireList<any> = this.db.list(path);
     const data = {
       title: title,
       body: body,
@@ -85,7 +100,7 @@ export class ProductService {
       images: images
     };
 
-    Promise.resolve(userRef.push(data)).then(() => {
+    Promise.resolve(itemRef.push(data)).then(() => {
       this.snackBar.open(`Successfully added item ${title} with description ${body} and code ${item_id}`, 'Ok', {
         duration: 4000
       });

@@ -64,12 +64,6 @@ export class AdminPageComponent implements OnInit {
         this._initP(),
       ])
     });
-    // this.blogForm = new FormGroup({
-    //   'body': new FormControl('', Validators.required),
-    //   'title': new FormControl('', Validators.required),
-    //   'type': new FormControl('', Validators.required),
-    //   'text': new FormArray(this._initP())
-    // });
   }
 
   private _initP(): any {
@@ -133,24 +127,24 @@ export class AdminPageComponent implements OnInit {
   }
 
   createNewCategory() {
-    if(this.categoryForm.value.title.length === 0) {
-      return false;
-    }
-    const promise = new Promise((resolve, reject) => {
-      this.productService.newForm(
-          this.categoryForm.value['title'],
-          this.categoryForm.value['img']
+    return Promise.resolve(this.singleImgUpload()).then((res) => {
+      this.productService.categoryForm(
+        this.categoryForm.value['title'],
+        res.url,
+        res.name
       );
       this.categoryForm.reset();
     });
   }
 
   addSubCategory() {
-    const promise = new Promise((resolve, reject) => {
+    return Promise.resolve(this.singleImgUpload()).then((res) => {
       this.productService.subForm(
-          this.subCategoryForm.value['category'],
-          this.subCategoryForm.value['body'],
-          this.subCategoryForm.value['title']
+        this.subCategoryForm.value['category'],
+        this.subCategoryForm.value['body'],
+        this.subCategoryForm.value['title'],
+        res.url,
+        res.name
       );
       this.subCategoryForm.reset();
     });
@@ -169,9 +163,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   addArticle() {
-    console.log(this.blogForm.valid);
     return Promise.resolve(this.singleImgUpload()).then((res) => {
-      console.log(res);
       this.blogService.articleForm(
         this.blogForm.value['title'],
         this.blogForm.value['type'],

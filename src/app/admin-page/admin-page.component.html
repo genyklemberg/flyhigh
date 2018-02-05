@@ -39,10 +39,10 @@
 						<div class="col-md-12">
 							<div class="product-list-item">
 								<div>
-									<img [src]='category?.img' [alt]='category?.title'>
-									<p>{{category?.title}}</p>
+									<img [src]='category.img' [alt]='category.title'>
+									<p>{{category.title}}</p>
 								</div>
-								<button (click)="deleteCategory(category?.$key)">Delete</button>
+								<button (click)="deleteCategory(category.$key, category.img_name)">Delete</button>
 							</div>
 						</div>
 					</div>
@@ -101,19 +101,6 @@
 
           <div *ngFor='let category of categories | async'>
             <h3>{{ category.title }}</h3>
-
-            <!--<div class="products-list"-->
-                 <!--*ngFor='let sub of category.subcategory'>-->
-              <!--<div class="col-md-12">-->
-                <!--<div class="product-list-item">-->
-                  <!--<div>-->
-                    <!--<img [src]='sub?.img' [alt]='sub?.title'>-->
-                    <!--<p>{{sub?.title}}</p>-->
-                  <!--</div>-->
-                  <!--<button (click)="deleteCategory(sub?.$key)">Delete</button>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
           </div>
 				</mat-tab>
 				<!--Tab #2 END -->
@@ -215,23 +202,20 @@
 							<div class="col-md-4">
                 <div><a (click)="addP()"> Add</a></div>
                 <div formArrayName="text">
-                  <div *ngFor="let p of blogForm.controls.text.controls; let i=index">
+                  <!--<div *ngFor="let p of blogForm.controls.text.controls; let i=index">-->
+                  <div *ngFor="let p of blogForm.get('text')['controls']; let i=index">
                     <div>
-                      <span>Link {{i + 1}}</span>
-                      <span *ngIf="blogForm.controls.text.controls.length > 1"><a (click)="removeP(i)">REMOVE</a></span>
+                      <span>Параграф №{{i + 1}}</span>
+                      <!--<span *ngIf="blogForm.controls.text.controls.length > 1"><a (click)="removeP(i)">REMOVE</a></span>-->
+                      <span *ngIf="(blogForm.get('text')['controls'].length > 1) && (i != 0)"><a (click)="removeP(i)">REMOVE</a></span>
                     </div>
 
                     <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
                     <div [formGroupName]="i">
-                      <input type="text" placeholder="Enter Paragraph" formControlName="paragraph">
+                      <textarea type="text" placeholder="Enter Paragraph" formControlName="paragraph"></textarea>
                     </div>
                   </div>
                 </div>
-								<!--<mat-form-field class="example-full-width">-->
-									<!--<input matInput placeholder="Add Article body"-->
-										   <!--value=""-->
-										   <!--formControlName='body'>-->
-								<!--</mat-form-field>-->
 							</div>
 							<div class="col-md-4">
 								<mat-form-field class="example-full-width">
