@@ -1251,13 +1251,15 @@ body {
 	    border-radius: 5px;
 	    transition: all .3s;
 	    font-size: 18px;
+	    margin-left: 35px;
+	    width: 130px;
 	    &:hover {
 	    	transition: all .3s;
 		    background: #b93131;
 	    }
 		}
 		textarea {
-	    width: 75%;
+      width: calc(100% - 200px);
 	    overflow: hidden;
 	    background: transparent;
 		  border: none;
