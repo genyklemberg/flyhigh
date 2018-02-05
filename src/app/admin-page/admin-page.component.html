@@ -3,24 +3,32 @@
 		<div class="row">
 			<mat-tab-group>
 				<!--Tab #1 START-->
-				<mat-tab label="Сategories">
+				<mat-tab label="Категории">
 
 					<div class="products-create-wrap"
 						 [formGroup]='categoryForm'>
 
-						<div class="col-md-4 offset-md-4 load-img-wrap">
-              <fh-uploads-form
-                [showMulti]='false'
-                [currentUpload]='currentUpload'
-                (newFiles)='imageFile($event)'
-              ></fh-uploads-form>
-						</div>
-
 						<div class="tab-wrapper col-md-12">
 
-							<div class="col-md-4 offset-md-4">
+							<div class="col-md-4">
+								<mat-form-field>
+									<input matInput placeholder="Название категории"
+										   value=""
+										   formControlName='title'>
+								</mat-form-field>
+							</div>
+
+							<div class="col-md-4 load-img-wrap">
+	              <fh-uploads-form
+	                [showMulti]='false'
+	                [currentUpload]='currentUpload'
+	                (newFiles)='imageFile($event)'
+	              ></fh-uploads-form>
+							</div>
+
+							<div class="col-md-4">
 								<mat-form-field class="textarea-field">
-							    <textarea matInput placeholder="Create new category"
+							    <textarea matInput placeholder="Описание"
 										  formControlName='title'></textarea>
 								</mat-form-field>
 							</div>
@@ -29,7 +37,7 @@
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='createNewCategory()'
-									[disabled]="!categoryForm.valid">Create new</button>
+									[disabled]="!categoryForm.valid">Создать</button>
 						</div>
 
 					</div>
@@ -42,7 +50,7 @@
 									<img [src]='category.img' [alt]='category.title'>
 									<p>{{category.title}}</p>
 								</div>
-								<button (click)="deleteCategory(category.$key, category.img_name)">Delete</button>
+								<button (click)="deleteCategory(category?.$key, category.img_name)">Удалить</button>
 							</div>
 						</div>
 					</div>
@@ -50,7 +58,7 @@
 				<!--Tab #1 END -->
 
 				<!--Tab #2 START-->
-				<mat-tab label="Subcategories">
+				<mat-tab label="Субкатегории">
 					<div class="products-create-wrap"
 						 [formGroup]='subCategoryForm'>
 
@@ -66,7 +74,7 @@
 
 							<div class="col-md-4">
 								<mat-form-field>
-									<mat-select placeholder="Select Category"
+									<mat-select placeholder="Выбрать категорию"
                     formControlName='category'>
 										<mat-option *ngFor='let category of categories | async'
 													[value]="category.$key">{{category.title}}
@@ -76,17 +84,16 @@
 							</div>
 
 							<div class="col-md-4">
-								<mat-form-field class="textarea-field">
-									<textarea matInput placeholder="Add subcategory to category"
-											  formControlName='body'></textarea>
+								<mat-form-field class="example-full-width">
+									<input matInput placeholder="Название субкатегории"
+										   value=""
+										   formControlName='title'>
 								</mat-form-field>
 							</div>
 
 							<div class="col-md-4">
-								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Add title"
-										   value=""
-										   formControlName='title'>
+								<mat-form-field class="textarea-field">
+									<textarea matInput placeholder="Описание" formControlName='body'></textarea>
 								</mat-form-field>
 							</div>
 
@@ -95,7 +102,7 @@
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='addSubCategory()'
-									[disabled]="!subCategoryForm.valid">Add SubCategory</button>
+									[disabled]="!subCategoryForm.valid">Создать</button>
 						</div>
 					</div>
 
@@ -106,7 +113,7 @@
 				<!--Tab #2 END -->
 
 				<!--Tab #3 START-->
-				<mat-tab label="Products">
+				<mat-tab label="Продукты">
 					<div class="products-create-wrap"
 						 [formGroup]='itemsForm'>
 
@@ -121,18 +128,15 @@
 
 							<div class="col-md-6">
 								<mat-form-field>
-                  <mat-select  placeholder="Select Subcategory" formControlName='subcategory'>
-                    <mat-option *ngFor='let sub of subcategories | async'
-                                [value]="sub.$key">{{sub.title}}
+                  <mat-select  placeholder="Выбрать субкатегорию" formControlName='subcategory'>
+                    <mat-option *ngFor='let sub of subcategories | async' [value]="sub.$key">{{sub.title}}
                     </mat-option>
                   </mat-select>
 								</mat-form-field>
 							</div>
 							<div class="col-md-6">
 								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Add item Name"
-										   value=""
-										   formControlName='title'>
+									<input matInput placeholder="Название продукта" value="" formControlName='title'>
 								</mat-form-field>
 							</div>
 
@@ -141,15 +145,12 @@
 
 							<div class="col-md-6">
 								<mat-form-field class="textarea-field">
-									<textarea matInput placeholder="Add description"
-											  formControlName='body'></textarea>
+									<textarea matInput placeholder="Описание" formControlName='body'></textarea>
 								</mat-form-field>
 							</div>
 							<div class="col-md-6">
 								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Add item Code"
-										   value=""
-										   formControlName='item_id'>
+									<input matInput placeholder="Код продукта"value="" formControlName='item_id'>
 								</mat-form-field>
 							</div>
 
@@ -158,7 +159,7 @@
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='createItems()'
-									>Create new Item</button>
+									>Создать</button>
               <!--[disabled]="!itemsForm.valid"-->
 						</div>
 					</div>
@@ -175,7 +176,7 @@
                     <p>{{i?.title}}</p>
                     <p>{{i?.item_id}}</p>
                   </div>
-                  <button (click)="deleteItem(i?.$key)">Delete</button>
+                  <button (click)="deleteItem(i?.$key)">Удалить</button>
                 </div>
               </div>
             </div>
@@ -186,57 +187,57 @@
 				<!--Tab #3 END-->
 
 				<!--Tab #4 START-->
-				<mat-tab label="Articles">
-					<div class="products-create-wrap"
+				<mat-tab label="Блог">
+					<div class="products-create-wrap blog"
 						 [formGroup]='blogForm'>
 
-						<div class="col-md-4 offset-md-4 load-img-wrap">
-              <fh-uploads-form [showMulti]='false'
-                               [currentUpload]='currentUpload'
-                               (newFiles)='imageFile($event)'
-              ></fh-uploads-form>
-						</div>
 
 						<div class="tab-wrapper col-md-12">
 
-							<div class="col-md-4">
-                <div><a (click)="addP()"> Add</a></div>
-                <div formArrayName="text">
-                  <!--<div *ngFor="let p of blogForm.controls.text.controls; let i=index">-->
-                  <div *ngFor="let p of blogForm.get('text')['controls']; let i=index">
-                    <div>
-                      <span>Параграф №{{i + 1}}</span>
-                      <!--<span *ngIf="blogForm.controls.text.controls.length > 1"><a (click)="removeP(i)">REMOVE</a></span>-->
-                      <span *ngIf="(blogForm.get('text')['controls'].length > 1) && (i != 0)"><a (click)="removeP(i)">REMOVE</a></span>
-                    </div>
+							<div class="col-md-8">
+               <div class="add-wrap"><a class="add" (click)="addP()">Добавить</a></div>
+               <div formArrayName="text">
+                 <!--<div *ngFor="let p of blogForm.controls.text.controls; let i=index">-->
+                 <div *ngFor="let p of blogForm.get('text')['controls']; let i=index">
+                   <div>
+                     <span>Параграф №{{i + 1}}</span>
+                   </div>
 
-                    <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
-                    <div [formGroupName]="i">
-                      <textarea type="text" placeholder="Enter Paragraph" formControlName="paragraph"></textarea>
-                    </div>
-                  </div>
-                </div>
-							</div>
+                   <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                   <div class="blog-description" [formGroupName]="i">
+                     <textarea type="text" placeholder="Описание" formControlName="paragraph"></textarea>
+                     <span class="remove" *ngIf="(blogForm.get('text')['controls'].length > 1) && (i != 0)"><a (click)="removeP(i)">УДАЛИТЬ</a></span>
+                   </div>
+                 </div>
+               </div>
+              </div>
+
 							<div class="col-md-4">
+
+								<fh-uploads-form [showMulti]='false'
+                               [currentUpload]='currentUpload'
+                               (newFiles)='imageFile($event)'>
+                </fh-uploads-form>
+
 								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Add Article title"
+									<input matInput placeholder="Название статтьи"
 										   value=""
 										   formControlName='title'>
 								</mat-form-field>
-							</div>
-							<div class="col-md-4">
+
 								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Add Article type"
+									<input matInput placeholder="Рубрика"
 										   value=""
 										   formControlName='type'>
 								</mat-form-field>
 							</div>
+
 						</div>
 
 						<div class="col-md-12 creat-new-wrap">
 							<button class="creat-new"
 									(click)='addArticle()'
-									[disabled]="!blogForm.valid || !imageFiles">Add Article</button>
+									[disabled]="!blogForm.valid || !imageFiles">Создать</button>
 						</div>
 					</div>
 
@@ -246,10 +247,10 @@
 							<div class="product-list-item">
 								<div>
                   <img [src]='art.img' [alt]='art.title'>
+                  <p class="title-of-product">{{art.type}}</p>
 									<p>{{art.title}}</p>
-									<p>{{art.type}}</p>
 								</div>
-								<button (click)="deleteArticle(art.$key, art.img_name)">Delete</button>
+								<button (click)="deleteArticle(art.$key, art.img_name)">Удалить</button>
 							</div>
 						</div>
 					</div>

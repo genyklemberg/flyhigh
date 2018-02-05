@@ -18,10 +18,10 @@ export class NavComponent implements OnInit {
 
     window.addEventListener('scroll', function() {
       // //Here you forgot to update the value
-      const scrollpos = window.scrollY;
+      const scrollPos = window.scrollY;
       const header = document.getElementById('header');
 
-      if (scrollpos > 10) {
+      if (scrollPos > 10) {
         header.classList.add('white-bg');
       } else {
         header.classList.remove('white-bg');
@@ -32,6 +32,4 @@ export class NavComponent implements OnInit {
   scrollTo(target) {
     this.scrollService.triggerScrollTo(target);
   }
-
 }
-
