@@ -76,7 +76,13 @@ export class ItemComponent implements OnInit, OnDestroy{
             <!-- END: Pagination -->`,
   encapsulation: ViewEncapsulation.None,
   styles: [`
-      .mat-dialog-container { background: #fff }
+      .mat-dialog-container { 
+        background: #fff;
+        padding: 75px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
    `]
 })
 export class DialogDataExampleDialog {
