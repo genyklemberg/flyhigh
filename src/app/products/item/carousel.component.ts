@@ -96,4 +96,6 @@ export class CarouselComponent implements AfterViewInit {
     closeDialog() {
       this.dialog.closeAll();
     }
+
+    
 }
