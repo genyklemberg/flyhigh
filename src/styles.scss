@@ -1120,6 +1120,31 @@ body {
 		img {
 			margin-right: 15px;
 		}
+		.overlay-caption {
+			p {
+				color: #fff;
+		    font-size: 20px;
+		    font-weight: bold;
+		    span {
+		    	font-size: 20px;
+		    	font-weight: normal;
+    	    margin-right: 5px;
+		    }
+			}
+			button {
+		    background: red;
+		    color: #fff;
+		    border: 1px solid red;
+		    padding: 5px 25px;
+		    border-radius: 5px;
+		    transition: all .3s;
+		    font-size: 18px;
+		    &:hover {
+    	    transition: all .3s;
+			    background: #b93131;
+		    }
+			}
+		}
 	}
 
   /*Tabs start*/
