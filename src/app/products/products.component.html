@@ -24,21 +24,23 @@
         <div class='row' *ngFor='let sub of subcategories | async'>
           <h3>{{ sub.title }}</h3>
 
-          <div class="col-lg-3 col-md-4 col-sm-6 work" *ngFor='let item of sub.items'>
-            <a [routerLink]='["/item"]' class="work-box"> <img [src]="item.img" [alt]="item.title">
-              <div class="overlay">
-                <div class="overlay-caption">
-                  <p>
-                    {{ item.title }}
-                  </p>
-                  <button class="btn view-btn">
-                    <a [routerLink]='["/item"]'>View</a>
-                  </button>
+          <span *ngFor='let item of items | async'>
+            <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.subcategory === sub.$key'>
+              <a [routerLink]='["/item", item.$key]' class="work-box"> <img [src]="item.images[0].url" [alt]="item.title">
+                <div class="overlay">
+                  <div class="overlay-caption">
+                    <p>
+                      {{ item.title }}
+                    </p>
+                    <button class="btn view-btn">
+                      <a [routerLink]='["/item", item.$key]'>View</a>
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <!-- overlay -->
-            </a>
-          </div>
+                <!-- overlay -->
+              </a>
+            </div>
+          </span>
         </div>
 
       </div>

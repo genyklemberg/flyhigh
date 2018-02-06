@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder, FormArray} from '@angular/forms';
 import { ProductService } from '../products/product.service';
 import { BlogService } from '../blog/blog.service';
-import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {Upload} from './uploads/upload';
 import {UploadsService} from './uploads/uploads.service';
-import {resolve} from 'q';
 
 @Component({
   selector: 'fh-admin-page',
@@ -15,7 +13,7 @@ import {resolve} from 'q';
   styles: [],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminPageComponent implements OnInit {
+export class AdminPageComponent implements OnInit{
   categoryForm: FormGroup;
   subCategoryForm: FormGroup;
   itemsForm: FormGroup;
@@ -26,6 +24,8 @@ export class AdminPageComponent implements OnInit {
   subcategories;
   items;
   article;
+  showSpinner = false;
+  allTypes = 'all';
 
   constructor(private productService: ProductService,
               private blogService: BlogService,
@@ -33,7 +33,7 @@ export class AdminPageComponent implements OnInit {
               private db: AngularFireDatabase,
               private formBuilder: FormBuilder) {
     this.categories = productService.getCategoryList();
-    this.subcategories = productService.getSubCategoryList();
+    this.subcategories = productService.getSubcategoryList();
     this.items = productService.getProductsList();
     this.article = blogService.getBlogList();
   }
@@ -41,12 +41,12 @@ export class AdminPageComponent implements OnInit {
   ngOnInit() {
     this.categoryForm = new FormGroup({
       'title': new FormControl('', Validators.required),
-      'img': new FormControl('')
+      'subtitle': new FormControl('', Validators.required),
+      'body': new FormControl('', Validators.required)
     });
 
     this.subCategoryForm = new FormGroup({
       'category': new FormControl(''),
-      'body': new FormControl('', Validators.required),
       'title': new FormControl('', Validators.required)
     });
 
@@ -66,12 +66,12 @@ export class AdminPageComponent implements OnInit {
     });
   }
 
+  // Blog: add/remove paragraph logic
   private _initP(): any {
     return new FormGroup({
       'paragraph': new FormControl('')
     });
   }
-
   addP() {
     const control = < FormArray > this.blogForm.controls['text'];
     control.push(this._initP());
@@ -81,6 +81,7 @@ export class AdminPageComponent implements OnInit {
     control.removeAt(i);
   }
 
+  // images set and upload logic
   imageFile(event) {
     this.imageFiles = event;
   }
@@ -121,48 +122,55 @@ export class AdminPageComponent implements OnInit {
     const actions = Array.from(files).map(fn);
 
     return Promise.all(actions).then(_ => {
-      console.log(storedResults);
       return storedResults;
     });
   }
 
-  createNewCategory() {
+  // Create functions
+  addCategory() {
+    this.showSpinner = true;
     return Promise.resolve(this.singleImgUpload()).then((res) => {
       this.productService.categoryForm(
         this.categoryForm.value['title'],
+        this.categoryForm.value['subtitle'],
+        this.categoryForm.value['body'],
         res.url,
         res.name
       );
       this.categoryForm.reset();
+      this.showSpinner = false;
     });
   }
 
-  addSubCategory() {
+  addSubcategory() {
+    this.showSpinner = true;
     return Promise.resolve(this.singleImgUpload()).then((res) => {
       this.productService.subForm(
         this.subCategoryForm.value['category'],
-        this.subCategoryForm.value['body'],
-        this.subCategoryForm.value['title'],
-        res.url,
-        res.name
+        this.subCategoryForm.value['title']
       );
       this.subCategoryForm.reset();
+      this.showSpinner = false;
     });
   }
 
-  createItems() {
+  createItem() {
+    this.showSpinner = true;
     return Promise.resolve(this.multiImgUpload()).then((res) => {
       this.productService.itForm(
+        this.itemsForm.value['subcategory'],
         this.itemsForm.value['title'],
         this.itemsForm.value['body'],
         this.itemsForm.value['item_id'],
         res
       );
       this.itemsForm.reset();
+      this.showSpinner = false;
     });
   }
 
   addArticle() {
+    this.showSpinner = true;
     return Promise.resolve(this.singleImgUpload()).then((res) => {
       this.blogService.articleForm(
         this.blogForm.value['title'],
@@ -172,23 +180,26 @@ export class AdminPageComponent implements OnInit {
         res.name
       );
       this.blogForm.reset();
+      this.showSpinner = false;
     });
   }
 
-
+  // delete functions
   deleteCategory(key: string, name: string): void {
     this.db.object(`/products/category/${key}`).remove();
     this.upSvc.deleteFileStorage(name);
   }
 
-  deleteSubcategory(key: string, name: string): void {
+  deleteSubcategory(key: string): void {
     this.db.object(`products/subcategory/${key}`).remove();
-    this.upSvc.deleteFileStorage(name);
   }
 
-  deleteItem(key: string, name: string): void {
+  deleteItems(key: string, names: any): void {
+    const that = this;
     this.db.object(`/products/items/${key}`).remove();
-    this.upSvc.deleteFileStorage(name);
+    names.forEach(function(data) {
+      that.upSvc.deleteFileStorage(data.name);
+    });
   }
 
   deleteArticle(key: string, name: string): void {

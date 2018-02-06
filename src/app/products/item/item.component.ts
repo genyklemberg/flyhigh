@@ -1,5 +1,7 @@
-import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, Inject, ViewEncapsulation, OnDestroy} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {ActivatedRoute} from '@angular/router';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'fh-item',
@@ -9,29 +11,35 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 `]
 })
-export class ItemComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) {}
-
-  openDialog() {
-    let dialogRef = this.dialog.open(DialogDataExampleDialog, {
-      // height: 'auto',
-      // width: '90%',
-      data: {
-        animal: 'panda'
-      }
-    });
-
-  }
+export class ItemComponent implements OnInit, OnDestroy{
+  id;
+  item;
+  showSpinner = true;
+  constructor(private router: ActivatedRoute, private db: AngularFireDatabase ,public dialog: MatDialog) {}
 
   ngOnInit() {
+    this.id = this.router.snapshot.params.id;
+    this.db.object('/products/items/' + this.id).valueChanges().subscribe(data => {
+      this.item = data;
+      this.showSpinner = false;
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogDataExampleDialog, {
+      data: this.item.images
+    });
+  }
+
+  ngOnDestroy(){
+    this.dialog.closeAll();
   }
 
 }
 
 @Component({
   selector: 'dialog-data-example-dialog',
-  template: `<h2 mat-dialog-title>Images List</h2>
+  template: `<h2 mat-dialog-title>Галерея</h2>
             <!-- START: Pagination -->
             <!--<div class="nk-pagination nk-pagination-center">-->
               <!--<div class="container cont-img">-->
@@ -47,11 +55,11 @@ export class ItemComponent implements OnInit {
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12">
-                      <fh-loading-spinner *ngIf='!imagesList'></fh-loading-spinner>
+                      <fh-loading-spinner *ngIf='!images'></fh-loading-spinner>
                       <carousel>
-                        <ng-container *ngFor="let image of imagesList;">
+                        <ng-container *ngFor="let image of images">
                           <ng-container *carouselItem>
-                              <img class="img-center img img-responsive" [src]="image.path">
+                              <img class="img-center img img-responsive" [src]="image.url">
                             <!--<div class="item">{{image.path}}</div>-->
                           </ng-container>
                         </ng-container>
@@ -59,8 +67,7 @@ export class ItemComponent implements OnInit {
                     </div>
                   </div>
                 </div>
-                
-                
+  
                 <!--<a class="nk-pagination-next next" href="#">Next Image -->
                     <!--<span class="pe-7s-angle-right"></span> -->
                 <!--</a>-->
@@ -73,41 +80,15 @@ export class ItemComponent implements OnInit {
    `]
 })
 export class DialogDataExampleDialog {
-  imagesList = [
-    {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-    {path: '../../../../assets/images/old/product_1.jpg', name: 'product 1'},
-    {path: '../../../../assets/images/old/product_2.jpg', name: 'product 2'},
-    {path: '../../../../assets/images/old/product_3.jpg', name: 'product 3'},
-    {path: '../../../../assets/images/old/product_4.jpg', name: 'product 4'},
-    {path: '../../../../assets/images/old/product_5.jpg', name: 'product 5'},
-    {path: '../../../../assets/images/old/product_6.jpg', name: 'product 6'},
-    {path: '../../../../assets/images/old/product_7.jpg', name: 'product 7'},
-    {path: '../../../../assets/images/old/product_8.jpg', name: 'product 8'}
-  ];
-  // imagesList = [
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'},
-  //   {path: '../../../../assets/images/old/item_1.jpg', name: 'item 1'}
-  // ];
-
-  /* carousel component */
-  items = [
-    { title: 'Slide 1' },
-    { title: 'Slide 2' },
-    { title: 'Slide 3' },
-  ]
-
-  addSlide() {
-    this.items.push({
-      title: `Slide 4`
-    });
+  images;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.images = data;
   }
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  // addSlide() {
+  //   this.items.push({
+  //     title: `Slide 4`
+  //   });
+  // }
 }

@@ -605,8 +605,6 @@ body {
 // 	}
 // }
 
-
-
 // @media (max-width: 1024px) {
 // 	#contacts {
 // 		.contact-info {
@@ -671,8 +669,19 @@ body {
 		}
 		strong {
 			text-transform: uppercase;
+      text-decoration: underline;
+      letter-spacing: 0.7px;
 		}
 		.nk-contact-info {
+      text-align: right;
+      background-color: white;
+      opacity: 0.7;
+      padding-top: 28px;
+      padding-right: 30px;
+      padding-bottom: 39px;
+      font-weight: 700;
+      border: 5px solid;
+      border-color: darkgrey;
 			li {
 				font-size: 15px;
 			}
@@ -1100,7 +1109,7 @@ body {
 
 	/*Load img btn*/
 
-	.load-img-wrap, .creat-new-wrap {
+	.load-img-wrap, .create-new-wrap {
 		display: flex;
 		justify-content: center;
 	}
@@ -1145,7 +1154,7 @@ body {
 
 	/*Create new*/
 
-	.creat-new {
+	.create-new {
     background: #3ad825;
     color: #fff;
     margin-left: 10px;
@@ -1154,7 +1163,6 @@ body {
     border-radius: 5px;
     transition: all .3s;
     font-size: 18px;
-    text-transform: uppercase;
     &:hover {
     	background-color: #418837;
     	transition: all .5s;
@@ -1164,7 +1172,7 @@ body {
     }
 
 	}
-	.creat-new[disabled] {
+	.create-new[disabled] {
 		cursor: not-allowed;
 	}
 
@@ -1205,7 +1213,7 @@ body {
 		}
 	}
 }
-.creat-new[disabled] {
+.create-new[disabled] {
 	cursor: not-allowed;
 }
 .admin-page {
@@ -1223,14 +1231,13 @@ body {
 	.blog {
 		.add {
 	    background: #3ad825;
+      text-align: center;
 	    color: #fff;
-	    margin-left: 10px;
 	    border: 1px solid #3ad825;
 	    padding: 10px 25px;
 	    border-radius: 5px;
 	    transition: all .3s;
 	    font-size: 18px;
-	    text-transform: uppercase;
 	    &:hover {
 	    	transition: all .3s;
 		    background: #418837;
@@ -1244,8 +1251,8 @@ body {
 		}
 		.remove {
 			background: red;
+      text-align: center;
 	    color: #fff;
-	    margin-left: 10px;
 	    border: 1px solid red;
 	    padding: 5px 25px;
 	    border-radius: 5px;
@@ -1509,7 +1516,7 @@ body {
     z-index: 999;
 	}
 
-	
+
 	.mat-menu-panel {
     min-width: 120%;
     min-height: 102vh;

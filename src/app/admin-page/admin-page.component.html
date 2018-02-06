@@ -7,36 +7,45 @@
 
 					<div class="products-create-wrap"
 						 [formGroup]='categoryForm'>
+            <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
 
-						<div class="tab-wrapper col-md-12">
+            <div class="col-md-4 offset-md-4 load-img-wrap">
+              <fh-uploads-form
+                [showMulti]='false'
+                [currentUpload]='currentUpload'
+                (newFiles)='imageFile($event)'
+              ></fh-uploads-form>
+            </div>
 
-							<div class="col-md-4">
-								<mat-form-field>
-									<input matInput placeholder="Название категории"
-										   value=""
-										   formControlName='title'>
-								</mat-form-field>
-							</div>
+            <div class="tab-wrapper col-md-12">
 
-							<div class="col-md-4 load-img-wrap">
-	              <fh-uploads-form
-	                [showMulti]='false'
-	                [currentUpload]='currentUpload'
-	                (newFiles)='imageFile($event)'
-	              ></fh-uploads-form>
-							</div>
+              <div class="col-md-4">
+                <mat-form-field>
+                  <input matInput placeholder="Название категории"
+                         value=""
+                         formControlName='title'>
+                </mat-form-field>
+              </div>
 
-							<div class="col-md-4">
-								<mat-form-field class="textarea-field">
-							    <textarea matInput placeholder="Описание"
-										  formControlName='title'></textarea>
-								</mat-form-field>
-							</div>
-						</div>
+              <div class="col-md-4">
+                <mat-form-field class="textarea-field">
+                <textarea matInput placeholder="Краткое описание"
+                          formControlName='subtitle'></textarea>
+                </mat-form-field>
+              </div>
 
-						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new"
-									(click)='createNewCategory()'
+              <div class="col-md-4">
+                <mat-form-field class="textarea-field">
+                <textarea matInput placeholder="Описание"
+                          formControlName='body'></textarea>
+                </mat-form-field>
+              </div>
+
+            </div>
+
+						<div class="col-md-12 create-new-wrap">
+							<button class="create-new"
+									(click)='addCategory()'
 									[disabled]="!categoryForm.valid">Создать</button>
 						</div>
 
@@ -61,14 +70,14 @@
 				<mat-tab label="Субкатегории">
 					<div class="products-create-wrap"
 						 [formGroup]='subCategoryForm'>
-
-						<div class="col-md-4 offset-md-4 load-img-wrap">
-              <fh-uploads-form
-                [showMulti]='false'
-                [currentUpload]='currentUpload'
-                (newFiles)='imageFile($event)'
-              ></fh-uploads-form>
-						</div>
+            <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
+						<!--<div class="col-md-4 offset-md-4 load-img-wrap">-->
+              <!--<fh-uploads-form-->
+                <!--[showMulti]='false'-->
+                <!--[currentUpload]='currentUpload'-->
+                <!--(newFiles)='imageFile($event)'-->
+              <!--&gt;</fh-uploads-form>-->
+						<!--</div>-->
 
 						<div class="tab-wrapper col-md-12">
 
@@ -83,7 +92,7 @@
 								</mat-form-field>
 							</div>
 
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<mat-form-field class="example-full-width">
 									<input matInput placeholder="Название субкатегории"
 										   value=""
@@ -91,17 +100,17 @@
 								</mat-form-field>
 							</div>
 
-							<div class="col-md-4">
-								<mat-form-field class="textarea-field">
-									<textarea matInput placeholder="Описание" formControlName='body'></textarea>
-								</mat-form-field>
-							</div>
+							<!--<div class="col-md-4">-->
+								<!--<mat-form-field class="textarea-field">-->
+									<!--<textarea matInput placeholder="Описание" formControlName='body'></textarea>-->
+								<!--</mat-form-field>-->
+							<!--</div>-->
 
 						</div>
 
-						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new"
-									(click)='addSubCategory()'
+						<div class="col-md-12 create-new-wrap">
+							<button class="create-new"
+									(click)='addSubcategory()'
 									[disabled]="!subCategoryForm.valid">Создать</button>
 						</div>
 					</div>
@@ -113,11 +122,9 @@
               <div class="products-list" *ngIf='sub.category === category.$key'>
                 <div class="col-md-12">
                   <div class="product-list-item">
-                    <div>
-                      <img [src]='sub.img' [alt]='sub.title'>
+                      <!--<img [src]='sub.img' [alt]='sub.title'>-->
                       <p>{{sub.title}}</p>
-                    </div>
-                    <button (click)="deleteSubcategory(sub.$key, sub.img_name)">Удалить</button>
+                    <button (click)="deleteSubcategory(sub.$key)">Удалить</button>
                   </div>
                 </div>
               </div>
@@ -132,7 +139,7 @@
 				<mat-tab label="Продукты">
 					<div class="products-create-wrap"
 						 [formGroup]='itemsForm'>
-
+            <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
 						<div class="col-md-4 offset-md-4 load-img-wrap">
               <fh-uploads-form
                 [currentUpload]='currentUpload'
@@ -145,7 +152,8 @@
 							<div class="col-md-6">
 								<mat-form-field>
                   <mat-select  placeholder="Выбрать субкатегорию" formControlName='subcategory'>
-                    <mat-option *ngFor='let sub of subcategories | async' [value]="sub.$key">{{sub.title}}
+                    <mat-option *ngFor='let sub of subcategories | async' [value]="sub.$key">
+                      {{sub.title}}
                     </mat-option>
                   </mat-select>
 								</mat-form-field>
@@ -172,30 +180,47 @@
 
 						</div>
 
-						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new"
-									(click)='createItems()'
+						<div class="col-md-12 create-new-wrap">
+							<button class="create-new"
+									(click)='createItem()'
 									>Создать</button>
               <!--[disabled]="!itemsForm.valid"-->
 						</div>
 					</div>
-
-          <div *ngFor='let sub of subcategories | async'>
+          <div class="col-md-12" *ngFor='let sub of subcategories | async'>
             <h3>{{ sub.title }}</h3>
 
-            <div class="products-list"
-                 *ngFor='let i of sub.items'>
-              <div class="col-md-12">
-                <div class="product-list-item">
-                  <div>
-                    <img [src]='i?.img' [alt]='i?.title'>
-                    <p>{{i?.title}}</p>
-                    <p>{{i?.item_id}}</p>
+            <span class="product-list-item" *ngFor='let item of items | async'>
+              <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.subcategory === sub.$key'>
+                <a class="work-box"> <img [src]="item.images[0].url" [alt]="item.title">
+                  <div class="overlay">
+                    <div class="overlay-caption">
+                      <p>картинок: {{item.images.length}}</p>
+                      <p>название: {{item.title}}</p>
+                      <p>код товара: {{item.item_id}}</p>
+                      <button (click)="deleteItems(item.$key, item.images)">Удалить</button>
+                    </div>
                   </div>
-                  <button (click)="deleteItem(i?.$key)">Удалить</button>
-                </div>
+                  <!-- overlay -->
+                </a>
               </div>
-            </div>
+            </span>
+            <!--<div *ngFor='let item of items | async'>-->
+              <!--<div class="products-list"-->
+                   <!--*ngIf='item.subcategory === sub.$key'>-->
+                <!--<div class="col-md-12">-->
+                  <!--<div class="product-list-item">-->
+                    <!--<div>-->
+                      <!--<img [src]='item.images[0].url' [alt]='item.title'>-->
+                      <!--<p>#images: {{item.images.length}}</p>-->
+                      <!--<p>{{item.title}}</p>-->
+                      <!--<p>{{item.item_id}}</p>-->
+                    <!--</div>-->
+                    <!--<button (click)="deleteItems(item.$key, item.images)">Удалить</button>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
           </div>
 
 				</mat-tab>
@@ -206,27 +231,26 @@
 				<mat-tab label="Блог">
 					<div class="products-create-wrap blog"
 						 [formGroup]='blogForm'>
-
-
+            <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
 						<div class="tab-wrapper col-md-12">
 
 							<div class="col-md-8">
-               <div class="add-wrap"><a class="add" (click)="addP()">Добавить</a></div>
+               <div class="add-wrap"><a class="add" (click)="addP()">+ параграф</a></div>
                <div formArrayName="text">
                  <!--<div *ngFor="let p of blogForm.controls.text.controls; let i=index">-->
                  <div *ngFor="let p of blogForm.get('text')['controls']; let i=index">
                    <div>
                      <span>Параграф №{{i + 1}}</span>
                    </div>
-						
-										
+
+
                    <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
                    <div class="blog-description" [formGroupName]="i">
                      <textarea class="col-md-8" type="text" placeholder="Описание" formControlName="paragraph"></textarea>
-                     <span class="remove" *ngIf="(blogForm.get('text')['controls'].length > 1) && (i != 0)"><a (click)="removeP(i)">УДАЛИТЬ</a></span>
+                     <span class="remove" *ngIf="(blogForm.get('text')['controls'].length > 1) && (i != 0)"><a (click)="removeP(i)">- параграф</a></span>
                    </div>
                  </div>
-                 
+
                </div>
               </div>
 
@@ -252,8 +276,8 @@
 
 						</div>
 
-						<div class="col-md-12 creat-new-wrap">
-							<button class="creat-new"
+						<div class="col-md-12 create-new-wrap">
+							<button class="create-new"
 									(click)='addArticle()'
 									[disabled]="!blogForm.valid || !imageFiles">Создать</button>
 						</div>

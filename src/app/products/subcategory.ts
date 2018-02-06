@@ -1,4 +1,4 @@
-export class ISubCategory {
+export class ISubcategory {
   $key?: string;
   title: string;
   subtitle: string;
