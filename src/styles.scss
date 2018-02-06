@@ -787,8 +787,7 @@ body {
     	width: 76vw;
 	    margin: 0 auto;
 	    display: flex;
-      justify-content: flex-start;
-      // margin-left: -45px;
+      justify-content: center;
 	    img {
 	    	width: 58vw;
 	    	height: 30vw;
@@ -1559,11 +1558,19 @@ body {
 		background: transparent;
 	}
 }
+
+.mat-select-content {
+  z-index: 900;
+}
+.cdk-overlay-backdrop {
+  z-index: 899;
+}
+
 .cdk-overlay-container {
 	z-index: 9;
-	.cdk-overlay-backdrop {
-		display: none;
-	}
+	//.cdk-overlay-backdrop {
+	//	display: none;
+	//}
 	.cdk-overlay-pane {
     // left: 0 !important;
     min-width: 100vw;
@@ -1678,8 +1685,6 @@ body {
 
 .mat-dialog-container {
 	padding: 75px;
-	// .container, .row, .col-md-12 {
-	// 	padding: 0;
-	// 	margin: 0;
-	// }
 }
+
+
