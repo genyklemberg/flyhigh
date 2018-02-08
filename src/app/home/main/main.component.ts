@@ -5,6 +5,7 @@ import {BlogService} from '../../blog/blog.service';
 import {MailService} from '../../mail.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { NgZone } from '@angular/core';
 declare const $: any;
 
 @Component({
@@ -23,6 +24,7 @@ export class MainComponent implements AfterViewInit, OnInit {
               private blogDB: BlogService,
               private mailService: MailService,
               private router: Router,
+              private zone: NgZone,
               private _sanitizer: DomSanitizer,
               public el: ElementRef) {
     this.categories = prDB.getCategoryList();
@@ -58,18 +60,14 @@ export class MainComponent implements AfterViewInit, OnInit {
     if (this.validateHuman(this.profileForm.get('checkme').touched)) {  // if form is filled, form will not be submitted
       return false;
     }
-    const promise = new Promise((resolve, reject) => {
-      this.mailService.newForm(
+    return Promise.resolve(this.mailService.newForm(
         this.profileForm.value['name'],
         this.profileForm.value['email'],
         this.profileForm.value['topic'],
         this.profileForm.value['textarea']
-      );
-    }).then(() => { this.router.navigate(['home']); });
+      )).then(_ => {
+      this.router.navigate(['success']);
+       });
   }
-  //
-  // send() {
-  //   this.mailService.sendFormData(this.body);
-  // }
 
 }

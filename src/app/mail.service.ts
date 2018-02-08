@@ -14,21 +14,20 @@ import {Router} from '@angular/router';
 export class MailService {
 
   // private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = 'http://localhost:5000/flyhigh-5416b/us-central1/';
 
 
   constructor(private _http: HttpClient,
-              private db: AngularFireDatabase,
-              public snackBar: MatSnackBar,
-              private router: Router) { }
+              private db: AngularFireDatabase) { }
 
   sendFormData(text) {
-    console.log(text);
     const method = 'httpEmail';
-    // const bodyString = JSON.stringify({text: text});
     const _headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.apiUrl + method, text, { headers: _headers })
       .toPromise()
+      .then(_ => {
+        return;
+      })
       .catch(this._handleError);
   }
 
@@ -46,18 +45,13 @@ export class MailService {
       subject: topic,
       text: textarea
     };
-    this.sendFormData(data)
-      .catch(error => {
-        console.log(error);
-        this.snackBar.open(error, 'Ok', {
-          duration: 4000
-        });
-      });
-    userRef.update(data)
-      .catch(error => this.snackBar.open(error, 'Ok', {
-        duration: 4000
-      }));
+    return Promise.resolve(userRef.update(data)).then(_ => {
+      this.sendFormData(data);
+    }).then(_ => {
+      return;
+    });
   }
+
 
   private _handleError(error) {
     return Promise.reject(error.message ? error.message : error.toString());
