@@ -13,7 +13,7 @@ import {UploadsService} from './uploads/uploads.service';
   styles: [],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminPageComponent implements OnInit{
+export class AdminPageComponent implements OnInit {
   categoryForm: FormGroup;
   subCategoryForm: FormGroup;
   itemsForm: FormGroup;
@@ -25,7 +25,6 @@ export class AdminPageComponent implements OnInit{
   items;
   article;
   showSpinner = false;
-  allTypes = 'all';
 
   constructor(private productService: ProductService,
               private blogService: BlogService,
