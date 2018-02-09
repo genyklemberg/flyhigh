@@ -177,7 +177,6 @@ body {
 
 .nk-header-title {
 	.bg-image {
-
 	}
 	.nk-header-table {
 		display: flex;
@@ -650,7 +649,7 @@ body {
 	// -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 
 	&>.vertical-gap {
-    background: linear-gradient(rgba(255,255,255, .7) 100%, transparent), url('assets/images/new/16.jpg') no-repeat;
+    background: linear-gradient(rgba(255,255,255, .4) 100%, transparent), url('assets/images/new/16.jpg') no-repeat;
     background-size: cover;
     width: 100%;
     padding-top: 100px;
@@ -684,6 +683,7 @@ body {
       border-color: darkgrey;
 			li {
 				font-size: 15px;
+				color: #464646;
 			}
 		}
 	}
@@ -691,6 +691,34 @@ body {
     padding: 0 5px;
     background: #ff0000;
     position: absolute;
+	}
+	input {
+		&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: #464646;
+		}
+		&::-moz-placeholder { /* Firefox 19+ */
+		  color: #464646;
+		}
+		&:-ms-input-placeholder { /* IE 10+ */
+		  color: #464646;
+		}
+		&:-moz-placeholder { /* Firefox 18- */
+		  color: #464646;
+		}
+	}
+	textarea {
+		&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: #464646;
+		}
+		&::-moz-placeholder { /* Firefox 19+ */
+		  color: #464646;
+		}
+		&:-ms-input-placeholder { /* IE 10+ */
+		  color: #464646;
+		}
+		&:-moz-placeholder { /* Firefox 18- */
+		  color: #464646;
+		}
 	}
 }
 
@@ -788,6 +816,7 @@ body {
 	    margin: 0 auto;
 	    display: flex;
       justify-content: center;
+      // margin-left: -45px;
 	    img {
 	    	width: 58vw;
 	    	height: 30vw;
@@ -1118,6 +1147,31 @@ body {
 	.product-list-item {
 		img {
 			margin-right: 15px;
+		}
+		.overlay-caption {
+			p {
+				color: #fff;
+		    font-size: 20px;
+		    font-weight: bold;
+		    span {
+		    	font-size: 20px;
+		    	font-weight: normal;
+    	    margin-right: 5px;
+		    }
+			}
+			button {
+		    background: red;
+		    color: #fff;
+		    border: 1px solid red;
+		    padding: 5px 25px;
+		    border-radius: 5px;
+		    transition: all .3s;
+		    font-size: 18px;
+		    &:hover {
+    	    transition: all .3s;
+			    background: #b93131;
+		    }
+			}
 		}
 	}
 
