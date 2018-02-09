@@ -182,9 +182,9 @@
                 <a class="work-box"> <img [src]="item.images[0].url" [alt]="item.title">
                   <div class="overlay">
                     <div class="overlay-caption">
-                      <p>картинок: {{item.images.length}}</p>
-                      <p>название: {{item.title}}</p>
-                      <p>код товара: {{item.item_id}}</p>
+                      <p><span>картинок:</span> {{item.images.length}}</p>
+                      <p><span>название:</span> {{item.title}}</p>
+                      <p><span>код товара:</span> {{item.item_id}}</p>
                       <button (click)="deleteItems(item.$key, item.images)">Удалить</button>
                     </div>
                   </div>
