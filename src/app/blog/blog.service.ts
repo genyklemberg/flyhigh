@@ -19,11 +19,13 @@ export class BlogService {
    */
   articleForm(title: string, type: string, text: any, img: string, img_name: string) {
     const path = `/blog`;
+    const date = Date.now();
     const userRef: AngularFireList<any> = this.db.list(path);
     const data = {
       title: title,
       type: type,
       text: text,
+      timeStamp: date,
       img: img,
       img_name: img_name
     };

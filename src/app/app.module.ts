@@ -39,6 +39,7 @@ import {MatSnackBarModule} from '@angular/material';
 import { UploadsFormComponent } from './admin-page/uploads/uploads-form.component';
 import {UploadsService} from './admin-page/uploads/uploads.service';
 import {AdminPageGuard} from './admin-page.guard';
+import { ContactsComponent } from './home/main/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {AdminPageGuard} from './admin-page.guard';
     SuccesComponent,
     AdminPageComponent,
     LoadingSpinnerComponent,
-    UploadsFormComponent
+    UploadsFormComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

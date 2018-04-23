@@ -52,8 +52,8 @@ export class AdminPageComponent implements OnInit {
     this.itemsForm = new FormGroup({
       'subcategory': new FormControl(''),
       'title': new FormControl('', Validators.required),
-      'body': new FormControl('', Validators.required),
-      'item_id': new FormControl('', Validators.required)
+      'body': new FormControl('', Validators.required)
+      // 'item_id': new FormControl('', Validators.required)
     });
 
     this.blogForm = this.formBuilder.group({
@@ -143,14 +143,12 @@ export class AdminPageComponent implements OnInit {
 
   addSubcategory() {
     this.showSpinner = true;
-    return Promise.resolve(this.singleImgUpload()).then((res) => {
-      this.productService.subForm(
-        this.subCategoryForm.value['category'],
-        this.subCategoryForm.value['title']
-      );
-      this.subCategoryForm.reset();
-      this.showSpinner = false;
-    });
+    this.productService.subForm(
+      this.subCategoryForm.value['category'],
+      this.subCategoryForm.value['title']
+    );
+    this.subCategoryForm.reset();
+    this.showSpinner = false;
   }
 
   createItem() {
@@ -160,7 +158,7 @@ export class AdminPageComponent implements OnInit {
         this.itemsForm.value['subcategory'],
         this.itemsForm.value['title'],
         this.itemsForm.value['body'],
-        this.itemsForm.value['item_id'],
+        // this.itemsForm.value['item_id'],
         res
       );
       this.itemsForm.reset();
@@ -185,11 +183,28 @@ export class AdminPageComponent implements OnInit {
 
   // delete functions
   deleteCategory(key: string, name: string): void {
+    const that = this;
     this.db.object(`/products/category/${key}`).remove();
-    this.upSvc.deleteFileStorage(name);
+    Promise.resolve(this.upSvc.deleteFileStorage(name)).then(_ => {
+      this.subcategories.forEach(function(data) {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].category === key ) {
+            that.deleteSubcategory(data[i].$key);
+          }
+        }
+      });
+    });
   }
 
   deleteSubcategory(key: string): void {
+    const that = this;
+    this.items.forEach(function(data) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].subcategory === key ) {
+          that.deleteItems(data[i].$key, data[i].images);
+        }
+      }
+    });
     this.db.object(`products/subcategory/${key}`).remove();
   }
 
@@ -197,7 +212,7 @@ export class AdminPageComponent implements OnInit {
     const that = this;
     this.db.object(`/products/items/${key}`).remove();
     names.forEach(function(data) {
-      that.upSvc.deleteFileStorage(data.name);
+      return that.upSvc.deleteFileStorage(data.name);
     });
   }
 

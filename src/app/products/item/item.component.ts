@@ -7,9 +7,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
   selector: 'fh-item',
   templateUrl: './item.component.html',
   // providers: [MatDialogRef],
-  styles: [`
-
-`]
+  styles: []
 })
 export class ItemComponent implements OnInit, OnDestroy{
   id;

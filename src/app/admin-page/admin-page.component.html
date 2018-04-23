@@ -98,7 +98,7 @@
 						<div class="col-md-12 create-new-wrap">
 							<button class="create-new"
 									(click)='addSubcategory()'
-									[disabled]="!subCategoryForm.valid || !imageFiles">Создать</button>
+									[disabled]="!subCategoryForm.valid">Создать</button>
 						</div>
 					</div>
 
@@ -159,11 +159,11 @@
 									<textarea matInput placeholder="Описание" formControlName='body'></textarea>
 								</mat-form-field>
 							</div>
-							<div class="col-md-6">
-								<mat-form-field class="example-full-width">
-									<input matInput placeholder="Код продукта"value="" formControlName='item_id'>
-								</mat-form-field>
-							</div>
+							<!--<div class="col-md-6">-->
+								<!--<mat-form-field class="example-full-width">-->
+									<!--<input matInput placeholder="Код продукта"value="" formControlName='item_id'>-->
+								<!--</mat-form-field>-->
+							<!--</div>-->
 
 						</div>
 
@@ -184,7 +184,7 @@
                     <div class="overlay-caption">
                       <p><span>картинок:</span> {{item.images.length}}</p>
                       <p><span>название:</span> {{item.title}}</p>
-                      <p><span>код товара:</span> {{item.item_id}}</p>
+                      <!--<p><span>код товара:</span> {{item.item_id}}</p>-->
                       <button (click)="deleteItems(item.$key, item.images)">Удалить</button>
                     </div>
                   </div>

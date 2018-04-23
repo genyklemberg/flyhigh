@@ -31,18 +31,7 @@ import { Component, OnInit } from '@angular/core';
               </a>
               <div class="contact-info adress">
                 <!-- START: Info -->
-                <h2 class="display-4">Наши контакты:</h2>
-
-                <ul class="nk-contact-info" style='text-align: right'>
-                  <li>
-                    <strong>Адрес:</strong><br>ул.Эжена Потье, д.12, корп.2,<br> г.Киев, Украина, 03680</li>
-                  <li>
-                    <strong>Телефон:</strong><br>+38 (067) 509-57-60</li>
-                  <li>
-                    <strong>Электронная почта:</strong><br>ak@flyhigh.com.ua, gk@flyhigh.com.ua </li>
-                  <li>
-                    <strong>Контактное лицо:</strong><br>Александр</li>
-                </ul>
+                <fh-contacts></fh-contacts>
                 <!-- END: Info -->
               </div>
             </div>

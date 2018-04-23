@@ -79,19 +79,19 @@ export class ProductService {
   /**
    * Item form
    */
-  itForm(subcategory: string, title: string, body: string, item_id: string, images) {
+  itForm(subcategory: string, title: string, body: string, images) {
     const path = `products/items/`;
     const itemRef: AngularFireList<any> = this.db.list(path);
     const data = {
       subcategory: subcategory,
       title: title,
       body: body,
-      item_id: item_id,
+      // item_id: item_id,
       images: images
     };
 
     Promise.resolve(itemRef.push(data)).then(() => {
-      this.snackBar.open(`Successfully added item ${title} with description ${body} and code ${item_id}`, 'Ok', {
+      this.snackBar.open(`Successfully added item ${title} with description ${body}`, 'Ok', {
         duration: 4000
       });
     }).catch(error => this.snackBar.open(error, 'Ok', {
