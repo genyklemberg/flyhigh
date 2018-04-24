@@ -1,43 +1,43 @@
-[debug] [2018-03-06T14:43:09.008Z] ----------------------------------------------------------------------
-[debug] [2018-03-06T14:43:09.010Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Genyklemberg\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
-[debug] [2018-03-06T14:43:09.010Z] CLI Version:   3.17.4
-[debug] [2018-03-06T14:43:09.011Z] Platform:      win32
-[debug] [2018-03-06T14:43:09.011Z] Node Version:  v8.9.1
-[debug] [2018-03-06T14:43:09.011Z] Time:          Tue Mar 06 2018 16:43:09 GMT+0200 (FLE Standard Time)
-[debug] [2018-03-06T14:43:09.011Z] ----------------------------------------------------------------------
+[debug] [2018-04-24T11:42:50.620Z] ----------------------------------------------------------------------
+[debug] [2018-04-24T11:42:50.622Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Genyklemberg\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2018-04-24T11:42:50.622Z] CLI Version:   3.17.4
+[debug] [2018-04-24T11:42:50.622Z] Platform:      win32
+[debug] [2018-04-24T11:42:50.622Z] Node Version:  v8.9.1
+[debug] [2018-04-24T11:42:50.623Z] Time:          Tue Apr 24 2018 14:42:50 GMT+0300 (FLE Daylight Time)
+[debug] [2018-04-24T11:42:50.623Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-03-06T14:43:09.024Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-03-06T14:43:09.025Z] > authorizing via signed-in user
-[debug] [2018-03-06T14:43:09.026Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-03-06T14:43:09.026Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- { refresh_token: '1/jOxWY2P-aa3pp3iaLmZqLz4uSli96GpSTge5GXVTBCw',
+[debug] [2018-04-24T11:42:50.634Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-24T11:42:50.635Z] > authorizing via signed-in user
+[debug] [2018-04-24T11:42:50.636Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-24T11:42:50.637Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/gK9C_X8ka6Ha4mATZjHwYkq0m9jrmUsE9Q1qHQ-LVq64oE75aliI75wppXbdgHRe',
   client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Tue Mar 06 2018 16:43:09 GMT+0200 (FLE Standard Time)
-[debug] [2018-03-06T14:43:09.223Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-06T14:43:09.232Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/flyhigh-5416b  
+ Tue Apr 24 2018 14:42:50 GMT+0300 (FLE Daylight Time)
+[debug] [2018-04-24T11:42:50.867Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-24T11:42:50.880Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/flyhigh-5416b  
   
- Tue Mar 06 2018 16:43:09 GMT+0200 (FLE Standard Time)
-[debug] [2018-03-06T14:43:09.981Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-06T14:43:09.981Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/flyhigh-5416b/tokens  
+ Tue Apr 24 2018 14:42:50 GMT+0300 (FLE Daylight Time)
+[debug] [2018-04-24T11:42:51.644Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-24T11:42:51.645Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/flyhigh-5416b/tokens  
   
- Tue Mar 06 2018 16:43:09 GMT+0200 (FLE Standard Time)
-[debug] [2018-03-06T14:43:10.750Z] <<< HTTP RESPONSE 200
+ Tue Apr 24 2018 14:42:51 GMT+0300 (FLE Daylight Time)
+[debug] [2018-04-24T11:42:52.269Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'C:\Users\Genyklemberg\code\other project\flyhigh'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2018-03-06T14:43:11.064Z] Fetching environment
-[debug] [2018-03-06T14:43:11.066Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/flyhigh-5416b  
+[debug] [2018-04-24T11:42:53.113Z] Fetching environment
+[debug] [2018-04-24T11:42:53.114Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/flyhigh-5416b  
   
- Tue Mar 06 2018 16:43:11 GMT+0200 (FLE Standard Time)
-[debug] [2018-03-06T14:43:11.066Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/flyhigh-5416b/apiKeys  
+ Tue Apr 24 2018 14:42:53 GMT+0300 (FLE Daylight Time)
+[debug] [2018-04-24T11:42:53.114Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/flyhigh-5416b/apiKeys  
   
- Tue Mar 06 2018 16:43:11 GMT+0200 (FLE Standard Time)
-[debug] [2018-03-06T14:43:11.959Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-06T14:43:12.086Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-06T14:43:12.086Z] Starting @google-cloud/functions-emulator
-[debug] [2018-03-06T14:43:13.130Z] Parsing function triggers
+ Tue Apr 24 2018 14:42:53 GMT+0300 (FLE Daylight Time)
+[debug] [2018-04-24T11:42:54.008Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-24T11:42:54.177Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-24T11:42:54.177Z] Starting @google-cloud/functions-emulator
+[debug] [2018-04-24T11:42:56.240Z] Parsing function triggers
 [info] +  functions: httpEmail: http://localhost:5000/flyhigh-5416b/us-central1/httpEmail

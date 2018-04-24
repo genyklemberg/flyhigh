@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BlogService} from './blog.service';
 
 @Component({
@@ -8,6 +8,7 @@ import {BlogService} from './blog.service';
 })
 export class BlogComponent implements OnInit {
   blogList;
+
   constructor(private blogDB: BlogService) {
     this.blogList = this.blogDB.getBlogList();
   }

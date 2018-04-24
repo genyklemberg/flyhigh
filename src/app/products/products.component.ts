@@ -1,5 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import {IProduct} from './product';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from './product.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -15,6 +14,7 @@ export class ProductsComponent implements OnInit {
   subcategories;
   items;
   showSpinner = true;
+
   constructor(private prDB: ProductService, private route: ActivatedRoute) {
   }
 

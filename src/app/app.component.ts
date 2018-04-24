@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ export class AppComponent implements AfterViewInit {
   rootElement;
   lastRoute: string;
   lastPosition = 0;
+
   constructor(public router: Router,
               private element: ElementRef) {
     this.rootElement = this.element.nativeElement;
@@ -37,7 +38,7 @@ export class AppComponent implements AfterViewInit {
         if (events instanceof NavigationEnd && events.url === this.lastRoute) {
           // this.rootElement.firstChild.scrollTop = this.lastPosition;
           const that = this;
-          window.scrollTo(0,  this.lastPosition);
+          window.scrollTo(0, this.lastPosition);
           // setTimeout(function () {
           //   that.element.nativeElement.scrollTop = that.lastPosition;
           //   console.log(this.element.nativeElement);
@@ -50,5 +51,5 @@ export class AppComponent implements AfterViewInit {
   //   document.body.scrollTop = 0;
   // }
 
-  
+
 }

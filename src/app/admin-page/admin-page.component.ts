@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder, FormArray} from '@angular/forms';
-import { ProductService } from '../products/product.service';
-import { BlogService } from '../blog/blog.service';
-import { AngularFireDatabase } from 'angularfire2/database';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ProductService} from '../products/product.service';
+import {BlogService} from '../blog/blog.service';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {Upload} from './uploads/upload';
 import {UploadsService} from './uploads/uploads.service';
 
@@ -65,16 +64,11 @@ export class AdminPageComponent implements OnInit {
     });
   }
 
-  // Blog: add/remove paragraph logic
-  private _initP(): any {
-    return new FormGroup({
-      'paragraph': new FormControl('')
-    });
-  }
   addP() {
     const control = < FormArray > this.blogForm.controls['text'];
     control.push(this._initP());
   }
+
   removeP(i: number) {
     const control = < FormArray > this.blogForm.controls['text'];
     control.removeAt(i);
@@ -186,9 +180,9 @@ export class AdminPageComponent implements OnInit {
     const that = this;
     this.db.object(`/products/category/${key}`).remove();
     Promise.resolve(this.upSvc.deleteFileStorage(name)).then(_ => {
-      this.subcategories.forEach(function(data) {
+      this.subcategories.forEach(function (data) {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].category === key ) {
+          if (data[i].category === key) {
             that.deleteSubcategory(data[i].$key);
           }
         }
@@ -198,9 +192,9 @@ export class AdminPageComponent implements OnInit {
 
   deleteSubcategory(key: string): void {
     const that = this;
-    this.items.forEach(function(data) {
+    this.items.forEach(function (data) {
       for (let i = 0; i < data.length; i++) {
-        if (data[i].subcategory === key ) {
+        if (data[i].subcategory === key) {
           that.deleteItems(data[i].$key, data[i].images);
         }
       }
@@ -211,7 +205,7 @@ export class AdminPageComponent implements OnInit {
   deleteItems(key: string, names: any): void {
     const that = this;
     this.db.object(`/products/items/${key}`).remove();
-    names.forEach(function(data) {
+    names.forEach(function (data) {
       return that.upSvc.deleteFileStorage(data.name);
     });
   }
@@ -219,6 +213,13 @@ export class AdminPageComponent implements OnInit {
   deleteArticle(key: string, name: string): void {
     this.db.object(`/blog/${key}`).remove();
     this.upSvc.deleteFileStorage(name);
+  }
+
+  // Blog: add/remove paragraph logic
+  private _initP(): any {
+    return new FormGroup({
+      'paragraph': new FormControl('')
+    });
   }
 
 }

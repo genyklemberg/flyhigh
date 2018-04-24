@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './home/main/main.component';
 import {PageNotFoundComponent} from './home/page-not-found.component';
 import {ProductsComponent} from './products/products.component';
@@ -7,9 +7,8 @@ import {BlogComponent} from './blog/blog.component';
 import {ArticleComponent} from './blog/article/article.component';
 import {ItemComponent} from './products/item/item.component';
 import {ServicesComponent} from './services/services.component';
-import { SuccesComponent } from './home/succes.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import {AdminPageGuard} from './admin-page.guard';
+import {SuccesComponent} from './home/succes.component';
+import {AdminPageComponent} from './admin-page/admin-page.component';
 
 
 const routes: Routes = [
@@ -30,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

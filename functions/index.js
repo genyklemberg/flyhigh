@@ -20,7 +20,7 @@ function mailgunMessage(req, res) {
     mailgun.messages().send(data).then(function(){
       res.status(200).json({success:true});
     }).catch(function() {
-        res.status(500).json({success:false});
+      res.status(500).json({success:false});
     });
 }
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
 import {BlogService} from '../blog.service';
+
 @Component({
   selector: 'fh-article',
   templateUrl: './article.component.html',
@@ -11,7 +12,9 @@ export class ArticleComponent implements OnInit {
   article;
   art_id;
   showSpinner = true;
-  constructor(private blogDB: BlogService, private _sanitizer: DomSanitizer, private route: ActivatedRoute) { }
+
+  constructor(private blogDB: BlogService, private _sanitizer: DomSanitizer, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.art_id = this.route.snapshot.params.id;

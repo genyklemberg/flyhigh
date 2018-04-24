@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { IProduct } from './product';
-import { ICategory } from './category';
-import { ISubcategory } from './subcategory';
-import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
-import {FirebaseObjectObservable} from 'angularfire2/database-deprecated';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
+import {IProduct} from './product';
+import {ICategory} from './category';
+import {ISubcategory} from './subcategory';
+import {HttpClient} from '@angular/common/http';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class ProductService {
-  private basePath = '/products/subcategory';
   categoryRef;
   subCategoryRef;
   productsRef;
+  private basePath = '/products/subcategory';
 
   constructor(private db: AngularFireDatabase,
               private _http: HttpClient,
@@ -72,6 +71,7 @@ export class ProductService {
       duration: 4000
     }));
   }
+
   /**
    * subCategory form end
    */
@@ -98,6 +98,7 @@ export class ProductService {
       duration: 4000
     }));
   }
+
   /**
    * Item form end
    */
@@ -105,15 +106,15 @@ export class ProductService {
   // Return an observable list of Products
   getCategoryList(): Observable<ICategory[]> {
     return this.categoryRef.snapshotChanges().map((arr) => {
-      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }));
+      return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
     });
   }
 
   // Return an observable list of Products
   getSubcategoryList(): Observable<ISubcategory[]> {
-      return this.subCategoryRef.snapshotChanges().map((arr) => {
-        return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
-      });
+    return this.subCategoryRef.snapshotChanges().map((arr) => {
+      return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
+    });
   }
 
   getSubcategoryFiltered(category) {
@@ -126,7 +127,7 @@ export class ProductService {
   // Return an observable list of Products
   getProductsList(): Observable<IProduct[]> {
     return this.productsRef.snapshotChanges().map((arr) => {
-      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
+      return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
     });
   }
 
@@ -143,6 +144,7 @@ export class ProductService {
     const product = this.db.object(productPath).valueChanges() as Observable<IProduct | null>;
     return product;
   }
+
 // Create a brand new product
   // createProduct(product: IProduct): void {
   //   this.productsRef.push(product);

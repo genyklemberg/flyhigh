@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
+import {Injectable} from '@angular/core';
+import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 
 @Injectable()
 export class ScrollService {
 
-  constructor(private _scrollToService: ScrollToService) { }
+  constructor(private _scrollToService: ScrollToService) {
+  }
 
   public triggerScrollTo(target) {
 
@@ -19,12 +20,10 @@ export class ScrollService {
     if (target === 'contacts') {
       const that = this;
       setTimeout(function () {
-        console.log('scroll delay' + config.target);
         that._scrollToService.scrollTo(config);
       }, 1000);
     } else {
-    console.log('scroll works now');
-    this._scrollToService.scrollTo(config);
-  }
+      this._scrollToService.scrollTo(config);
+    }
   }
 }

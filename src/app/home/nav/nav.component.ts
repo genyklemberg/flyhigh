@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {ScrollService} from '../../scroll.service';
-import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'fh-nav',
@@ -12,11 +11,12 @@ import {ViewEncapsulation} from '@angular/core';
 export class NavComponent implements OnInit {
 
   constructor(public router: Router,
-              private scrollService: ScrollService) { }
+              private scrollService: ScrollService) {
+  }
 
   ngOnInit() {
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       // //Here you forgot to update the value
       const scrollPos = window.scrollY;
       const header = document.getElementById('header');

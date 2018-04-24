@@ -1,5 +1,5 @@
-import {Component, OnInit, Inject, ViewEncapsulation, OnDestroy} from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {AngularFireDatabase} from 'angularfire2/database';
 
@@ -9,11 +9,13 @@ import {AngularFireDatabase} from 'angularfire2/database';
   // providers: [MatDialogRef],
   styles: []
 })
-export class ItemComponent implements OnInit, OnDestroy{
+export class ItemComponent implements OnInit, OnDestroy {
   id;
   item;
   showSpinner = true;
-  constructor(private router: ActivatedRoute, private db: AngularFireDatabase ,public dialog: MatDialog) {}
+
+  constructor(private router: ActivatedRoute, private db: AngularFireDatabase, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.id = this.router.snapshot.params.id;
@@ -29,7 +31,7 @@ export class ItemComponent implements OnInit, OnDestroy{
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.dialog.closeAll();
   }
 
@@ -85,6 +87,7 @@ export class ItemComponent implements OnInit, OnDestroy{
 })
 export class DialogDataExampleDialog {
   images;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.images = data;
   }

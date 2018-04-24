@@ -1,11 +1,10 @@
-import {Component, OnInit, AfterViewInit, ElementRef} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ProductService} from '../../products/product.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {BlogService} from '../../blog/blog.service';
 import {MailService} from '../../mail.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import { NgZone } from '@angular/core';
+
 declare const $: any;
 
 @Component({
@@ -23,8 +22,6 @@ export class MainComponent implements AfterViewInit, OnInit {
   constructor(private prDB: ProductService,
               private blogDB: BlogService,
               private mailService: MailService,
-              private router: Router,
-              private zone: NgZone,
               private _sanitizer: DomSanitizer,
               public el: ElementRef) {
     this.categories = prDB.getCategoryList();
@@ -36,10 +33,10 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.profileForm = new FormGroup({
-      'name': new FormControl('', [Validators.required,  Validators.minLength(2)]),
+      'name': new FormControl('', [Validators.required, Validators.minLength(2)]),
       'email': new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
-      'topic': new FormControl('', [Validators.required,  Validators.minLength(2)]),
-      'textarea': new FormControl('', [Validators.required,  Validators.minLength(5)]),
+      'topic': new FormControl('', [Validators.required, Validators.minLength(2)]),
+      'textarea': new FormControl('', [Validators.required, Validators.minLength(5)]),
       'checkme': new FormControl('')
     });
   }
@@ -53,7 +50,9 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
   validateHuman(honeypot) {
-    if (honeypot) { return true; } // if hidden form filled up
+    if (honeypot) {
+      return true;
+    } // if hidden form filled up
   }
 
   onSubmit() {
@@ -61,13 +60,11 @@ export class MainComponent implements AfterViewInit, OnInit {
       return false;
     }
     return Promise.resolve(this.mailService.newForm(
-        this.profileForm.value['name'],
-        this.profileForm.value['email'],
-        this.profileForm.value['topic'],
-        this.profileForm.value['textarea']
-      )).then(_ => {
-      this.router.navigate(['success']);
-       });
+      this.profileForm.value['name'],
+      this.profileForm.value['email'],
+      this.profileForm.value['topic'],
+      this.profileForm.value['textarea']
+    ));
   }
 
 }

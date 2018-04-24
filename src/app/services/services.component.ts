@@ -12,6 +12,7 @@ export class ServicesComponent implements OnInit {
   service;
   type;
   showSpinner = true;
+
   constructor(private route: ActivatedRoute, private svDB: AngularFireDatabase, private _sanitizer: DomSanitizer) {
   }
 

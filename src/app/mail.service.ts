@@ -1,34 +1,38 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
-import { MatSnackBar } from '@angular/material';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 // Import RxJs required methods
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
-import {Router} from '@angular/router';
-
-
 
 @Injectable()
 export class MailService {
 
-  private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
-  // private apiUrl = 'http://localhost:5000/flyhigh-5416b/us-central1/';
-
+  // private apiUrl = 'https://us-central1-flyhigh-5416b.cloudfunctions.net/';
+  private apiUrl = 'http://localhost:5000/flyhigh-5416b/us-central1/';
 
   constructor(private _http: HttpClient,
-              private db: AngularFireDatabase) { }
+              private db: AngularFireDatabase,
+              private router: Router,
+              public snackBar: MatSnackBar) {
+  }
 
   sendFormData(text) {
     const method = 'httpEmail';
     const _headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.apiUrl + method, text, { headers: _headers })
-      .toPromise()
-      .then(_ => {
-        return;
-      })
-      .catch(this._handleError);
+    this._http.post(this.apiUrl + method, text, {headers: _headers}).subscribe((data: any) => {
+      console.log((data.success));
+      if (data.success) {
+        return this.router.navigate(['success']);
+      } else {
+        this.snackBar
+          .open(`Ваш запрос не был отправлен, попробуйте еще раз или свяжитесь с агентом`, 'Ok', {
+            duration: 4000
+          });
+      }
+    });
   }
 
   newForm(name: string, email: string, topic: string, textarea: string) {
@@ -45,15 +49,14 @@ export class MailService {
       subject: topic,
       text: textarea
     };
-    return Promise.resolve(userRef.update(data)).then(_ => {
+    Promise.resolve(userRef.update(data)).then(_ => {
       this.sendFormData(data);
     }).then(_ => {
       return;
     });
   }
 
-
-  private _handleError(error) {
-    return Promise.reject(error.message ? error.message : error.toString());
-  }
+  // private _handleError(error) {
+  //   return Promise.reject(error.message ? error.message : error.toString());
+  // }
 }

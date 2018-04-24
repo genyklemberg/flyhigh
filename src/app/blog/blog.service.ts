@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject, DatabaseQuery} from 'angularfire2/database';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {IArticle} from './article';
 import {Observable} from 'rxjs/Observable';
-import { MatSnackBar } from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class BlogService {
@@ -38,6 +38,7 @@ export class BlogService {
       duration: 4000
     }));
   }
+
   /**
    * Article form end
    */
@@ -50,7 +51,7 @@ export class BlogService {
   // Return an observable list of Articles
   getBlogList(): Observable<IArticle[]> {
     return this.blogRef.snapshotChanges().map((arr) => {
-      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }));
+      return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
     });
   }
 

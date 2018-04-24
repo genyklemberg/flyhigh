@@ -12,7 +12,8 @@ export class UploadsFormComponent {
   @Input() currentUpload: number;
   @Output() newFiles: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() {
+  }
 
   detectFiles($event: Event) {
     this.selectedFiles = ($event.target as HTMLInputElement).files;
