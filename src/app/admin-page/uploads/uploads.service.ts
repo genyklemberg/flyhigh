@@ -6,7 +6,6 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UploadsService {
-
   basePath = 'uploads';
   uploads: Observable<Upload[]>;
 
@@ -27,8 +26,9 @@ export class UploadsService {
   // Executes the file uploading to firebase https://firebase.google.com/docs/storage/web/upload-files
   pushUpload(upload: Upload) {
     const storageRef = firebase.storage().ref();
-    return Promise.resolve(storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file)).then(function (snapshot: any) {
-      upload.name = upload.file.name;
+    const fileName = upload.file.name + Date.now();
+    return Promise.resolve(storageRef.child(`${this.basePath}/${fileName}`).put(upload.file)).then(function (snapshot: any) {
+      upload.name = fileName;
       upload.url = snapshot.downloadURL;
       return upload;
     });

@@ -123,6 +123,7 @@ export class AdminPageComponent implements OnInit {
   addCategory() {
     this.showSpinner = true;
     return Promise.resolve(this.singleImgUpload()).then((res) => {
+      console.log('not working');
       this.productService.categoryForm(
         this.categoryForm.value['title'],
         this.categoryForm.value['subtitle'],
