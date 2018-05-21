@@ -24,7 +24,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-import {MatDividerModule} from '@angular/material/divider';
 import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
 import {CarouselItemDirective} from './products/item/carousel-item.directive';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -82,7 +81,6 @@ import {ContactsComponent} from './home/main/contacts/contacts.component';
     MatMenuModule,
     MatExpansionModule,
     MatIconModule,
-    MatDividerModule,
     MatCardModule
   ],
   entryComponents: [DialogDataExampleDialog],
