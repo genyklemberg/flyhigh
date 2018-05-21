@@ -4,6 +4,7 @@ export class ICategory {
   subtitle: string;
   body: string;
   img: string;
+  sort: number;
   subcategory: any[];
   items: any[];
 }

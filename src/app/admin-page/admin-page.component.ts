@@ -5,11 +5,28 @@ import {BlogService} from '../blog/blog.service';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Upload} from './uploads/upload';
 import {UploadsService} from './uploads/uploads.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'fh-admin-page',
   templateUrl: './admin-page.component.html',
-  styles: [],
+  styles: [`
+    .mat-expansion-panel-header {
+      height: 48px;
+    }
+    .mat-expansion-panel-content:not(.mat-expanded):not(.ng-animating){
+      display: none;
+    }
+    .item-card-list {
+      display: flex;
+      flex-flow: row wrap;
+    }
+    .item-card {
+      max-width: 350px;
+      display: inline-block;
+      margin: 0 10px;
+    }
+  `],
   encapsulation: ViewEncapsulation.None
 })
 export class AdminPageComponent implements OnInit {
@@ -24,12 +41,14 @@ export class AdminPageComponent implements OnInit {
   items;
   article;
   showSpinner = false;
+  updateItem = false;
 
   constructor(private productService: ProductService,
               private blogService: BlogService,
               private upSvc: UploadsService,
               private db: AngularFireDatabase,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              public snackBar: MatSnackBar) {
     this.categories = productService.getCategoryList();
     this.subcategories = productService.getSubcategoryList();
     this.items = productService.getProductsList();
@@ -40,18 +59,21 @@ export class AdminPageComponent implements OnInit {
     this.categoryForm = new FormGroup({
       'title': new FormControl('', Validators.required),
       'subtitle': new FormControl('', Validators.required),
-      'body': new FormControl('', Validators.required)
+      'body': new FormControl('', Validators.required),
+      'sort': new FormControl('')
     });
 
     this.subCategoryForm = new FormGroup({
-      'category': new FormControl(''),
-      'title': new FormControl('', Validators.required)
+      'category': new FormControl('', Validators.required),
+      'title': new FormControl('', Validators.required),
+      'sort': new FormControl('')
     });
 
     this.itemsForm = new FormGroup({
-      'subcategory': new FormControl(''),
+      'subcategory': new FormControl('', Validators.required),
       'title': new FormControl('', Validators.required),
-      'body': new FormControl('', Validators.required)
+      'body': new FormControl('', Validators.required),
+      'sort': new FormControl('')
       // 'item_id': new FormControl('', Validators.required)
     });
 
@@ -121,13 +143,15 @@ export class AdminPageComponent implements OnInit {
 
   // Create functions
   addCategory() {
+    const sortCalc = this.categories.length + 2;
     this.showSpinner = true;
+
     return Promise.resolve(this.singleImgUpload()).then((res) => {
-      console.log('not working');
       this.productService.categoryForm(
         this.categoryForm.value['title'],
         this.categoryForm.value['subtitle'],
         this.categoryForm.value['body'],
+        this.categoryForm.value['sort'],
         res.url,
         res.name
       );
@@ -140,20 +164,21 @@ export class AdminPageComponent implements OnInit {
     this.showSpinner = true;
     this.productService.subForm(
       this.subCategoryForm.value['category'],
-      this.subCategoryForm.value['title']
+      this.subCategoryForm.value['title'],
+      this.subCategoryForm.value['sort']
     );
     this.subCategoryForm.reset();
     this.showSpinner = false;
   }
 
-  createItem() {
+  addItem() {
     this.showSpinner = true;
     return Promise.resolve(this.multiImgUpload()).then((res) => {
       this.productService.itForm(
         this.itemsForm.value['subcategory'],
         this.itemsForm.value['title'],
         this.itemsForm.value['body'],
-        // this.itemsForm.value['item_id'],
+        this.itemsForm.value['sort'],
         res
       );
       this.itemsForm.reset();
@@ -176,19 +201,41 @@ export class AdminPageComponent implements OnInit {
     });
   }
 
+  selectForUpdateObject(data) {
+    this.updateItem = true;
+    this.itemsForm = this.formBuilder.group(data);
+  }
+
+  // update function for all types
+  updateObject(type, data) {
+    if (type === 'items') {
+      delete this.itemsForm.value.images;
+      this.productService.updateData(type, this.itemsForm.value);
+    } else {
+      this.productService.updateData(type, data);
+    }
+  }
+
   // delete functions
-  deleteCategory(key: string, name: string): void {
+  deleteCategory(data: any): void {
     const that = this;
-    this.db.object(`/products/category/${key}`).remove();
-    Promise.resolve(this.upSvc.deleteFileStorage(name)).then(_ => {
-      this.subcategories.forEach(function (data) {
+    Promise.resolve(this.upSvc.deleteFileStorage(data.img_name)).then(_ => {
+      this.subcategories.forEach(function (res) {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].category === key) {
-            that.deleteSubcategory(data[i].$key);
+          if (res[i].category === data.$key) {
+            that.deleteSubcategory(res[i].$key);
           }
         }
       });
     });
+    this.db.object(`/products/category/${data.$key}`).remove()
+      .then(() => {
+        this.snackBar.open(`Successfully deleted`, 'Ok', {
+          duration: 4000
+        });
+      }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
   }
 
   deleteSubcategory(key: string): void {
@@ -200,20 +247,57 @@ export class AdminPageComponent implements OnInit {
         }
       }
     });
-    this.db.object(`products/subcategory/${key}`).remove();
+    this.db.object(`products/subcategory/${key}`).remove()
+      .then(() => {
+        this.snackBar.open(`Successfully deleted`, 'Ok', {
+          duration: 4000
+        });
+      }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
   }
 
   deleteItems(key: string, names: any): void {
     const that = this;
-    this.db.object(`/products/items/${key}`).remove();
     names.forEach(function (data) {
       return that.upSvc.deleteFileStorage(data.name);
     });
+    this.db.object(`/products/items/${key}`).remove()
+      .then(() => {
+        this.snackBar.open(`Successfully deleted`, 'Ok', {
+          duration: 4000
+        });
+      }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
+  }
+
+  deleteItem(): void {
+    const that = this;
+    this.items.forEach(function (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].$key === that.itemsForm.value.$key) {
+          data[i].images.forEach(function (res) {
+              return that.upSvc.deleteFileStorage(res.name);
+            });
+        }
+      }
+    });
+    this.db.object(`/products/items/${this.itemsForm.value.$key}`).remove()
+      .then(() => {
+        // this.itemsForm.reset();
+        this.snackBar.open(`Successfully deleted`, 'Ok', {
+          duration: 4000
+        });
+    }).catch(error => this.snackBar.open(error, 'Ok', {
+      duration: 4000
+    }));
   }
 
   deleteArticle(key: string, name: string): void {
-    this.db.object(`/blog/${key}`).remove();
-    this.upSvc.deleteFileStorage(name);
+    this.db.object(`/blog/${key}`).remove().then(function(){
+      this.upSvc.deleteFileStorage(name);
+    });
   }
 
   // Blog: add/remove paragraph logic

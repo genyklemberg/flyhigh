@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {IProduct} from './product';
 import {ICategory} from './category';
@@ -17,26 +17,28 @@ export class ProductService {
   constructor(private db: AngularFireDatabase,
               private _http: HttpClient,
               public snackBar: MatSnackBar) {
-    this.categoryRef = db.list('/products/category');
+    this.categoryRef = db.list('/products/category', ref => ref.orderByChild('sort'));
     // this.subCategoryRef = db.list('/products/subcategory', ref => ref.orderByChild('category').equalTo('-L1wUoBBtST1Bh8jyhPx'));
-    this.subCategoryRef = db.list('/products/subcategory');
-    this.productsRef = db.list('/products/items');
+    this.subCategoryRef = db.list('/products/subcategory', ref => ref.orderByChild('sort'));
+    this.productsRef = db.list('/products/items', ref => ref.orderByChild('sort'));
   }
 
   /**
    * category form start
    */
-  categoryForm(title: string, subtitle: string, body: string, img: string, img_name: string) {
-    const path = `products/category/`; // Endpoint on firebase
-    const categoryRef: AngularFireList<any> = this.db.list(path);
+  categoryForm(title: string, subtitle: string, body: string, sort: number, img: string, img_name: string) {
+    // const path = `products/category/`; // Endpoint on firebase
+    // const categoryRef: AngularFireList<any> = this.db.list(path);
+    const sortVal = ((sort) ? sort : 0);
     const data = {
       title: title,
       subtitle: subtitle,
       body: body,
+      sort: sortVal,
       img: img,
       img_name: img_name
     };
-    Promise.resolve(categoryRef.push(data)).then(() => {
+    Promise.resolve(this.categoryRef.push(data)).then(() => {
       this.snackBar.open('Successfully created category', 'Ok', {
         duration: 4000
       });
@@ -55,15 +57,17 @@ export class ProductService {
   /**
    * subCategory form
    */
-  subForm(category: string, title: string) {
-    const path = `products/subcategory/`;
-    const subRef: AngularFireList<any> = this.db.list(path);
+  subForm(category: string, title: string, sort: number) {
+    // const path = `products/subcategory/`;
+    // const subRef: AngularFireList<any> = this.db.list(path);
+    const sortVal = ((sort) ? sort : 0);
     const data = {
       category: category,
-      title: title
+      title: title,
+      sort: sortVal
     };
 
-    Promise.resolve(subRef.push(data)).then(() => {
+    Promise.resolve(this.subCategoryRef.push(data)).then(() => {
       this.snackBar.open(`Successfully added subcategory ${title} to ${category}`, 'Ok', {
         duration: 4000
       });
@@ -79,18 +83,19 @@ export class ProductService {
   /**
    * Item form
    */
-  itForm(subcategory: string, title: string, body: string, images) {
-    const path = `products/items/`;
-    const itemRef: AngularFireList<any> = this.db.list(path);
+  itForm(subcategory: string, title: string, body: string, sort: number, images) {
+    // const path = `products/items/`;
+    // const itemRef: AngularFireList<any> = this.db.list(path);
+    const sortVal = ((sort) ? sort : 0);
     const data = {
       subcategory: subcategory,
       title: title,
       body: body,
-      // item_id: item_id,
+      sort: sortVal,
       images: images
     };
 
-    Promise.resolve(itemRef.push(data)).then(() => {
+    Promise.resolve(this.productsRef.push(data)).then(() => {
       this.snackBar.open(`Successfully added item ${title} with description ${body}`, 'Ok', {
         duration: 4000
       });
@@ -143,6 +148,21 @@ export class ProductService {
     const productPath = `${this.basePath}/${key}`;
     const product = this.db.object(productPath).valueChanges() as Observable<IProduct | null>;
     return product;
+  }
+
+  // Update an existing category
+  updateData(type, data: any): void {
+    const objectRef = this.db.object(`/products/${type}/${data.$key}`);
+    delete data.$key;
+    objectRef.update(data).then(_ => {
+      this.snackBar.open(`Successfully updated ${type}`, 'Ok', {
+        duration: 4000
+      });
+    }).catch(error => {
+      this.snackBar.open(error, 'Ok', {
+        duration: 4000
+      });
+    });
   }
 
 // Create a brand new product

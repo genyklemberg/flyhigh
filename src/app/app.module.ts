@@ -24,9 +24,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 import {CarouselComponent, CarouselItemElement} from './products/item/carousel.component';
 import {CarouselItemDirective} from './products/item/carousel-item.directive';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {ProductService} from './products/product.service';
 import {BlogService} from './blog/blog.service';
@@ -35,7 +36,7 @@ import {AdminPageComponent} from './admin-page/admin-page.component';
 import {LoadingSpinnerComponent} from './home/loading-spinner.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MailService} from './mail.service';
-import {MatSnackBarModule} from '@angular/material';
+import {MatCardModule, MatExpansionModule, MatIconModule, MatSnackBarModule} from '@angular/material';
 import {UploadsFormComponent} from './admin-page/uploads/uploads-form.component';
 import {UploadsService} from './admin-page/uploads/uploads.service';
 import {AdminPageGuard} from './admin-page.guard';
@@ -65,6 +66,7 @@ import {ContactsComponent} from './home/main/contacts/contacts.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -77,7 +79,11 @@ import {ContactsComponent} from './home/main/contacts/contacts.component';
     MatSelectModule,
     MatInputModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatDividerModule,
+    MatCardModule
   ],
   entryComponents: [DialogDataExampleDialog],
   providers: [ScrollService, ProductService, BlogService, MailService, UploadsService, AdminPageGuard],

@@ -11,7 +11,7 @@ export class BlogService {
 
   constructor(private db: AngularFireDatabase,
               public snackBar: MatSnackBar) {
-    this.blogRef = db.list('/blog');
+    this.blogRef = db.list('/blog', ref => ref.orderByChild('timeStamp'));
   }
 
   /**

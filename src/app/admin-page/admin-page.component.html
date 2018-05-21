@@ -9,17 +9,26 @@
                [formGroup]='categoryForm'>
             <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
 
-            <div class="col-md-4 offset-md-4 load-img-wrap">
-              <fh-uploads-form
-                [showMulti]='false'
-                [currentUpload]='currentUpload'
-                (newFiles)='imageFile($event)'
-              ></fh-uploads-form>
+            <div class="tab-wrapper col-sm-8">
+              <div class='col-md-6 col-sm-12'>
+                <fh-uploads-form
+                  [showMulti]='false'
+                  [currentUpload]='currentUpload'
+                  (newFiles)='imageFile($event)'
+                ></fh-uploads-form>
+              </div>
+              <div class='col-md-6 col-sm-12'>
+                <mat-form-field>
+                  <input matInput placeholder="Порядок"
+                         value=""
+                         formControlName='sort'>
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="tab-wrapper col-md-12">
 
-              <div class="col-md-4">
+              <div class="col-md-4 col-sm-12">
                 <mat-form-field>
                   <input matInput placeholder="Название категории"
                          value=""
@@ -27,14 +36,14 @@
                 </mat-form-field>
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-4  col-sm-12">
                 <mat-form-field class="textarea-field">
                 <textarea matInput placeholder="Краткое описание"
                           formControlName='subtitle'></textarea>
                 </mat-form-field>
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-4  col-sm-12">
                 <mat-form-field class="textarea-field">
                 <textarea matInput placeholder="Описание"
                           formControlName='body'></textarea>
@@ -56,11 +65,55 @@
                *ngFor='let category of categories | async'>
             <div class="col-md-12">
               <div class="product-list-item">
-                <div>
-                  <img [src]='category.img' [alt]='category.title'>
-                  <p>{{category.title}}</p>
-                </div>
-                <button (click)="deleteCategory(category?.$key, category.img_name)">Удалить</button>
+                <img [src]='category.img' [alt]='category.title'>
+                <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        {{ category.title }}
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                      <input type='text'
+                             matInput
+                             placeholder="Название"
+                             [(ngModel)]='category.title'>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <textarea type='text'
+                             matInput
+                             placeholder="Краткое название"
+                             [(ngModel)]='category.subtitle'>
+                      </textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <textarea type='text'
+                             matInput
+                             placeholder="Описание"
+                             [(ngModel)]='category.body'>
+                      </textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input type='number'
+                             matInput
+                             placeholder="Порядок"
+                             [(ngModel)]='category.sort'>
+                    </mat-form-field>
+
+                    <button
+                      style='background-color: green'
+                      (click)="updateObject('category', category)">
+                      <mat-icon>mode_edit</mat-icon>
+                    </button>
+                    <button (click)="deleteCategory(category)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+
+
+                  </mat-expansion-panel>
+                </mat-accordion>
+
               </div>
             </div>
           </div>
@@ -86,11 +139,18 @@
                 </mat-form-field>
               </div>
               <div class='col-md-2'></div>
-              <div class="col-md-5">
+              <div class="col-md-6">
                 <mat-form-field class="example-full-width">
                   <input matInput placeholder="Название субкатегории"
                          value=""
                          formControlName='title'>
+                </mat-form-field>
+              </div>
+              <div class='col-md-3'>
+                <mat-form-field>
+                  <input matInput placeholder="Порядок"
+                         value=""
+                         formControlName='sort'>
                 </mat-form-field>
               </div>
 
@@ -104,22 +164,78 @@
             </div>
           </div>
 
-          <div *ngFor='let category of categories | async'>
-            <h3>{{ category.title }}</h3>
+          <div class='col-md-12'>
+            <mat-card *ngFor='let category of categories | async'>
+              <mat-card-title><h3>{{ category.title }}</h3></mat-card-title>
+              <mat-card-content>
+                <mat-card>
+                  <ng-container *ngFor='let sub of subcategories | async'>
+                    <ng-container *ngIf='sub.category === category.$key'>
+                      <!--<mat-card-title>-->
+                        <!--{{ sub.title }}-->
+                      <!--</mat-card-title>-->
+                      <mat-card-content>
+                        <mat-accordion>
+                          <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                {{ sub.title }}
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <mat-form-field>
+                              <input type='text'
+                                     matInput
+                                     placeholder="Название"
+                                     [(ngModel)]='sub.title'>
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input type='number'
+                                     matInput
+                                     placeholder="Порядок"
+                                     [(ngModel)]='sub.sort'>
+                            </mat-form-field>
+                            <button
+                              mat-raised-button
+                              style='background-color: green'
+                              (click)="updateObject('subcategory', sub)">
+                              <mat-icon>mode_edit</mat-icon>
+                            </button>
+                            <button
+                              mat-raised-button
+                              (click)="deleteSubcategory(sub.$key)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
 
-            <div *ngFor='let sub of subcategories | async'>
-              <div class="products-list" *ngIf='sub.category === category.$key'>
-                <div class="col-md-12">
-                  <div class="product-list-item">
-                    <!--<img [src]='sub.img' [alt]='sub.title'>-->
-                    <p>{{sub.title}}</p>
-                    <button (click)="deleteSubcategory(sub.$key)">Удалить</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+                          </mat-expansion-panel>
+                        </mat-accordion>
 
+                      </mat-card-content>
+                      <!--<mat-divider></mat-divider>-->
+                    </ng-container>
+                  </ng-container>
+                </mat-card>
+              </mat-card-content>
+            </mat-card>
           </div>
+
+          <!--<div *ngFor='let category of categories | async'>-->
+            <!--<h3>{{ category.title }}</h3>-->
+
+            <!--<div class="products-list" *ngFor='let sub of subcategories | async'>-->
+              <!--<div *ngIf='sub.category === category.$key'>-->
+                <!--<div class="col-md-12">-->
+                  <!---->
+                  <!--<div class="product-list-item">-->
+
+
+
+
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+          <!--</div>-->
 
         </mat-tab>
         <!--Tab #2 END -->
@@ -129,7 +245,7 @@
           <div class="products-create-wrap"
                [formGroup]='itemsForm'>
             <fh-loading-spinner *ngIf='showSpinner'></fh-loading-spinner>
-            <div class="col-md-4 offset-md-4 load-img-wrap">
+            <div class="col-md-4 offset-md-4 load-img-wrap" *ngIf='!updateItem'>
               <fh-uploads-form
                 [currentUpload]='currentUpload'
                 (newFiles)='imageFile($event)'
@@ -149,7 +265,7 @@
               </div>
               <div class="col-md-6">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Название продукта" value="" formControlName='title'>
+                  <input matInput placeholder="Название продукта" formControlName='title'>
                 </mat-form-field>
               </div>
 
@@ -161,19 +277,38 @@
                   <textarea matInput placeholder="Описание" formControlName='body'></textarea>
                 </mat-form-field>
               </div>
-              <!--<div class="col-md-6">-->
-              <!--<mat-form-field class="example-full-width">-->
-              <!--<input matInput placeholder="Код продукта"value="" formControlName='item_id'>-->
-              <!--</mat-form-field>-->
-              <!--</div>-->
+              <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="Порядок" formControlName='sort'>
+              </mat-form-field>
+              </div>
 
             </div>
 
             <div class="col-md-12 create-new-wrap">
-              <button class="create-new"
-                      (click)='createItem()'
+              <button *ngIf='!updateItem'
+                      class="create-new"
+                      (click)='addItem()'
                       [disabled]="!itemsForm.valid || !imageFiles"
               >Создать
+              </button>
+              <button *ngIf='updateItem'
+                      class="create-new"
+                      (click)="updateObject('items')"
+                      [disabled]="!itemsForm.valid"
+              >Сохранить
+              </button>
+              <button *ngIf='updateItem'
+                      (click)='deleteItem()'
+                      class="create-new"
+                      style='background-color: red'
+              >Удалить
+              </button>
+              <button *ngIf='updateItem'
+                      (click)='updateItem = false; itemsForm.reset();'
+                      class="create-new"
+                      style='background-color: #1f7e9a'
+              >Новый продукт
               </button>
             </div>
           </div>
@@ -184,11 +319,9 @@
               <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.subcategory === sub.$key'>
                 <a class="work-box"> <img [src]="item.images[0].url" [alt]="item.title">
                   <div class="overlay">
-                    <div class="overlay-caption">
+                    <div class="overlay-caption" (click)='selectForUpdateObject(item)'>
                       <p><span>картинок:</span> {{item.images.length}}</p>
-                      <p><span>название:</span> {{item.title}}</p>
-                      <!--<p><span>код товара:</span> {{item.item_id}}</p>-->
-                      <button (click)="deleteItems(item.$key, item.images)">Удалить</button>
+                      <p>{{ item.title }}</p>
                     </div>
                   </div>
                   <!-- overlay -->
