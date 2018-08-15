@@ -70,10 +70,10 @@ export class AdminPageComponent implements OnInit {
     });
 
     this.itemsForm = new FormGroup({
-      'subcategory': new FormControl('', Validators.required),
+      'category': new FormControl('', Validators.required),
       'title': new FormControl('', Validators.required),
       'body': new FormControl('', Validators.required),
-      'sort': new FormControl('')
+      'sort': new FormControl(''),
       // 'item_id': new FormControl('', Validators.required)
     });
 
@@ -175,7 +175,7 @@ export class AdminPageComponent implements OnInit {
     this.showSpinner = true;
     return Promise.resolve(this.multiImgUpload()).then((res) => {
       this.productService.itForm(
-        this.itemsForm.value['subcategory'],
+        this.itemsForm.value['category'],
         this.itemsForm.value['title'],
         this.itemsForm.value['body'],
         this.itemsForm.value['sort'],

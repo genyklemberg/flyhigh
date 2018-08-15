@@ -44,9 +44,9 @@
         <div class="nk-gap mnt-5"></div>
 
         <p>
-          Компания ФХ независимая Украинская компания, специализирующаяся на комплексных решениях по поставкам бортовых
+          Компания ФлайХай независимая Украинская компания, специализирующаяся на комплексных решениях по поставкам бортовых
           товаров и услуг.
-          Как компания полного цикла мы предоставляем полный комплекс услуг по разработке концепций, проектирования,
+          Как компания полного цикла, мы предоставляем полный комплекс услуг по разработке концепций, проектирования,
           дизайна, изготовления и доставки необходимых товаров или услуг для наших клиентов.
         </p>
 
@@ -120,18 +120,18 @@
 <div class="nk-box bg-white" id="projects">
   <div class="nk-gap-4 mt-5"></div>
 
-  <h2 class="text-xs-center display-4">Наш каталог</h2>
+  <h2 class="text-xs-center display-4">Каталог товаров</h2>
 
   <div class="nk-gap mnt-6"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div class="text-xs-center">
-          Вы еще решаете, что вам нужно, а мы уже везем ваш заказ :)
-        </div>
-      </div>
-    </div>
-  </div>
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-8 offset-lg-2">-->
+        <!--<div class="text-xs-center">-->
+          <!--Вы еще решаете, что вам нужно, а мы уже везем ваш заказ :)-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div class="nk-gap-2 mt-12"></div>
   <div class="container">
@@ -209,100 +209,100 @@
 <!-- END: Reviews -->
 
 <!-- START: Blog -->
-<div class="nk-box bg-gray-1" id="blog">
-  <div class="nk-gap-4 mt-5"></div>
+<!--<div class="nk-box bg-gray-1" id="blog">-->
+  <!--<div class="nk-gap-4 mt-5"></div>-->
 
-  <h2 class="text-xs-center display-4">Наши новости</h2>
+  <!--<h2 class="text-xs-center display-4">Наши новости</h2>-->
 
-  <div class="nk-gap mnt-6"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div class="text-xs-center">
-          Мелочи жизни в простых решениях
-        </div>
-      </div>
-    </div>
-  </div>
+  <!--<div class="nk-gap mnt-6"></div>-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-8 offset-lg-2">-->
+        <!--<div class="text-xs-center">-->
+          <!--Мелочи жизни в простых решениях-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="nk-gap-2 mt-12"></div>
-  <div class="container">
-    <!-- START: Carousel -->
+  <!--<div class="nk-gap-2 mt-12"></div>-->
+  <!--<div class="container">-->
+    <!--&lt;!&ndash; START: Carousel &ndash;&gt;-->
 
-    <mat-tab-group>
-      <mat-tab label="">
+    <!--<mat-tab-group>-->
+      <!--<mat-tab label="">-->
 
-        <div *ngFor='let article of blogList | slice:0:3'>
-          <div>
-            <div class="col-md-4">
-              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
-                <div class="nk-post-thumb">
-                  <a>
-                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
-                  </a>
-                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
-                </div>
-                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
-                <div class="nk-post-date">
-                  {{ article.timeStamp | date: "fullDate" }}
-                </div>
-                <div class="nk-post-text">
-                  <p>
-                    {{ article.body | slice:0:255 }}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="nk-gap-1"></div>
-          </div>
+        <!--<div *ngFor='let article of blogList | slice:0:3'>-->
+          <!--<div>-->
+            <!--<div class="col-md-4">-->
+              <!--<div class="nk-blog-post" [routerLink]='["/article", article.$key]'>-->
+                <!--<div class="nk-post-thumb">-->
+                  <!--<a>-->
+                    <!--<img [src]="article.img" [alt]="article.title" class="nk-img-stretch">-->
+                  <!--</a>-->
+                  <!--<div class="nk-post-category"><a>{{ article.type }}</a></div>-->
+                <!--</div>-->
+                <!--<h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>-->
+                <!--<div class="nk-post-date">-->
+                  <!--{{ article.timeStamp | date: "fullDate" }}-->
+                <!--</div>-->
+                <!--<div class="nk-post-text">-->
+                  <!--<p>-->
+                    <!--{{ article.body | slice:0:255 }}-->
+                  <!--</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="nk-gap-1"></div>-->
+          <!--</div>-->
 
-        </div>
-      </mat-tab>
-
-
-      <mat-tab label="">
-
-        <div *ngFor='let article of blogList | slice:3:6'>
-          <div>
-            <div class="col-md-4">
-              <div class="nk-blog-post" [routerLink]='["/article", article.$key]'>
-                <div class="nk-post-thumb">
-                  <a>
-                    <img [src]="article.img" [alt]="article.title" class="nk-img-stretch">
-                  </a>
-                  <div class="nk-post-category"><a>{{ article.type }}</a></div>
-                </div>
-                <h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>
-                <div class="nk-post-date">
-                  {{ article.timeStamp | date: "fullDate" }}
-                </div>
-                <div class="nk-post-text">
-                  <p>
-                    {{ article.body | slice:0:255 }}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="nk-gap-1"></div>
-          </div>
-
-        </div>
-      </mat-tab>
+        <!--</div>-->
+      <!--</mat-tab>-->
 
 
-    </mat-tab-group>
+      <!--<mat-tab label="">-->
+
+        <!--<div *ngFor='let article of blogList | slice:3:6'>-->
+          <!--<div>-->
+            <!--<div class="col-md-4">-->
+              <!--<div class="nk-blog-post" [routerLink]='["/article", article.$key]'>-->
+                <!--<div class="nk-post-thumb">-->
+                  <!--<a>-->
+                    <!--<img [src]="article.img" [alt]="article.title" class="nk-img-stretch">-->
+                  <!--</a>-->
+                  <!--<div class="nk-post-category"><a>{{ article.type }}</a></div>-->
+                <!--</div>-->
+                <!--<h2 class="nk-post-title h4"><a>{{ article.title }}</a></h2>-->
+                <!--<div class="nk-post-date">-->
+                  <!--{{ article.timeStamp | date: "fullDate" }}-->
+                <!--</div>-->
+                <!--<div class="nk-post-text">-->
+                  <!--<p>-->
+                    <!--{{ article.body | slice:0:255 }}-->
+                  <!--</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="nk-gap-1"></div>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</mat-tab>-->
 
 
-    <div class="nk-carousel-2 nk-carousel-x2 nk-carousel-no-margin nk-carousel-all-visible nk-blog-isotope"
-         data-dots="true">
-      <div class="nk-carousel-inner">
+    <!--</mat-tab-group>-->
 
-      </div>
-    </div>
-    <!-- END: Carousel -->
-  </div>
-  <div class="nk-gap-5 mt-20"></div>
-</div>
+
+    <!--<div class="nk-carousel-2 nk-carousel-x2 nk-carousel-no-margin nk-carousel-all-visible nk-blog-isotope"-->
+         <!--data-dots="true">-->
+      <!--<div class="nk-carousel-inner">-->
+
+      <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; END: Carousel &ndash;&gt;-->
+  <!--</div>-->
+  <!--<div class="nk-gap-5 mt-20"></div>-->
+<!--</div>-->
 <!-- END: Blog -->
 
 <!-- START: Contact Info -->
@@ -318,72 +318,72 @@
       <div class="row vertical-gap">
 
         <div class='col-lg-1 hidden-lg-down'></div>
-        <div class="col-lg-4 col-sm-12 contact-info adress">
+        <div class="col-lg-10 col-sm-12 contact-info adress">
           <!-- START: Info -->
           <fh-contacts></fh-contacts>
           <!-- END: Info -->
         </div>
-        <div class="col-lg-7 col-sm-12 contact-info form">
-          <!-- START: Form -->
-          <form class="nk-form nk-form-ajax"
-                enctype="multipart/form-data"
-                [formGroup]='profileForm'
-                (ngSubmit)='onSubmit()'>
-            <div class="row vertical-gap">
-              <div class="col-md-6">
-                <!--test for spam input-->
-                <input id="checkme"
-                       type="text"
-                       name="checkme"
-                       style='display: none;'
-                       formControlName='checkme'/>
-                <!--the rest of your form-->
-                <input type="text" class="form-control required"
-                       name="name" placeholder="Как к вам обращаться?"
-                       formControlName='name'>
-                <span class="validate"
-                      *ngIf="profileForm.get('name').invalid && (profileForm.get('name').dirty || profileForm.get('name').touched)">
-                Пожалуйста, введите свое Имя
-            </span>
-              </div>
-              <div class="col-md-6">
-                <input type="email" class="form-control required"
-                       name="email" placeholder="Ваш емейл"
-                       formControlName='email'>
-                <span class="validate"
-                      *ngIf="profileForm.get('email').invalid && profileForm.get('email').touched">
-                Пожалуйста, введите корректный емейл
-            </span>
-              </div>
-            </div>
+        <!--<div class="col-lg-7 col-sm-12 contact-info form">-->
+          <!--&lt;!&ndash; START: Form &ndash;&gt;-->
+          <!--<form class="nk-form nk-form-ajax"-->
+                <!--enctype="multipart/form-data"-->
+                <!--[formGroup]='profileForm'-->
+                <!--(ngSubmit)='onSubmit()'>-->
+            <!--<div class="row vertical-gap">-->
+              <!--<div class="col-md-6">-->
+                <!--&lt;!&ndash;test for spam input&ndash;&gt;-->
+                <!--<input id="checkme"-->
+                       <!--type="text"-->
+                       <!--name="checkme"-->
+                       <!--style='display: none;'-->
+                       <!--formControlName='checkme'/>-->
+                <!--&lt;!&ndash;the rest of your form&ndash;&gt;-->
+                <!--<input type="text" class="form-control required"-->
+                       <!--name="name" placeholder="Как к вам обращаться?"-->
+                       <!--formControlName='name'>-->
+                <!--<span class="validate"-->
+                      <!--*ngIf="profileForm.get('name').invalid && (profileForm.get('name').dirty || profileForm.get('name').touched)">-->
+                <!--Пожалуйста, введите свое Имя-->
+            <!--</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-6">-->
+                <!--<input type="email" class="form-control required"-->
+                       <!--name="email" placeholder="Ваш емейл"-->
+                       <!--formControlName='email'>-->
+                <!--<span class="validate"-->
+                      <!--*ngIf="profileForm.get('email').invalid && profileForm.get('email').touched">-->
+                <!--Пожалуйста, введите корректный емейл-->
+            <!--</span>-->
+              <!--</div>-->
+            <!--</div>-->
 
-            <div class="nk-gap-1"></div>
-            <input type="text" class="form-control required"
-                   name="title" placeholder="Тема"
-                   formControlName='topic'>
-            <span class="validate"
-                  *ngIf="profileForm.get('topic').invalid && (profileForm.get('topic').dirty || profileForm.get('topic').touched)">
-                Пожалуйста, введите тему вашего запроса
-        </span>
+            <!--<div class="nk-gap-1"></div>-->
+            <!--<input type="text" class="form-control required"-->
+                   <!--name="title" placeholder="Тема"-->
+                   <!--formControlName='topic'>-->
+            <!--<span class="validate"-->
+                  <!--*ngIf="profileForm.get('topic').invalid && (profileForm.get('topic').dirty || profileForm.get('topic').touched)">-->
+                <!--Пожалуйста, введите тему вашего запроса-->
+        <!--</span>-->
 
-            <div class="nk-gap-1"></div>
-            <textarea class="form-control required" name="message"
-                      rows="8" placeholder="В чем ваша потребность?"
-                      aria-required="true"
-                      formControlName='textarea'></textarea>
-            <span class="validate"
-                  *ngIf="profileForm.get('textarea').invalid && (profileForm.get('textarea').dirty || profileForm.get('textarea').touched)">
-                Пожалуйста, введите вашу потребность от 5 букв
-        </span>
-            <div class="nk-gap-1"></div>
-            <div class="nk-form-response-success"></div>
-            <div class="nk-form-response-error"></div>
-            <button type="submit" class="nk-btn"
-                    [disabled]="!profileForm.valid">Отправить запрос
-            </button>
-          </form>
-          <!-- END: Form -->
-        </div>
+            <!--<div class="nk-gap-1"></div>-->
+            <!--<textarea class="form-control required" name="message"-->
+                      <!--rows="8" placeholder="В чем ваша потребность?"-->
+                      <!--aria-required="true"-->
+                      <!--formControlName='textarea'></textarea>-->
+            <!--<span class="validate"-->
+                  <!--*ngIf="profileForm.get('textarea').invalid && (profileForm.get('textarea').dirty || profileForm.get('textarea').touched)">-->
+                <!--Пожалуйста, введите вашу потребность от 5 букв-->
+        <!--</span>-->
+            <!--<div class="nk-gap-1"></div>-->
+            <!--<div class="nk-form-response-success"></div>-->
+            <!--<div class="nk-form-response-error"></div>-->
+            <!--<button type="submit" class="nk-btn"-->
+                    <!--[disabled]="!profileForm.valid">Отправить запрос-->
+            <!--</button>-->
+          <!--</form>-->
+          <!--&lt;!&ndash; END: Form &ndash;&gt;-->
+        <!--</div>-->
 
       </div>
       <div class="nk-gap-5"></div>

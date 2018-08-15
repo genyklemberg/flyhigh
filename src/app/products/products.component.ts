@@ -20,7 +20,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.cat_id = this.route.snapshot.params.id;
-    this.subcategories = this.prDB.getSubcategoryFiltered(this.cat_id);
+    // this.subcategories = this.prDB.getSubcategoryFiltered(this.cat_id);
+    // this.categories = this.prDB.getSubcategoryFiltered(this.cat_id);
     this.items = this.prDB.getProductsList();
     this.prDB.getCategory(this.cat_id).subscribe(data => {
       this.category = data;

@@ -83,12 +83,12 @@ export class ProductService {
   /**
    * Item form
    */
-  itForm(subcategory: string, title: string, body: string, sort: number, images) {
+  itForm(category: string, title: string, body: string, sort: number, images) {
     // const path = `products/items/`;
     // const itemRef: AngularFireList<any> = this.db.list(path);
     const sortVal = ((sort) ? sort : 0);
     const data = {
-      subcategory: subcategory,
+      category: category,
       title: title,
       body: body,
       sort: sortVal,

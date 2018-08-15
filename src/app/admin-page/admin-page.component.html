@@ -255,9 +255,9 @@
 
               <div class="col-md-6">
                 <mat-form-field>
-                  <mat-select #SubcatSelect placeholder="Выбрать субкатегорию" formControlName='subcategory'>
-                    <mat-option *ngFor='let sub of subcategories | async' [value]="sub.$key">
-                      {{sub.title}}
+                  <mat-select placeholder="Выбрать категорию" formControlName='category'>
+                    <mat-option *ngFor='let cat of categories | async' [value]="cat.$key">
+                      {{cat.title}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -311,11 +311,11 @@
               </button>
             </div>
           </div>
-          <div class="col-md-12" *ngFor='let sub of subcategories | async'>
-            <h3>{{ sub.title }}</h3>
+          <div class="col-md-12" *ngFor='let cat of categories | async'>
+            <h3>{{ cat.title }}</h3>
 
             <span class="product-list-item" *ngFor='let item of items | async'>
-              <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.subcategory === sub.$key'>
+              <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.category === cat.$key'>
                 <a class="work-box"> <img [src]="item.images[0].url" [alt]="item.title">
                   <div class="overlay">
                     <div class="overlay-caption" (click)='selectForUpdateObject(item)'>
