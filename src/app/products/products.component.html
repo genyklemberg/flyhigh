@@ -24,7 +24,7 @@
         <!--If made without subcategories-->
         <div class='row'>
           <span *ngFor='let item of items | async'>
-            <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.category === cat_id'>
+            <div class="col-lg-3 col-md-4 col-sm-6 work">
               <a [routerLink]='["/item", item.$key]' class="work-box"> <img [src]="item.images[0].url"
                                                                             [alt]="item.title">
                 <div class="overlay">

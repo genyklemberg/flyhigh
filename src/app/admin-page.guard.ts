@@ -21,6 +21,7 @@ export class AdminPageGuard implements CanActivate {
       if (Md5.hashStr(this.person) === data.pass) {
         return true;
       } else {
+        alert('wrong password');
         return false;
       }
     });

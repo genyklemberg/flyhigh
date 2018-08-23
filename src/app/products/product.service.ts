@@ -6,6 +6,7 @@ import {ICategory} from './category';
 import {ISubcategory} from './subcategory';
 import {HttpClient} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material';
+import {filter, map, tap} from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
@@ -20,7 +21,7 @@ export class ProductService {
     this.categoryRef = db.list('/products/category', ref => ref.orderByChild('sort'));
     // this.subCategoryRef = db.list('/products/subcategory', ref => ref.orderByChild('category').equalTo('-L1wUoBBtST1Bh8jyhPx'));
     this.subCategoryRef = db.list('/products/subcategory', ref => ref.orderByChild('sort'));
-    this.productsRef = db.list('/products/items', ref => ref.orderByChild('sort'));
+    this.productsRef = db.list('/products/items');
   }
 
   /**
@@ -87,7 +88,7 @@ export class ProductService {
     // const path = `products/items/`;
     // const itemRef: AngularFireList<any> = this.db.list(path);
     const sortVal = ((sort) ? sort : 0);
-    const data = {
+    const data: IProduct = {
       category: category,
       title: title,
       body: body,
@@ -133,7 +134,15 @@ export class ProductService {
   getProductsList(): Observable<IProduct[]> {
     return this.productsRef.snapshotChanges().map((arr) => {
       return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
-    });
+    })
+  }
+
+  // Return an observable list of Products
+  getProductsListFiltered(cat): Observable<IProduct[]> {
+    this.productsRef = this.db.list('/products/items', ref => ref.orderByChild('category').equalTo(cat));
+    return this.productsRef.snapshotChanges().map((arr) => {
+      return arr.map((snap) => Object.assign(snap.payload.val(), {$key: snap.key}));
+    })
   }
 
   // Return a single observable category

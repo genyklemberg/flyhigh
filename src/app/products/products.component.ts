@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from './product.service';
 import {ActivatedRoute} from '@angular/router';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'fh-products',
@@ -22,7 +23,9 @@ export class ProductsComponent implements OnInit {
     this.cat_id = this.route.snapshot.params.id;
     // this.subcategories = this.prDB.getSubcategoryFiltered(this.cat_id);
     // this.categories = this.prDB.getSubcategoryFiltered(this.cat_id);
-    this.items = this.prDB.getProductsList();
+    this.items = this.prDB.getProductsListFiltered(this.cat_id).pipe(
+      tap(res => res.sort((a,b) => Number(a.sort) < Number(b.sort) ? -1 : 1))
+    );
     this.prDB.getCategory(this.cat_id).subscribe(data => {
       this.category = data;
       this.showSpinner = false;
