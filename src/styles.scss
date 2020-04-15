@@ -45,6 +45,14 @@ body {
   border: 1px solid white;
 }
 
+fh-products section {
+  min-height: calc(100vh - 147px);
+}
+
+fh-item .container .row {
+  min-height: calc(100vh - 232px);
+}
+
 @media (max-width: 767px) {
   .display-4 {
     font-size: 24px;
@@ -850,8 +858,8 @@ body {
       // margin-left: -45px;
       img {
         width: 58vw;
-        height: 30vw;
-        object-fit: cover;
+        height: 70vh;
+        object-fit: contain;
       }
     }
   }

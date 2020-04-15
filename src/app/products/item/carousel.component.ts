@@ -30,10 +30,18 @@ export class CarouselItemElement {
         </li>
       </ul>
     </section>
-    <div *ngIf="showControls" style="margin-top: 1em" class="slider-btn">
-      <button (click)="prev()" class="btn btn-default btn-prev"><span class="pe-7s-angle-left"></span>Prev</button>
+    <div *ngIf="showControls" style="margin-top: 1em;" class="slider-btn">
+      <div>
+        <button 
+          *ngIf="currentSlide !== 0"
+          (click)="prev()" class="btn btn-default btn-prev"><span class="pe-7s-angle-left"></span>Prev</button>
+      </div>
       <a (click)='closeDialog()'><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
-      <button (click)="next()" class="btn btn-default btn-next">Next<span class="pe-7s-angle-right"></span></button>
+      <div>
+        <button
+          *ngIf="items.length > 1 && currentSlide !== items.length - 1"
+          (click)="next()" class="btn btn-default btn-next">Next<span class="pe-7s-angle-right"></span></button>
+      </div>
     </div>
   `,
   styles: ['../style.scss'],

@@ -11,7 +11,7 @@
           </a>
         </li>
         <ng-template #home_link>
-          <a [routerLink]='["home"]' class="nk-nav-logo">
+          <a routerLink="home" [ngx-scroll-to]="'home'" class="nk-nav-logo">
             <h3><span class="first-letter">F</span>ly<span class="first-letter">H</span>igh</h3>
           </a>
         </ng-template>
@@ -21,7 +21,7 @@
             <a [ngx-scroll-to]="'about'">Про нас</a>
           </li>
           <ng-template #about_link>
-            <li [routerLink]='["home"]' (click)='scrollTo("about")'>
+            <li routerLink="home" (click)='scrollTo("about")'>
               <a>Про нас</a>
             </li>
           </ng-template>
@@ -29,7 +29,7 @@
             <a [ngx-scroll-to]="'projects'">Каталог</a>
           </li>
           <ng-template #products_link>
-            <li [routerLink]='["home"]' (click)='scrollTo("projects")'>
+            <li routerLink="home" (click)='scrollTo("projects")'>
               <a>Каталог</a>
             </li>
           </ng-template>
@@ -37,7 +37,7 @@
             <a [ngx-scroll-to]="'contacts'">Контакты</a>
           </li>
           <ng-template #contact_link>
-            <li [routerLink]='["home"]' (click)='scrollTo("contacts")'>
+            <li routerLink="home" (click)='scrollTo("contacts")'>
               <a>Контакты</a>
             </li>
           </ng-template>
@@ -76,7 +76,7 @@
       <a [ngx-scroll-to]="'about'">Про нас</a>
     </li>
     <ng-template #about_link>
-      <li [routerLink]='["home"]' (click)='scrollTo("about")'>
+      <li routerLink="home" (click)='scrollTo("about")'>
         <a>Про нас</a>
       </li>
     </ng-template>
@@ -87,7 +87,7 @@
       <a [ngx-scroll-to]="'projects'">Каталог</a>
     </li>
     <ng-template #products_link>
-      <li [routerLink]='["home"]' (click)='scrollTo("projects")'>
+      <li routerLink="home" (click)='scrollTo("projects")'>
         <a>Каталог</a>
       </li>
     </ng-template>
@@ -98,7 +98,7 @@
       <a [ngx-scroll-to]="'contacts'">Контакты</a>
     </li>
     <ng-template #contact_link>
-      <li [routerLink]='["home"]' (click)='scrollTo("contacts")'>
+      <li routerLink="home" (click)='scrollTo("contacts")'>
         <a>Контакты</a>
       </li>
     </ng-template>

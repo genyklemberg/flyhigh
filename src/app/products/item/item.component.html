@@ -1,11 +1,15 @@
-<div class="container">
-  <div class="nk-portfolio-single">
-
-    <div class="nk-gap-4 mb-14"></div>
-    <h1 class="nk-portfolio-title display-4">{{item?.title}}</h1>
-    <div class="row vertical-gap">
-      <div class="col-lg-8">
-        <div class="nk-portfolio-info">
+<ng-container *ngIf="item">
+  
+  <div class="container">
+    <div class="nk-portfolio-single">
+  
+      <div class="nk-gap-4 mb-14"></div>
+      <h1 class="nk-portfolio-title display-4">{{item?.title}}</h1>
+    </div>
+    <div class="row">
+      <!-- <div class="col-md-12"> -->
+      <div class="col-md-7 col-sm-12">
+        <div style="padding: 25px 0;" class="nk-portfolio-info">
           <div class="nk-portfolio-text">
             <p style='font-size: 17px; font-weight: 700;'>
               {{item?.body}}
@@ -13,49 +17,18 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <table class="nk-portfolio-details">
-          <tr>
-            <td>
-              <strong>Изображений: </strong>
-            </td>
-            <td>{{item?.images.length}}</td>
-          </tr>
-          <!--<tr>-->
-          <!--<td>-->
-          <!--<strong style='white-space: nowrap'>Код товара:</strong>-->
-          <!--</td>-->
-          <td>{{item?.item_id}}</td>
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<td>-->
-          <!--<strong>Share:</strong>-->
-          <!--</td>-->
-          <!--<td>-->
-          <!--<a href="#" title="Share page on Facebook" data-share="facebook">Facebook</a>,-->
-          <!--<a href="#" title="Share page on Twitter" data-share="twitter">Twitter</a>,-->
-          <!--<a href="#" title="Share page on Pinterest" data-share="pinterest">Pinterest</a>-->
-          <!--</td>-->
-          <!--</tr>-->
-        </table>
+      <div class="col-md-5 col-sm-12">
+        <caption style="width: 150px; position: absolute; right: 0;">Изображений: {{item?.images.length}}</caption>
+        <div class="product-wrap">
+          <img class="nk-img-fit" [src]="item?.images[0].url">
+          <button class="mat-raised-button mat-primary" mat-button (click)="openDialog()">
+            Посмотреть
+          </button>
+        </div>
       </div>
+  
+      <!-- </div> -->
     </div>
-    <!--<div class="nk-gap-4 mt-14"></div>-->
-
   </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <!-- <div class="col-md-12"> -->
-    <div class="col-md-10 offset-md-1 col-sm-12">
-      <div class="product-wrap">
-        <img class="nk-img-fit" [src]="item?.images[0].url">
-        <button class="mat-raised-button mat-primary" mat-button (click)="openDialog()">Open Image</button>
-      </div>
-    </div>
-
-    <!-- </div> -->
-  </div>
-</div>
+</ng-container>
 
