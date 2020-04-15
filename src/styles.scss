@@ -540,6 +540,9 @@ fh-item .container .row {
     .overlay {
       background: none;
     }
+    img {
+      object-fit: contain;
+    }
     .overlay-caption {
       display: flex;
       height: 100%;
