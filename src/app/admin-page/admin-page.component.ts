@@ -129,7 +129,8 @@ export class AdminPageComponent implements OnInit {
       return Promise.resolve(that.upSvc.pushUpload(that.currentUpload)).then((res) => {
         const upload = {
           url: res.url,
-          name: res.name
+          name: res.name,
+          main: res.name.startsWith('fh-main') ? true : false
         };
         storedResults.push(upload);
       });

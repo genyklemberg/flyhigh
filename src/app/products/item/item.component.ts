@@ -25,6 +25,14 @@ export class ItemComponent implements OnInit, OnDestroy {
     });
   }
 
+  selectMain(images) {
+    const imageIndex = images.findIndex(p => p.main === true);
+    if (imageIndex !== -1) {
+      return images[imageIndex].url;
+    }
+    return images[0].url;
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(DialogDataExampleDialog, {
       data: this.item.images

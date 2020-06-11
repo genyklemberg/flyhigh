@@ -11,16 +11,16 @@
       <div class="col-md-7 col-sm-12">
         <div style="padding: 25px 0;" class="nk-portfolio-info">
           <div class="nk-portfolio-text">
-            <p style='font-size: 17px; font-weight: 700;'>
+            <pre style='font-size: 17px; font-weight: 700;'>
               {{item?.body}}
-            </p>
+            </pre>
           </div>
         </div>
       </div>
       <div class="col-md-5 col-sm-12">
         <caption style="width: 150px; position: absolute; right: 0;">Изображений: {{item?.images.length}}</caption>
         <div class="product-wrap">
-          <img class="nk-img-fit" [src]="item?.images[0].url">
+          <img class="nk-img-fit" [src]="selectMain(item?.images)">
           <button class="mat-raised-button mat-primary" mat-button (click)="openDialog()">
             Посмотреть
           </button>

@@ -32,8 +32,11 @@ body {
       outline: none;
     }
   }
-  p {
+  p, pre {
     font-family: 'Calibri Light', 'Gill Sans', 'Open Sans', Geneva, Helvetica, Arial, sans-serif;
+  }
+  pre {
+    white-space: pre-wrap;
   }
   div {
     font-family: "Arial Narrow", Arial, sans-serif;
@@ -229,7 +232,7 @@ fh-item .container .row {
 /*About us start*/
 
 #about {
-  p {
+  p, pre {
     font-size: 18px;
   }
   h2 {
@@ -461,7 +464,7 @@ fh-item .container .row {
   transition: all, 0.5s;
 }
 
-.work h5, .work p {
+.work h5, .work p, .work pre {
   color: #fff;
   margin: 0;
   opacity: 0;
@@ -479,7 +482,7 @@ fh-item .container .row {
   transform: translate3d(0, -200%, 0);
 }
 
-.work p {
+.work p, .work pre {
   -moz-transform: translate3d(0, 200%, 0);
   -ms-transform: translate3d(0, 200%, 0);
   -webkit-transform: translate3d(0, 200%, 0);
@@ -497,7 +500,7 @@ fh-item .container .row {
   opacity: 1;
 }
 
-.work-box:hover .overlay h5, .work-box:hover .overlay p {
+.work-box:hover .overlay h5, .work-box:hover .overlay p, .work-box:hover .overlay pre {
   opacity: 1;
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -723,7 +726,7 @@ fh-item .container .row {
         padding-top: 10px;
         color: #5f5f5f;
       }
-      p {
+      p, pre {
         font-size: 19px;
         color: black
       }
@@ -856,7 +859,6 @@ fh-item .container .row {
     .carousel-item {
       width: 76vw;
       margin: 0 auto;
-      display: flex;
       justify-content: center;
       // margin-left: -45px;
       img {
@@ -1188,7 +1190,7 @@ fh-item .container .row {
       margin-right: 15px;
     }
     .overlay-caption {
-      p {
+      p, pre {
         color: #fff;
         font-size: 20px;
         font-weight: bold;
@@ -1343,7 +1345,7 @@ fh-item .container .row {
       img {
         width: 150px;
       }
-      p {
+      p, pre {
         margin-bottom: 0;
         margin-right: 20px;
         font-size: 18px;
