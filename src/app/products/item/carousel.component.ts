@@ -7,7 +7,9 @@ import {
   Input,
   QueryList,
   ViewChild,
-  ViewChildren
+  ViewChildren,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import {CarouselItemDirective} from './carousel-item.directive';
 import {animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style} from '@angular/animations';
@@ -51,6 +53,7 @@ export class CarouselComponent implements AfterViewInit {
   @ContentChildren(CarouselItemDirective) items: QueryList<CarouselItemDirective>;
   @Input() timing = '250ms ease-in';
   @Input() showControls = true;
+  @Output() itemOutput: EventEmitter<number> = new EventEmitter<number>();
   carouselWrapperStyle = {};
   @ViewChildren(
     CarouselItemElement, {read: ElementRef}) private itemsElements: QueryList<ElementRef>;
@@ -59,8 +62,7 @@ export class CarouselComponent implements AfterViewInit {
   private itemWidth: number;
   private currentSlide = 0;
 
-  constructor(private builder: AnimationBuilder, public dialog: MatDialog) {
-  }
+  constructor(private builder: AnimationBuilder, public dialog: MatDialog) {}
 
   ngAfterViewInit() {
     // For some reason only here I need to add setTimeout,
@@ -80,17 +82,17 @@ export class CarouselComponent implements AfterViewInit {
     const myAnimation: AnimationFactory = this.buildAnimation(offset);
     this.player = myAnimation.create(this.carousel.nativeElement);
     this.player.play();
+    this.itemOutput.emit(this.currentSlide);
   }
 
   prev() {
     if (this.currentSlide === 0) return;
-
     this.currentSlide = ((this.currentSlide - 1) + this.items.length) % this.items.length;
     const offset = this.currentSlide * this.itemWidth;
-
     const myAnimation: AnimationFactory = this.buildAnimation(offset);
     this.player = myAnimation.create(this.carousel.nativeElement);
     this.player.play();
+    this.itemOutput.emit(this.currentSlide);
   }
 
   closeDialog() {

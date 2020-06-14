@@ -316,7 +316,7 @@
 
             <span class="product-list-item" *ngFor='let item of items | async'>
               <div class="col-lg-3 col-md-4 col-sm-6 work" *ngIf='item.category === cat.$key'>
-                <a class="work-box"> <img [src]="item.images[0].url" [alt]="item.title">
+                <a class="work-box"> <img [src]="selectMain(item.images)" [alt]="item.title">
                   <div class="overlay">
                     <div class="overlay-caption" (click)='selectForUpdateObject(item)'>
                       <p><span>картинок:</span> {{item.images.length}}</p>

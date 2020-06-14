@@ -47,7 +47,7 @@ export class ItemComponent implements OnInit, OnDestroy {
 
 @Component({
   selector: 'dialog-data-example-dialog',
-  template: `<h2 mat-dialog-title>Галерея</h2>
+  template: `<h2 mat-dialog-title>{{images[index]?.title}}</h2>
             <!-- START: Pagination -->
             <!--<div class="nk-pagination nk-pagination-center">-->
               <!--<div class="container cont-img">-->
@@ -64,7 +64,7 @@ export class ItemComponent implements OnInit, OnDestroy {
                   <div class="row">
                     <div class="col-md-12">
                       <fh-loading-spinner *ngIf='!images'></fh-loading-spinner>
-                      <carousel>
+                      <carousel (itemOutput)="getEvent($event)">
                         <ng-container *ngFor="let image of images">
                           <ng-container *carouselItem>
                               <img class="img-center img img-responsive" [src]="image.url">
@@ -95,15 +95,13 @@ export class ItemComponent implements OnInit, OnDestroy {
 })
 export class DialogDataExampleDialog {
   images;
+  index = 0;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.images = data;
   }
 
-
-  // addSlide() {
-  //   this.items.push({
-  //     title: `Slide 4`
-  //   });
-  // }
+  getEvent(event) {
+    this.index = event;
+  }
 }

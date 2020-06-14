@@ -32,4 +32,12 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  selectMain(images) {
+    const imageIndex = images.findIndex(p => p.main === true);
+    if (imageIndex !== -1) {
+      return images[imageIndex].url;
+    }
+    return images[0].url;
+  }
+
 }

@@ -126,11 +126,14 @@ export class AdminPageComponent implements OnInit {
 
     const fn = function uploadByOne(file) {
       that.currentUpload = new Upload(file);
+      const fileName = that.currentUpload.file.name;
       return Promise.resolve(that.upSvc.pushUpload(that.currentUpload)).then((res) => {
+        const mainPic = res.name.startsWith('fh-main');
         const upload = {
           url: res.url,
           name: res.name,
-          main: res.name.startsWith('fh-main') ? true : false
+          title: fileName.substring(mainPic ? 7 : 0, fileName.lastIndexOf('.')).trim(),
+          main: mainPic ? true : false
         };
         storedResults.push(upload);
       });
@@ -306,6 +309,14 @@ export class AdminPageComponent implements OnInit {
     return new FormGroup({
       'paragraph': new FormControl('')
     });
+  }
+
+  selectMain(images) {
+    const imageIndex = images.findIndex(p => p.main === true);
+    if (imageIndex !== -1) {
+      return images[imageIndex].url;
+    }
+    return images[0].url;
   }
 
 }
